@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # navigation_over_screens
 
 A new Flutter project created with https://flutlab.io
@@ -22,3 +23,6 @@ samples, guidance on mobile development, and a full API reference.
 - Join the discussion and conversation on https://flutlab.io/residents
 
 If you have some questions regarding FlutLab, you can ask on https://flutlab.io/faq
+=======
+
+>>>>>>> fcc6fec52f831e5ca52c3b055bc4c5cb6ca195b2
