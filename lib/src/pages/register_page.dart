@@ -107,7 +107,7 @@ class Cadastro extends StatelessWidget {
                                           child: Padding(
                                             padding: EdgeInsets.only(left: 35),
                                             child: Center(
-                                              child: Text('Cadastrar-se com o Google', style: TextStyle(
+                                              child: Text('Cadastrar-se com o Googles', style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold
