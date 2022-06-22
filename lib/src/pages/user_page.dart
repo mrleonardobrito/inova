@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widget/bottom_bar_navigation.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -8,9 +9,7 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  List<String> objList = [
-    ''
-  ];
+  List<String> objList = [''];
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +45,14 @@ class _UserPageState extends State<UserPage> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
                       child: Align(
                         alignment: Alignment.topRight,
                         child: FlatButton(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Color(0xff4065FC))),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Color(0xff4065FC))),
                           color: Colors.white,
                           textColor: Colors.black,
                           child: Text('   Editar perfil   '),
@@ -86,14 +88,20 @@ class _UserPageState extends State<UserPage> {
                         padding: EdgeInsets.only(top: 3),
                         child: const Text(
                           '914 - 4° ano',
-                          style: TextStyle(color: Color(0xFF808080), fontSize: 16, fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Color(0xFF808080),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(bottom: 5),
                         child: const Text(
                           'Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.',
-                          style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal),
                         ),
                       )
                     ],
@@ -170,18 +178,23 @@ class _UserPageState extends State<UserPage> {
                                     Container(
                                         height: 107,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(6),
+                                          borderRadius:
+                                              BorderRadius.circular(6),
                                           color: Colors.white,
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 10, horizontal: 15),
                                           child: ListView(
                                             children: [
                                               Row(
                                                 children: [
                                                   Text(
                                                     'JusBrasil',
-                                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
                                                   ),
                                                   Spacer(),
                                                   Row(
@@ -189,14 +202,17 @@ class _UserPageState extends State<UserPage> {
                                                       Icon(
                                                         Icons.calendar_month,
                                                         size: 18,
-                                                        color: Color(0xFFBFBFBF),
+                                                        color:
+                                                            Color(0xFFBFBFBF),
                                                       ),
                                                       const Text(
                                                         '02/03/2022',
                                                         style: TextStyle(
-                                                          fontWeight: FontWeight.bold,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           fontSize: 11,
-                                                          color: Color(0xFFBFBFBF),
+                                                          color:
+                                                              Color(0xFFBFBFBF),
                                                         ),
                                                       ),
                                                     ],
@@ -225,11 +241,13 @@ class _UserPageState extends State<UserPage> {
                                         height: 107,
                                         margin: EdgeInsets.only(top: 10),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(6),
+                                          borderRadius:
+                                              BorderRadius.circular(6),
                                           color: Colors.white,
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 10, horizontal: 15),
                                           child: ListView(
                                             children: [
                                               Row(
@@ -237,7 +255,8 @@ class _UserPageState extends State<UserPage> {
                                                   Text(
                                                     'LEAD',
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 15,
                                                     ),
                                                   ),
@@ -247,14 +266,17 @@ class _UserPageState extends State<UserPage> {
                                                       Icon(
                                                         Icons.calendar_month,
                                                         size: 18,
-                                                        color: Color(0xFFBFBFBF),
+                                                        color:
+                                                            Color(0xFFBFBFBF),
                                                       ),
                                                       const Text(
                                                         'Em andamento',
                                                         style: TextStyle(
-                                                          fontWeight: FontWeight.bold,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           fontSize: 11,
-                                                          color: Color(0xFFBFBFBF),
+                                                          color:
+                                                              Color(0xFFBFBFBF),
                                                         ),
                                                       ),
                                                     ],
@@ -295,7 +317,9 @@ class _UserPageState extends State<UserPage> {
             left: 10,
             child: ClipRRect(
               child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.black),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.black),
                 child: Image.asset(
                   "images/xereque.png",
                   height: 100,
@@ -313,41 +337,13 @@ class _UserPageState extends State<UserPage> {
               height: MediaQuery.of(context).size.height * .10,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10),
+                    topLeft: Radius.circular(10)),
               ),
-              child: Row(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 60),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: MediaQuery.of(context).size.height * .10,
-                                child: Icon(
-                                  Icons.house_rounded,
-                                  color: Color(0xFFB4BECE),
-                                  size: 30,
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.account_circle_rounded,
-                                color: Color(0xFF3B64FA),
-                                size: 30,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+              child: BottomBar(),
+
+    ),
           ),
         ],
       ),
