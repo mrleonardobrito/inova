@@ -23,7 +23,7 @@ class _BottomBarState extends State<BottomBar> {
   void mudarCorHouse(){
     setState(() {
       colorIconUser = false;
-      colorIconHouse = true;
+      colorIconHouse = false;
     });
   }
 
