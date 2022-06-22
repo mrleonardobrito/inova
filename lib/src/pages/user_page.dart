@@ -9,15 +9,9 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  List<String> objList = [''];
 
   @override
   Widget build(BuildContext context) {
-    objList.add('Emanuel');
-    objList.add('Julia');
-    objList.add('Micaele');
-    objList.add('Leonardo');
-    print(objList);
     return Scaffold(
       appBar: AppBar(
         leading: Icon(

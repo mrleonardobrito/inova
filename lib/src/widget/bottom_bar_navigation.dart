@@ -11,9 +11,27 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  bool colorIconHouse = true;
+  bool colorIconUser = false;
+
+  void mudarCorUser(){
+    setState(() {
+      colorIconUser = true;
+      colorIconHouse = false;
+    });
+  }
+  void mudarCorHouse(){
+    setState(() {
+      colorIconUser = false;
+      colorIconHouse = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    const bottomBarHeight = 80;
+
+
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -30,7 +48,9 @@ class _BottomBarState extends State<BottomBar> {
             child: Row(
               children: [
                 TextButton(
+
                   onPressed: () {
+                    mudarCorHouse();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),
@@ -42,13 +62,15 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                   child: Icon(
                     Icons.house_rounded,
-                    color: Color(0xFFB4BECE),
+                    color: colorIconHouse ? Color(0xFF3B64FA) : Color(0xFFB4BECE),
                     size: 30,
                   ),
                 ),
                 Spacer(),
                 TextButton(
                   onPressed: () {
+                    mudarCorUser();
+                    print(colorIconUser);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => UserPage()),
@@ -60,7 +82,7 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                   child: Icon(
                     Icons.account_circle_rounded,
-                    color: Color(0xFF3B64FA),
+                    color: colorIconUser ? Color(0xFF3B64FA) : Color(0xFFB4BECE),
                     size: 30,
                   ),
                 ),
