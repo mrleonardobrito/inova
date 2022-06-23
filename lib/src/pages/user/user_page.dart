@@ -15,7 +15,7 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     const userData = {
       "nome": "Emanuel Vilela",
-      "descricaoAcademica" : "4° ano - 914",
+      "descricaoAcademica": "4° ano - 914",
       "descricao":
           "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
     };
@@ -47,8 +47,7 @@ class _UserPageState extends State<UserPage> {
       {
         "nome": "uTorrent Mobile",
         "orientador": "Tarsis Marinho",
-        "descricao":
-            'Aplicativo para piratear arquivos',
+        "descricao": 'Aplicativo para piratear arquivos',
         "dataTermino": "31/08/2020",
       },
     ];
@@ -129,7 +128,7 @@ class _UserPageState extends State<UserPage> {
                       Padding(
                         padding: EdgeInsets.only(top: 10),
                         child: Text(
-                            '${userData["nome"]}',
+                          '${userData["nome"]}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -223,69 +222,74 @@ class _UserPageState extends State<UserPage> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             child: ListView.builder(
-                              itemCount: projectData.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Container(
-                                      height: 107,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        color: Colors.white,
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                                        child: ListView(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  '${projectData[index]["nome"]}',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 15),
-                                                ),
-                                                Spacer(),
-                                                Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.calendar_month,
-                                                      size: 18,
-                                                      color: Color(0xFFBFBFBF),
-                                                    ),
-                                                    Text(
-                                                      '${projectData[index]["dataTermino"]}',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 11,
-                                                        color: Color(0xFFBFBFBF),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Text(
-                                              '${projectData[index]["orientador"]}',
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                color: Color(0xFF878787),
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Text(
-                                              '${projectData[index]["descricao"]}',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                          ],
+                                itemCount: projectData.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: Container(
+                                        height: 107,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: Colors.white,
                                         ),
-                                      )),
-                                );
-                              }),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 10, horizontal: 15),
+                                          child: ListView(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '${projectData[index]["nome"]}',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                  Spacer(),
+                                                  Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.calendar_month,
+                                                        size: 18,
+                                                        color:
+                                                            Color(0xFFBFBFBF),
+                                                      ),
+                                                      Text(
+                                                        '${projectData[index]["dataTermino"]}',
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 11,
+                                                          color:
+                                                              Color(0xFFBFBFBF),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              Text(
+                                                '${projectData[index]["orientador"]}',
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Color(0xFF878787),
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                              Text(
+                                                '${projectData[index]["descricao"]}',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )),
+                                  );
+                                }),
                           ),
                         )
                       ],
