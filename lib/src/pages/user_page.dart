@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/bottom_bar_navigation.dart';
+import 'package:whatinif/src/pages/home_page.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -14,14 +14,26 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back_sharp,
-          color: Colors.black,
-          size: 25,
+        leading: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            onPrimary: Colors.white,
+          ),
+          child: Icon(
+            Icons.arrow_back_sharp,
+            color: Colors.black,
+            size: 25,
+          ),
         ),
         title: Text(
           'Voltar',
-          style: TextStyle(color: Colors.black, fontSize: 21),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         ),
         backgroundColor: Colors.white,
       ),
@@ -324,21 +336,7 @@ class _UserPageState extends State<UserPage> {
               borderRadius: BorderRadius.circular(150),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .10,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10)),
-              ),
-              child: BottomBar(),
 
-    ),
-          ),
         ],
       ),
     );

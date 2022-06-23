@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../widget/vaga_card.dart';
-import '../widget/bottom_bar_navigation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -60,7 +59,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      BottomBar(),
     ]));
   }
 }
