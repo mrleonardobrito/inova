@@ -24,7 +24,8 @@ class _HomePageState extends State<HomePage> {
           'microprocessadores',
           'circuitos integrados'
         ],
-      }
+      },
+
     ];
 
     return Scaffold(

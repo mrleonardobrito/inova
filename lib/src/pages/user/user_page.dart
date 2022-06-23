@@ -13,13 +13,48 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
-    const userData = [
+    const userData = {
+      "nome": "Emanuel Vilela",
+      "descricaoAcademica" : "4° ano - 914",
+      "descricao":
+          "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+    };
+
+    const carouselItems = ["Projetos", "Repertório", "Teste"];
+
+    const projectData = [
       {
-        "nome" : "Emanuel Vilela",
-        "turma":  "914 - 4° Ano",
-        "descricao" : "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+        "nome": "DadosJusBrasil",
+        "orientador": "Daniel Lacert Fireman",
+        "descricao":
+            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
+        "dataTermino": "02/03/2017",
+      },
+      {
+        "nome": "Meta",
+        "orientador": "Felipe Alencar",
+        "descricao":
+            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
+        "dataTermino": "02/03/2022",
+      },
+      {
+        "nome": "Facebook",
+        "orientador": "Mark Zuckerberg",
+        "descricao":
+            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+        "dataTermino": "Em andamento",
+      },
+      {
+        "nome": "uTorrent Mobile",
+        "orientador": "Tarsis Marinho",
+        "descricao":
+            'Aplicativo para piratear arquivos',
+        "dataTermino": "31/08/2020",
       },
     ];
+
+    int widgetTitleNavHeight = 50;
+
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
@@ -73,7 +108,8 @@ class _UserPageState extends State<UserPage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => EditUser()),
+                              MaterialPageRoute(
+                                  builder: (context) => EditUser()),
                             );
                           },
                         ),
@@ -92,8 +128,8 @@ class _UserPageState extends State<UserPage> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(top: 10),
-                        child: const Text(
-                          'Emanuel Vilela',
+                        child: Text(
+                            '${userData["nome"]}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -103,8 +139,8 @@ class _UserPageState extends State<UserPage> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 3),
-                        child: const Text(
-                          '914 - 4° ano',
+                        child: Text(
+                          '${userData["descricaoAcademica"]}',
                           style: TextStyle(
                               color: Color(0xFF808080),
                               fontSize: 16,
@@ -113,8 +149,8 @@ class _UserPageState extends State<UserPage> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(bottom: 5),
-                        child: const Text(
-                          'Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.',
+                        child: Text(
+                          '${userData["descricao"]}',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -126,7 +162,6 @@ class _UserPageState extends State<UserPage> {
                 ),
               ),
               Container(
-                  height: MediaQuery.of(context).size.height * .5,
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.only(top: 15),
                   color: Color(0xFFF5F5F5),
@@ -141,8 +176,8 @@ class _UserPageState extends State<UserPage> {
                               height: 50,
                               color: Color(0xFF3357EB),
                               child: Center(
-                                child: const Text(
-                                  'Projetos',
+                                child: Text(
+                                  '${carouselItems[0]}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.white,
@@ -156,8 +191,8 @@ class _UserPageState extends State<UserPage> {
                               height: 50,
                               color: Color(0xFF3B64FA),
                               child: Center(
-                                child: const Text(
-                                  'Repertório',
+                                child: Text(
+                                  '${carouselItems[1]}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.white,
@@ -171,8 +206,8 @@ class _UserPageState extends State<UserPage> {
                               height: 50,
                               color: Color(0xFF3B64FA),
                               child: Center(
-                                child: const Text(
-                                  'Teste',
+                                child: Text(
+                                  '${carouselItems[2]}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.white,
@@ -183,147 +218,76 @@ class _UserPageState extends State<UserPage> {
                             ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Container(
-                                height: 280,
-                                width: MediaQuery.of(context).size.width - 20,
-                                child: ListView(
-                                  children: [
-                                    Container(
-                                        height: 107,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          color: Colors.white,
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 15),
-                                          child: ListView(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    'JusBrasil',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15),
-                                                  ),
-                                                  Spacer(),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.calendar_month,
-                                                        size: 18,
-                                                        color:
-                                                            Color(0xFFBFBFBF),
-                                                      ),
-                                                      const Text(
-                                                        '02/03/2022',
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 11,
-                                                          color:
-                                                              Color(0xFFBFBFBF),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                'Daniel Lacert Fireman',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Color(0xFF878787),
-                                                  fontWeight: FontWeight.w600,
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.42,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: ListView.builder(
+                              itemCount: projectData.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Container(
+                                      height: 107,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: Colors.white,
+                                      ),
+                                      child: Padding(
+                                        padding:
+                                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                                        child: ListView(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  '${projectData[index]["nome"]}',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 15),
                                                 ),
-                                              ),
-                                              Text(
-                                                'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )),
-                                    Container(
-                                        height: 107,
-                                        margin: EdgeInsets.only(top: 10),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          color: Colors.white,
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 15),
-                                          child: ListView(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    'LEAD',
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15,
+                                                Spacer(),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.calendar_month,
+                                                      size: 18,
+                                                      color: Color(0xFFBFBFBF),
                                                     ),
-                                                  ),
-                                                  Spacer(),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.calendar_month,
-                                                        size: 18,
-                                                        color:
-                                                            Color(0xFFBFBFBF),
+                                                    Text(
+                                                      '${projectData[index]["dataTermino"]}',
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.bold,
+                                                        fontSize: 11,
+                                                        color: Color(0xFFBFBFBF),
                                                       ),
-                                                      const Text(
-                                                        'Em andamento',
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 11,
-                                                          color:
-                                                              Color(0xFFBFBFBF),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                'Felipe Alencar',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Color(0xFF878787),
-                                                  fontWeight: FontWeight.w600,
+                                                    ),
+                                                  ],
                                                 ),
+                                              ],
+                                            ),
+                                            Text(
+                                              '${projectData[index]["orientador"]}',
+                                              style: TextStyle(
+                                                fontSize: 13,
+                                                color: Color(0xFF878787),
+                                                fontWeight: FontWeight.w600,
                                               ),
-                                              Text(
-                                                'Site para pipipipopopo pipipipopopo pipipipopopo pipipipopopo e teco teco no biticuteco',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                            ),
+                                            Text(
+                                              '${projectData[index]["descricao"]}',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.normal,
                                               ),
-                                            ],
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                );
+                              }),
+                          ),
+                        )
                       ],
                     ),
                   )),
@@ -347,7 +311,6 @@ class _UserPageState extends State<UserPage> {
               borderRadius: BorderRadius.circular(150),
             ),
           ),
-
         ],
       ),
     );
