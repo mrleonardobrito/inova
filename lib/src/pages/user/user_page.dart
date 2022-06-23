@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_page.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -70,7 +71,10 @@ class _UserPageState extends State<UserPage> {
                           textColor: Colors.black,
                           child: Text('   Editar perfil   '),
                           onPressed: () {
-                            print("Capeta");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EditUser()),
+                            );
                           },
                         ),
                       ),

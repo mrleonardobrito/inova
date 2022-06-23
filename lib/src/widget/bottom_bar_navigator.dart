@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pages/user_page.dart';
+import '../pages/user/user_page.dart';
 import '../pages/home_page.dart';
 
 class BottomBar extends StatefulWidget {
