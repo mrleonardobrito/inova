@@ -14,9 +14,24 @@ class _EditUserState extends State<EditUser> {
     return Scaffold(
         appBar: AppBar(
           actions: [
-            TextButton(
-                onPressed: (){},
-                child: Text('Salvar'))
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: TextButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Color(0xff4065FC),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BottomBar()),
+                    );
+                  },
+                  child: Text(
+                    'Salvar',
+                    style: TextStyle(color: Color(0xff4065FC)),
+                  )),
+            )
           ],
           leading: TextButton(
             onPressed: () {
@@ -37,8 +52,6 @@ class _EditUserState extends State<EditUser> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Container(
-          child: Text('Editar perfil')
-        ));
+        body: Container(child: Text('Editar perfil')));
   }
 }
