@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_page.dart';
+import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -9,16 +10,22 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-
   @override
   Widget build(BuildContext context) {
+    const userData = [
+      {
+        "nome" : "Emanuel Vilela",
+        "turma":  "914 - 4° Ano",
+        "descricao" : "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+      },
+    ];
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomePage()),
+              MaterialPageRoute(builder: (context) => BottomBar()),
             );
           },
           style: ElevatedButton.styleFrom(
