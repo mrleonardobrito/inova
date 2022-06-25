@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
           'circuitos integrados'
         ],
       },
-
     ];
 
     return Scaffold(
