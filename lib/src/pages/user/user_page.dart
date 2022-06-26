@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_page.dart';
+import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
@@ -11,6 +12,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  int showAbas = 1;
+
   @override
   Widget build(BuildContext context) {
     const userData = {
@@ -54,6 +57,64 @@ class _UserPageState extends State<UserPage> {
 
     int widgetTitleNavHeight = 50;
 
+    double stars = 1;
+
+    final halfStarIcon = const Icon(Icons.star_half, color: Color(0xFF4065FC));
+    final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
+    final emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC));
+
+    verificaEstrela() {
+      if (stars < 1 && stars > 0) {
+        print('meia estrela');
+        return Row(children: [halfStarIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
+      } else if (stars == 1) {
+        print('uma estrela');
+        return Row(children: [starIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
+      } else if (stars < 2 && stars > 1) {
+        print('uma estrela e meia');
+        return Row(children: [starIcon, halfStarIcon, emptyStar, emptyStar, emptyStar]);
+      } else if (stars == 2) {
+        print('duas estrelas');
+        return Row(children: [starIcon, starIcon, emptyStar, emptyStar, emptyStar]);
+      } else if (stars < 3 && stars > 2) {
+        print('duas estrelas e meia');
+        return Row(children: [starIcon, starIcon, halfStarIcon, emptyStar, emptyStar]);
+      } else if (stars == 3) {
+        print('três estrelas');
+        return Row(children: [
+          starIcon,
+          starIcon,
+          starIcon,
+          emptyStar,
+          emptyStar
+        ]);
+      } else if (stars < 4 && stars > 3) {
+        print('três estrela e meia');
+        return Row(children: [starIcon, starIcon, starIcon, halfStarIcon, emptyStar]);
+      } else if (stars == 4) {
+        print('quatro estrelas');
+        return Row(children: [
+          starIcon,
+          starIcon,
+          starIcon,
+          starIcon,
+          emptyStar
+        ]);
+      } else if (stars < 5 && stars > 4) {
+        print('quatro estrelas e meia');
+        return Row(
+            children: [starIcon, starIcon, starIcon, starIcon, halfStarIcon]);
+      } else if (stars == 5) {
+        print('cinco estrelas');
+        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
+      } else if (stars > 5) {
+        print('cinco estrelas');
+        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
+      } else if (stars < 0) {
+        print('número de estrelas inválido');
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
@@ -84,7 +145,7 @@ class _UserPageState extends State<UserPage> {
           Column(
             children: [
               Container(
-                height: 90,
+                height: MediaQuery.of(context).size.height * 0.1,
                 color: const Color(0xff4065FC),
               ),
               Container(
@@ -103,7 +164,13 @@ class _UserPageState extends State<UserPage> {
                               side: BorderSide(color: Color(0xff4065FC))),
                           color: Colors.white,
                           textColor: Colors.black,
-                          child: Text('   Editar perfil   '),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 7, horizontal: 13),
+                            child: Text('Editar perfil', style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13
+                            ),),
+                          ),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -170,47 +237,68 @@ class _UserPageState extends State<UserPage> {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              height: 50,
-                              color: Color(0xFF3357EB),
-                              child: Center(
-                                child: Text(
-                                  '${carouselItems[0]}',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              onTap: (){
+                                setState((){
+                                  showAbas = 1;
+                                  print(showAbas);
+                                });
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                height: 50,
+                                color: showAbas == 1 ? Color(0xFF3357EB) : Color(0xFF3B64FA),
+                                child: Center(
+                                  child: Text(
+                                    '${carouselItems[0]}',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              height: 50,
-                              color: Color(0xFF3B64FA),
-                              child: Center(
-                                child: Text(
-                                  '${carouselItems[1]}',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+
+                            GestureDetector(
+                              onTap: (){
+                                setState((){
+                                  showAbas = 2;
+                                });
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                height: 50,
+                                color: showAbas == 2 ? Color(0xFF3357EB) : Color(0xFF3B64FA),                                child: Center(
+                                  child: Text(
+                                    '${carouselItems[1]}',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              height: 50,
-                              color: Color(0xFF3B64FA),
-                              child: Center(
-                                child: Text(
-                                  '${carouselItems[2]}',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              onTap: (){
+                                setState((){
+                                  showAbas = 3;
+                                });
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                height: 50,
+                                color: showAbas == 3 ? Color(0xFF3357EB) : Color(0xFF3B64FA),                                child: Center(
+                                  child: Text(
+                                    '${carouselItems[2]}',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -218,78 +306,9 @@ class _UserPageState extends State<UserPage> {
                           ],
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.42,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 5),
-                            child: ListView.builder(
-                                itemCount: projectData.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 5),
-                                    child: Container(
-                                        height: 107,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          color: Colors.white,
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 15),
-                                          child: ListView(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    '${projectData[index]["nome"]}',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15),
-                                                  ),
-                                                  Spacer(),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.calendar_month,
-                                                        size: 18,
-                                                        color:
-                                                            Color(0xFFBFBFBF),
-                                                      ),
-                                                      Text(
-                                                        '${projectData[index]["dataTermino"]}',
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 11,
-                                                          color:
-                                                              Color(0xFFBFBFBF),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                '${projectData[index]["orientador"]}',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Color(0xFF878787),
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                              Text(
-                                                '${projectData[index]["descricao"]}',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )),
-                                  );
-                                }),
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: showAbas == 1 ? Projetos() : showAbas == 2 ? Text('Dois') : showAbas == 3 ? Text('Tres') : Text('Deu errado'),
                           ),
                         )
                       ],
@@ -298,8 +317,8 @@ class _UserPageState extends State<UserPage> {
             ],
           ),
           Positioned(
-            top: 40,
-            left: 10,
+            top: 35,
+            left: 15,
             child: ClipRRect(
               child: Container(
                 decoration: BoxDecoration(
@@ -307,8 +326,8 @@ class _UserPageState extends State<UserPage> {
                     color: Colors.black),
                 child: Image.asset(
                   "images/xereque.png",
-                  height: 100,
-                  width: 100,
+                  height: 95,
+                  width: 95,
                   fit: BoxFit.fitHeight,
                 ),
               ),

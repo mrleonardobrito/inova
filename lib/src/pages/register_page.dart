@@ -13,6 +13,8 @@ class _CadastroState extends State<Cadastro> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
+  int showAbas = 1;
+
   var maskFormatter = new MaskTextInputFormatter(
       mask: '+55 (##) ####-####',
   );
@@ -189,6 +191,12 @@ class _CadastroState extends State<Cadastro> {
                           Padding(
                             padding: EdgeInsets.only(top: 20),
                             child: ElevatedButton(
+                              onLongPress: (){
+                                setState((){
+                                  showAbas = 2;
+                                  print(showAbas);
+                                });
+                              },
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 11.0),

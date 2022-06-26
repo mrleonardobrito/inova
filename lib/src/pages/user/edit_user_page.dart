@@ -9,6 +9,9 @@ class EditUser extends StatefulWidget {
 }
 
 class _EditUserState extends State<EditUser> {
+  int showAbas = 1;
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +55,7 @@ class _EditUserState extends State<EditUser> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Container(child: Text('Editar perfil')));
+        body: Container(
+            child: showAbas == 1 ? Text("Um") : Text("Outro")));
   }
 }
