@@ -10,7 +10,6 @@ class EditUser extends StatefulWidget {
 
 class _EditUserState extends State<EditUser> {
   int showAbas = 1;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +55,6 @@ class _EditUserState extends State<EditUser> {
           backgroundColor: Colors.white,
         ),
         body: Container(
-            child: showAbas == 1 ? Text("Um") : Text("Outro")));
+            child: showAbas == 1 ? Text('Um') : Text("Outro")));
   }
 }

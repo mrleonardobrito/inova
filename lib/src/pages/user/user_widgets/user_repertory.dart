@@ -15,7 +15,7 @@ class _RepertorioState extends State<Repertorio> {
 
   @override
   Widget build(BuildContext context) {
-    double stars = 1;
+    double stars = 4.5;
 
     final halfStarIcon = const Icon(Icons.star_half, color: Color(0xFF4065FC));
     final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
@@ -24,59 +24,108 @@ class _RepertorioState extends State<Repertorio> {
     verificaEstrela() {
       if (stars < 1 && stars > 0) {
         print('meia estrela');
-        return Row(children: [halfStarIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 1) {
-        print('uma estrela');
-        return Row(children: [starIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 2 && stars > 1) {
-        print('uma estrela e meia');
-        return Row(children: [starIcon, halfStarIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 2) {
-        print('duas estrelas');
-        return Row(children: [starIcon, starIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 3 && stars > 2) {
-        print('duas estrelas e meia');
-        return Row(children: [starIcon, starIcon, halfStarIcon, emptyStar, emptyStar]);
-      } else if (stars == 3) {
-        print('três estrelas');
         return Row(children: [
-          starIcon,
-          starIcon,
-          starIcon,
+          halfStarIcon,
+          emptyStar,
+          emptyStar,
           emptyStar,
           emptyStar
         ]);
-      } else if (stars < 4 && stars > 3) {
-        print('três estrela e meia');
-        return Row(children: [starIcon, starIcon, starIcon, halfStarIcon, emptyStar]);
-      } else if (stars == 4) {
-        print('quatro estrelas');
+      } else if (stars == 1) {
+        print('uma estrela');
+        return Row(
+            children: [starIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
+      } else if (stars < 2 && stars > 1) {
+        print('uma estrela e meia');
         return Row(children: [
           starIcon,
-          starIcon,
-          starIcon,
-          starIcon,
+          halfStarIcon,
+          emptyStar,
+          emptyStar,
           emptyStar
         ]);
+      } else if (stars == 2) {
+        print('duas estrelas');
+        return Row(
+            children: [starIcon, starIcon, emptyStar, emptyStar, emptyStar]);
+      } else if (stars < 3 && stars > 2) {
+        print('duas estrelas e meia');
+        return Row(
+            children: [starIcon, starIcon, halfStarIcon, emptyStar, emptyStar]);
+      } else if (stars == 3) {
+        print('três estrelas');
+        return Row(
+            children: [starIcon, starIcon, starIcon, emptyStar, emptyStar]);
+      } else if (stars < 4 && stars > 3) {
+        print('três estrela e meia');
+        return Row(
+            children: [starIcon, starIcon, starIcon, halfStarIcon, emptyStar]);
+      } else if (stars == 4) {
+        print('quatro estrelas');
+        return Row(
+            children: [starIcon, starIcon, starIcon, starIcon, emptyStar]);
       } else if (stars < 5 && stars > 4) {
         print('quatro estrelas e meia');
         return Row(
             children: [starIcon, starIcon, starIcon, starIcon, halfStarIcon]);
       } else if (stars == 5) {
         print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
+        return Row(
+            children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
       } else if (stars > 5) {
         print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
+        return Row(
+            children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
       } else if (stars < 0) {
         print('número de estrelas inválido');
       }
     }
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 5),
-        child: Text('Eita'),
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Align(
+          alignment: Alignment.topRight,
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      color: Colors.lightBlue,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "${stars}",
+                              style: TextStyle(
+                                  fontSize: 37,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF4065FC)),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 25),
+                              child: verificaEstrela(),
+                            ),
+                          ],
+                        ),
+                      ))
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width * 0.55 - 20,
+                    color: Colors.grey,
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

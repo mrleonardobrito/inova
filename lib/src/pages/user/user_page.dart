@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_page.dart';
 import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
+import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
@@ -63,57 +64,6 @@ class _UserPageState extends State<UserPage> {
     final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
     final emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC));
 
-    verificaEstrela() {
-      if (stars < 1 && stars > 0) {
-        print('meia estrela');
-        return Row(children: [halfStarIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 1) {
-        print('uma estrela');
-        return Row(children: [starIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 2 && stars > 1) {
-        print('uma estrela e meia');
-        return Row(children: [starIcon, halfStarIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 2) {
-        print('duas estrelas');
-        return Row(children: [starIcon, starIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 3 && stars > 2) {
-        print('duas estrelas e meia');
-        return Row(children: [starIcon, starIcon, halfStarIcon, emptyStar, emptyStar]);
-      } else if (stars == 3) {
-        print('três estrelas');
-        return Row(children: [
-          starIcon,
-          starIcon,
-          starIcon,
-          emptyStar,
-          emptyStar
-        ]);
-      } else if (stars < 4 && stars > 3) {
-        print('três estrela e meia');
-        return Row(children: [starIcon, starIcon, starIcon, halfStarIcon, emptyStar]);
-      } else if (stars == 4) {
-        print('quatro estrelas');
-        return Row(children: [
-          starIcon,
-          starIcon,
-          starIcon,
-          starIcon,
-          emptyStar
-        ]);
-      } else if (stars < 5 && stars > 4) {
-        print('quatro estrelas e meia');
-        return Row(
-            children: [starIcon, starIcon, starIcon, starIcon, halfStarIcon]);
-      } else if (stars == 5) {
-        print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
-      } else if (stars > 5) {
-        print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
-      } else if (stars < 0) {
-        print('número de estrelas inválido');
-      }
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -165,11 +115,13 @@ class _UserPageState extends State<UserPage> {
                           color: Colors.white,
                           textColor: Colors.black,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 7, horizontal: 13),
-                            child: Text('Editar perfil', style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13
-                            ),),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 7, horizontal: 13),
+                            child: Text(
+                              'Editar perfil',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 13),
+                            ),
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -238,8 +190,8 @@ class _UserPageState extends State<UserPage> {
                         Row(
                           children: [
                             GestureDetector(
-                              onTap: (){
-                                setState((){
+                              onTap: () {
+                                setState(() {
                                   showAbas = 1;
                                   print(showAbas);
                                 });
@@ -247,7 +199,9 @@ class _UserPageState extends State<UserPage> {
                               child: Container(
                                 width: MediaQuery.of(context).size.width / 3,
                                 height: 50,
-                                color: showAbas == 1 ? Color(0xFF3357EB) : Color(0xFF3B64FA),
+                                color: showAbas == 1
+                                    ? Color(0xFF3357EB)
+                                    : Color(0xFF3B64FA),
                                 child: Center(
                                   child: Text(
                                     '${carouselItems[0]}',
@@ -260,17 +214,19 @@ class _UserPageState extends State<UserPage> {
                                 ),
                               ),
                             ),
-
                             GestureDetector(
-                              onTap: (){
-                                setState((){
+                              onTap: () {
+                                setState(() {
                                   showAbas = 2;
                                 });
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width / 3,
                                 height: 50,
-                                color: showAbas == 2 ? Color(0xFF3357EB) : Color(0xFF3B64FA),                                child: Center(
+                                color: showAbas == 2
+                                    ? Color(0xFF3357EB)
+                                    : Color(0xFF3B64FA),
+                                child: Center(
                                   child: Text(
                                     '${carouselItems[1]}',
                                     style: TextStyle(
@@ -283,15 +239,18 @@ class _UserPageState extends State<UserPage> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: (){
-                                setState((){
+                              onTap: () {
+                                setState(() {
                                   showAbas = 3;
                                 });
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width / 3,
                                 height: 50,
-                                color: showAbas == 3 ? Color(0xFF3357EB) : Color(0xFF3B64FA),                                child: Center(
+                                color: showAbas == 3
+                                    ? Color(0xFF3357EB)
+                                    : Color(0xFF3B64FA),
+                                child: Center(
                                   child: Text(
                                     '${carouselItems[2]}',
                                     style: TextStyle(
@@ -308,7 +267,13 @@ class _UserPageState extends State<UserPage> {
                         Container(
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: showAbas == 1 ? Projetos() : showAbas == 2 ? Text('Dois') : showAbas == 3 ? Text('Tres') : Text('Deu errado'),
+                            child: showAbas == 1
+                                ? Projetos()
+                                : showAbas == 2
+                                    ? Repertorio()
+                                    : showAbas == 3
+                                        ? Text('Tres')
+                                        : Text('Deu errado'),
                           ),
                         )
                       ],

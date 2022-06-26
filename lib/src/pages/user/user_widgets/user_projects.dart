@@ -20,21 +20,21 @@ class _ProjetosState extends State<Projetos> {
         "nome": "DadosJusBrasil",
         "orientador": "Daniel Lacert Fireman",
         "descricao":
-        'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
+            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
         "dataTermino": "02/03/2017",
       },
       {
         "nome": "Meta",
         "orientador": "Felipe Alencar",
         "descricao":
-        'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
+            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
       },
       {
         "nome": "Facebook",
         "orientador": "Mark Zuckerberg",
         "descricao":
-        'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
         "dataTermino": "Em andamento",
       },
       {
@@ -47,21 +47,21 @@ class _ProjetosState extends State<Projetos> {
         "nome": "DadosJusBrasil",
         "orientador": "Daniel Lacert Fireman",
         "descricao":
-        'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
+            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
         "dataTermino": "02/03/2017",
       },
       {
         "nome": "Meta",
         "orientador": "Felipe Alencar",
         "descricao":
-        'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
+            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
       },
       {
         "nome": "Facebook",
         "orientador": "Mark Zuckerberg",
         "descricao":
-        'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
         "dataTermino": "Em andamento",
       },
       {
@@ -72,63 +72,6 @@ class _ProjetosState extends State<Projetos> {
       },
     ];
 
-    double stars = 1;
-
-    final halfStarIcon = const Icon(Icons.star_half, color: Color(0xFF4065FC));
-    final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
-    final emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC));
-
-    verificaEstrela() {
-      if (stars < 1 && stars > 0) {
-        print('meia estrela');
-        return Row(children: [halfStarIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 1) {
-        print('uma estrela');
-        return Row(children: [starIcon, emptyStar, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 2 && stars > 1) {
-        print('uma estrela e meia');
-        return Row(children: [starIcon, halfStarIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars == 2) {
-        print('duas estrelas');
-        return Row(children: [starIcon, starIcon, emptyStar, emptyStar, emptyStar]);
-      } else if (stars < 3 && stars > 2) {
-        print('duas estrelas e meia');
-        return Row(children: [starIcon, starIcon, halfStarIcon, emptyStar, emptyStar]);
-      } else if (stars == 3) {
-        print('três estrelas');
-        return Row(children: [
-          starIcon,
-          starIcon,
-          starIcon,
-          emptyStar,
-          emptyStar
-        ]);
-      } else if (stars < 4 && stars > 3) {
-        print('três estrela e meia');
-        return Row(children: [starIcon, starIcon, starIcon, halfStarIcon, emptyStar]);
-      } else if (stars == 4) {
-        print('quatro estrelas');
-        return Row(children: [
-          starIcon,
-          starIcon,
-          starIcon,
-          starIcon,
-          emptyStar
-        ]);
-      } else if (stars < 5 && stars > 4) {
-        print('quatro estrelas e meia');
-        return Row(
-            children: [starIcon, starIcon, starIcon, starIcon, halfStarIcon]);
-      } else if (stars == 5) {
-        print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
-      } else if (stars > 5) {
-        print('cinco estrelas');
-        return Row(children: [starIcon, starIcon, starIcon, starIcon, starIcon]);
-      } else if (stars < 0) {
-        print('número de estrelas inválido');
-      }
-    }
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(
@@ -141,13 +84,12 @@ class _ProjetosState extends State<Projetos> {
                 child: Container(
                     height: 107,
                     decoration: BoxDecoration(
-                      borderRadius:
-                      BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(6),
                       color: Colors.white,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       child: ListView(
                         children: [
                           Row(
@@ -155,9 +97,7 @@ class _ProjetosState extends State<Projetos> {
                               Text(
                                 '${projectData[index]["nome"]}',
                                 style: TextStyle(
-                                    fontWeight:
-                                    FontWeight.bold,
-                                    fontSize: 15),
+                                    fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               Spacer(),
                               Row(
@@ -165,17 +105,14 @@ class _ProjetosState extends State<Projetos> {
                                   Icon(
                                     Icons.calendar_month,
                                     size: 18,
-                                    color:
-                                    Color(0xFFBFBFBF),
+                                    color: Color(0xFFBFBFBF),
                                   ),
                                   Text(
                                     '${projectData[index]["dataTermino"]}',
                                     style: TextStyle(
-                                      fontWeight:
-                                      FontWeight.bold,
+                                      fontWeight: FontWeight.bold,
                                       fontSize: 11,
-                                      color:
-                                      Color(0xFFBFBFBF),
+                                      color: Color(0xFFBFBFBF),
                                     ),
                                   ),
                                 ],
