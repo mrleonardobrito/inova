@@ -16,7 +16,7 @@ class _CadastroState extends State<Cadastro> {
   int showAbas = 1;
 
   var maskFormatter = new MaskTextInputFormatter(
-      mask: '+55 (##) ####-####',
+    mask: '+55 (##) ####-####',
   );
 
   @override
@@ -135,9 +135,7 @@ class _CadastroState extends State<Cadastro> {
                               decoration: InputDecoration(
                                 hintText: 'Telefone...',
                               ),
-                              inputFormatters: [
-                                maskFormatter
-                              ],
+                              inputFormatters: [maskFormatter],
                             ),
                           )),
                           Padding(
@@ -191,8 +189,8 @@ class _CadastroState extends State<Cadastro> {
                           Padding(
                             padding: EdgeInsets.only(top: 20),
                             child: ElevatedButton(
-                              onLongPress: (){
-                                setState((){
+                              onLongPress: () {
+                                setState(() {
                                   showAbas = 2;
                                   print(showAbas);
                                 });
