@@ -95,7 +95,7 @@ class _UserPageState extends State<UserPage> {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.1,
+                height: MediaQuery.of(context).size.height * 0.086,
                 color: const Color(0xff4065FC),
               ),
               Container(
