@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:whatinif/src/utils/vaga.dart';
 
 class VagaCard extends StatefulWidget {
-  final String titulo;
-  final String descricao;
-  final String horas;
-  final List<String> professores;
-  final List<String> categorias;
+  final Vaga vaga;
 
   const VagaCard({
     Key? key,
-    required this.titulo,
-    required this.descricao,
-    required this.horas,
-    required this.professores,
-    required this.categorias,
+    required this.vaga
   }) : super(key: key);
 
   @override
@@ -21,10 +14,13 @@ class VagaCard extends StatefulWidget {
 }
 
 class _VagaCardState extends State<VagaCard> {
-
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () => {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => VagaPage(widget.vaga)))
+      },
+      child: Container(
         height: 170,
         width: 160,
         margin: EdgeInsets.only(bottom: 15.0),
@@ -48,39 +44,41 @@ class _VagaCardState extends State<VagaCard> {
                   Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       padding: EdgeInsets.only(top: 10.0, bottom: 5.0),
-                      child: Text(widget.titulo, style: titleStyle)),
+                      child: Text(widget.vaga.titulo, style: titleStyle)),
                   Container(
                       width: 37,
                       padding: EdgeInsets.only(top: 10.0, bottom: 5.0),
-                      child: Text(widget.horas, style: titleStyle),
+                      child: Text(widget.vaga.horas, style: titleStyle),
                   ),
                   Container(
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.only(bottom: 5.0),
-                      child: Text('Professores: ' + widget.professores.join(','),
+                      child: Text('Professores: ' + widget.vaga.professores.join(','),
                           style: TextStyle(fontSize: 11, color: Color(0xFF808080)))),
                   Container(
                       padding: EdgeInsets.only(bottom: 10.0),
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: Text(widget.descricao, overflow: TextOverflow.ellipsis, maxLines: 3, style: TextStyle(fontSize: 14, color: Color(0xFF808080)))),
+                      child: Text(widget.vaga.descricao, overflow: TextOverflow.ellipsis, maxLines: 3, style: TextStyle(fontSize: 14, color: Color(0xFF808080)))),
                   Container(
                     height: 30,
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                       itemCount: 4,
                       scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+
                       itemBuilder: (context, index) {
                         if(index > 2){
                           return const Categoria(titulo: Icon(Icons.add, size: 15.0));
                         }else{
-                          return Categoria(titulo: widget.categorias[index]);
+                          return Categoria(titulo: widget.vaga.categorias[index]);
                         }
                       },
                     ),
                   )
               ]
             ))
-        ]));
+        ])));
   }
 }
 
@@ -106,7 +104,7 @@ class Categoria extends StatelessWidget{
           ]
       ),
       child: Center(
-        child: titulo.runtimeType == String ? Text(titulo, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF333333))): titulo
+        child: titulo.runtimeType == String ? Text(titulo, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF333333))): titulo
       ),
     );
   }

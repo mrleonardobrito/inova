@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widget/vaga_card.dart';
+import 'package:whatinif/src/utils/vaga.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,21 +9,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class Vaga {
-  final String titulo;
-  final String descricao;
-  final String horas;
-  final List<String> professores;
-  final List<String> categorias;
-
-  const Vaga({
-    required this.titulo,
-    required this.descricao,
-    required this.horas,
-    required this.professores,
-    required this.categorias
-  });
-}
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -81,39 +67,37 @@ class _HomePageState extends State<HomePage> {
       ),
     ];
 
+    double height = MediaQuery.of(context).size.height * 0.8;
+
     return Scaffold(
         body: Stack(children: [
-      Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: Color(0xFF4065FC),
-      ),
-      Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.8,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
-            color: Color(0xFFEFEFEF),
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Color(0xFF4065FC),
           ),
-          padding: const EdgeInsets.only(
-              top: 40.0, left: 10.0, right: 10.0, bottom: 10.0),
-          child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return VagaCard(
-                titulo: data[index].titulo,
-                descricao: data[index].descricao,
-                horas: data[index].horas,
-                professores: data[index].professores,
-                categorias: data[index].categorias,
-              );
-            },
-          ),
-        ),
-      ),
-    ]));
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: height,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                color: Color(0xFFEFEFEF),
+              ),
+              padding: const EdgeInsets.only(
+                  top: 40.0, left: 10.0, right: 10.0, bottom: 10.0),
+              child: ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return VagaCard(
+                      vaga: data[index]
+                    );
+                  },
+                )
+              ),
+            ),
+        ]));
   }
 }
