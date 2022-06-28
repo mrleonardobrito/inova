@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     const data = [
-      Vaga(titulo: "Monitoria de microcontroladores",
+      Vaga(
+          titulo: "Monitoria de microcontroladores",
           descricao:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
           horas: "400h",
           professores: ["Renata Silva"],
@@ -23,48 +24,10 @@ class _HomePageState extends State<HomePage> {
                 'Eletroeletrônica',
                 'Microprocessadores',
                 'Circuitos integrados'
-              ]
-      ),Vaga(titulo: "Monitoria de microcontroladores",
-          descricao:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          horas: "400h",
-          professores: ["Renata Silva"],
-          categorias: [
-                'Monitoria',
-                'Eletroeletrônica',
-                'Microprocessadores',
-                'Circuitos integrados'
-              ]
-      ),Vaga(titulo: "Monitoria de microcontroladores",
-          descricao:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          horas: "400h",
-          professores: ["Renata Silva"],
-          categorias: [
-                'Monitoria',
-                'Eletroeletrônica',
-                'Microprocessadores',
-                'Circuitos integrados'
-              ]
-      ),Vaga(titulo: "Monitoria de microcontroladores",
-          descricao:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          horas: "400h",
-          professores: ["Renata Silva"],
-          categorias: [
-                'Monitoria',
-                'Eletroeletrônica',
-                'Microprocessadores',
-                'Circuitos integrados'
-              ]
-      ),Vaga(titulo: "Monitoria de microcontroladores",
-          descricao:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          horas: "400h",
-          professores: ["Renata Silva"],
-          categorias: [
-                'Monitoria',
-                'Eletroeletrônica',
-                'Microprocessadores',
-                'Circuitos integrados'
-              ]
-      ),
+              ],
+          vagasDisponiveis: '4',
+          bolsaDisponivel: "RS400,00 - RS850,00"
+      )
     ];
 
     double height = MediaQuery.of(context).size.height * 0.8;
