@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_page.dart';
+import 'package:whatinif/src/pages/user/user_comments_page.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
@@ -139,7 +140,7 @@ class _RepertorioState extends State<Repertorio> {
 
     Widget star = Icon(Icons.star, size: 12, color: Color(0xFF4065FC));
     String commentText =
-        'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo';
+        'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo e tals tals tals ';
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.52,
@@ -321,7 +322,7 @@ class _RepertorioState extends State<Repertorio> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => EditUser()),
+                                        builder: (context) => Comments()),
                                   );
                                 },
                                 child: Container(
@@ -423,8 +424,10 @@ class _RepertorioState extends State<Repertorio> {
                                                     child: Text(
                                                       commentText,
                                                       style: TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.bold),
+                                                          fontWeight: FontWeight.bold,
+                                                        fontSize: 12
+
+                                                      ),
                                                     ),
                                                   ),
                                                 )
@@ -449,7 +452,7 @@ class _RepertorioState extends State<Repertorio> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => EditUser()),
+                                          builder: (context) => Comments()),
                                     );
                                   },
                                   child: Container(
