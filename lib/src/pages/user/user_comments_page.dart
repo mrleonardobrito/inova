@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 
-class Comments extends StatefulWidget {
-  const Comments({Key? key}) : super(key: key);
+class CommentsPage extends StatefulWidget {
+  const CommentsPage({Key? key}) : super(key: key);
 
   @override
-  State<Comments> createState() => _CommentsState();
+  State<CommentsPage> createState() => _CommentsPageState();
 }
 
-class _CommentsState extends State<Comments> {
+class _CommentsPageState extends State<CommentsPage> {
 
   @override
   Widget build(BuildContext context) {
