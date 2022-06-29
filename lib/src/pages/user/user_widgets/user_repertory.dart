@@ -12,19 +12,62 @@ class Repertorio extends StatefulWidget {
 
 class _RepertorioState extends State<Repertorio> {
   int showAbas = 1;
+  final _height = 90.0;
+  List numberLineArr = [1, 2, 3, 4, 5];
+  List sizeLineArr = [220, 140, 40, 23, 12];
+  final _lineHeight = 17.0;
+
+  returnLine(numberLine, sizeLine) {
+    return ListView(children: [
+      Container(
+          width: MediaQuery.of(context).size.width / 3 - 10,
+          child: Row(children: [
+            Text(
+              "${numberLineArr[numberLine]}",
+              style: TextStyle(color: Color(0xFF4065FC), fontSize: 15),
+            ),
+            Spacer(),
+            Container(
+                width: MediaQuery.of(context).size.width / 2.15 - 10,
+                height: 9,
+                child: Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Color(0xFFD9D9D9),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  60))),
+                        ),
+                        Container(
+                          width: sizeLineArr[sizeLine],
+                          decoration: BoxDecoration(
+                              color: Color(0xFF4065FC),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  60))),
+                        ),
+                      ],
+                    )))
+          ]))
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
     double stars = 4.5;
 
-    final halfStarIcon = const Icon(Icons.star_half, color: Color(0xFF4065FC));
-    final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
-    final emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC));
+    Widget halfStarIcon = const Icon(Icons.star_half, color: Color(0xFF4065FC), size: 26,);
+    Widget starIcon = const Icon(Icons.star, color: Color(0xFF4065FC), size: 26,);
+    Widget emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC), size: 26,);
+
+    final colorLineBackground = Colors.transparent;
+    final _marginTopContainer = 25.0;
+    final _heightContainer = 40.0;
 
     verificaEstrela() {
       if (stars < 1 && stars > 0) {
         print('meia estrela');
-        return Row(children: [
+        return  Row(children: [
           halfStarIcon,
           emptyStar,
           emptyStar,
@@ -82,51 +125,165 @@ class _RepertorioState extends State<Repertorio> {
     }
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height * 0.5,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
-        child: Align(
-          alignment: Alignment.topRight,
-          child: Row(
-            children: [
-              Column(
+        child: Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(9))
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: ListView(
                 children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      color: Colors.lightBlue,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              "${stars}",
-                              style: TextStyle(
-                                  fontSize: 37,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF4065FC)),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: _height,
+                            width: MediaQuery.of(context).size.width / 2.28 - 10,
+                            color: Colors.transparent,
+                            child: ListView(
+                              children: [
+                                Container(
+                                  height: _height / 2,
+                                  color: Colors.transparent,
+                                  width: MediaQuery.of(context).size.width / 2 - 10,
+                                  child: Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Text(
+                                      '${stars}',
+                                      style: TextStyle(
+                                          color: Color(0xFF4065FC),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 33),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: _height / 2,
+                                  width: MediaQuery.of(context).size.width / 2 - 10,
+                                  color: Colors.transparent,
+                                  child: Align(
+                                      alignment: Alignment.topCenter,
+                                      child: Container(
+                                        width: 140,
+                                        color: Colors.transparent,
+                                        child: Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 5),
+                                            child: verificaEstrela(),
+
+                                          ))
+                                      ),
+                                      ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 25),
-                              child: verificaEstrela(),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(0, 0)
+                          ),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(1, 1)
+                          ),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(2, 2)
+                          ),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(3, 3)
+                          ),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(4, 4)
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: _marginTopContainer),
+                        height: _heightContainer,
+                        width: MediaQuery.of(context).size.width / 2 - 10,
+                        color: Colors.transparent,
+                        child: GestureDetector(
+                          onTap: (){print('Curriculo');},
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 26),
+                            child: Row(
+                              children: [
+                                Icon(Icons.picture_as_pdf, size: 30, color: Color(0xFF4065FC),),
+                                Spacer(),
+                                Text('Baixar curriculo', style: TextStyle(
+                                    color: Color(0xFF4065FC),
+                                  fontSize: 14
+                                ),)
+                              ],
                             ),
-                          ],
-                        ),
-                      ))
-                ],
-              ),
-              Column(
-                children: [
-                  Container(
-                    height: 30,
-                    width: MediaQuery.of(context).size.width * 0.55 - 20,
-                    color: Colors.grey,
+                          ),
+                        )
+                      ),
+                      Spacer(),
+                      Container(
+                          margin: EdgeInsets.only(top: _marginTopContainer),
+                          height: _heightContainer,
+                          width: MediaQuery.of(context).size.width / 2 - 10,
+                          color: Colors.transparent,
+                          child: GestureDetector(
+                            onTap: (){print('Escola');},
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 26),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.school, size: 30, color: Color(0xFF4065FC),),
+                                  Spacer(),
+                                  Text('Baixar curriculo', style: TextStyle(
+                                      color: Color(0xFF4065FC)
+                                  ),)
+                                ],
+                              ),
+                            ),
+                          )
+                      ),
+                    ],
                   )
                 ],
-              ),
-            ],
+              )
+            )
+            ),
           ),
-        ),
       ),
     );
   }
 }
+
+
+
+
