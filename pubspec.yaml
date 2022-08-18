@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   mask_text_input_formatter: ^2.3.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
