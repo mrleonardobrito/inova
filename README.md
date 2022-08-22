@@ -12,13 +12,16 @@
 
 ### Login:
 
-<img src="./images/screens_design/"/>
+<img src="./images/screens_design/PMOB_page-002.jpg" height="500"/>
+
 ### Cadastro:
 
-![PMOB (3)6](https://user-images.githubusercontent.com/84058517/184501461-a6c2f09f-f7c4-4468-8812-496b01ad5945.png)
+<img src="./images/screens_design/PMOB_page-003.jpg" height="500"/>
 
 ### Tela de perfil do usuário
 
-![PMOB (3)4](https://user-images.githubusercontent.com/84058517/184501469-f430276f-265b-4aec-ae3f-d29cbb8aee20.png)
+<img src="./images/screens_design/PMOB_page-001.jpg" height="500"/>
 
-![PMOB_page-0007](https://user-images.githubusercontent.com/84058517/185938072-b9827727-3c04-4431-acf5-5198d53e6f16.jpg)
+### Tela de cadastrar pessoa na vaga
+
+<img src="./images/screens_design/PMOB_page-004.jpg" height="500"/>
