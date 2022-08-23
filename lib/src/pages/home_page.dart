@@ -1,12 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
 import 'package:whatinif/src/utils/request_manager.dart';
-import '../widget/bottom_bar_navigator.dart';
 import '../widget/vaga_card.dart';
 import 'package:whatinif/src/utils/vaga.dart';
-import 'package:http/http.dart' as http;
 
 List<Vaga> allVagas = [
   const Vaga(
@@ -96,7 +93,6 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-  
     vagas = allVagas;
   }
 
@@ -154,27 +150,32 @@ class HomePageState extends State<HomePage> {
           expandedHeight: height * 0.2,
           backgroundColor: const Color(0xFF4065FC),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => VagaCard(vaga: vagas[index]),
-            childCount: vagas.length,
-          )
-        )
+        SliverToBoxAdapter(
+          child: ValueListenableBuilder<RequestState>(
+            valueListenable: stateManager.resultNotifier,
+            builder: (context, requestState, child) {
+              if (requestState is RequestLoadInProgress) {
+                return Center(child: CircularProgressIndicator());
+              } else if (requestState is RequestLoadSuccess) {
+                return Expanded(
+                    child: SingleChildScrollView(
+                        child: Text(requestState.vagalista.toString())));
+              } 
+
+              return CircularProgressIndicator();
+            },
+          ),
+        ),
       ],
     );
   }
 }
 
+// SliverList(
+//           delegate: SliverChildBuilderDelegate(
+//             (context, index) => VagaCard(vaga: vagas[index]),
+//             childCount: vagas.length,
+//           )
+//         )
 
-// ValueListenableBuilder<RequestState>(
-//           valueListenable: stateManager.resultNotifier,
-//           builder: (context, requestState, child) {
-//             if (requestState is RequestLoadInProgress) {
-//               return CircularProgressIndicator();
-//             } else if (requestState is RequestLoadSuccess) {
-//               return Expanded(child: SingleChildScrollView(child: Text(requestState.vagalista.toString())));
-//             } else {
-//               return Container();
-//             }
-//           },
-//         ),
+

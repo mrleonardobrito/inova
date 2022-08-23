@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/vaga_page.dart';
 import 'package:whatinif/src/utils/vaga.dart';
 
 import '../pages/vaga/info_vaga_page.dart';
@@ -19,7 +18,7 @@ class _VagaCardState extends State<VagaCard> {
     return GestureDetector(
         onTap: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const InfoVaga()))
+                  MaterialPageRoute(builder: (context) => InfoVaga(vaga: widget.vaga)))
             },
         child: Container(
             height: 170,

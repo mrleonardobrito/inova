@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+
+import '../../utils/vaga.dart';
 
 class InfoVaga extends StatefulWidget {
-  const InfoVaga({Key? key}) : super(key: key);
+  final Vaga vaga;
+
+  const InfoVaga({Key? key, required this.vaga}) : super(key: key);
 
   @override
   _InfoVagaState createState() => _InfoVagaState();
 }
 
 class _InfoVagaState extends State<InfoVaga> {
+  late final Vaga vaga;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             color: Color(0xFF4065FC),
@@ -34,7 +38,9 @@ class _InfoVagaState extends State<InfoVaga> {
                             )),
                         child: Container(
                             width: MediaQuery.of(context).size.width,
-                            child: ListView(
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 10),
+                              child: ListView(
                               children: [
                                 Container(
                                   height: MediaQuery.of(context).size.height,
@@ -47,7 +53,7 @@ class _InfoVagaState extends State<InfoVaga> {
                                             padding: EdgeInsets.only(
                                                 left: 20, top: 30),
                                             child: Text(
-                                              'DadosJusBr',
+                                              widget.vaga.titulo,
                                               style: TextStyle(
                                                 fontSize: 22,
                                                 color: Colors.black,
@@ -61,7 +67,7 @@ class _InfoVagaState extends State<InfoVaga> {
                                             padding: EdgeInsets.only(
                                                 left: 165, top: 30),
                                             child: Text(
-                                              '400h',
+                                              widget.vaga.horas,
                                               style: TextStyle(
                                                 fontSize: 20,
                                                 color: Colors.black,
@@ -76,7 +82,7 @@ class _InfoVagaState extends State<InfoVaga> {
                                               padding: EdgeInsets.only(
                                                   left: 20, top: 15),
                                               child: Text(
-                                                'Professores:  Daniel Fireman e Felipe Alencar',
+                                                'Professores: ${widget.vaga.professores.join(',')}',
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: Colors.grey,
@@ -88,7 +94,7 @@ class _InfoVagaState extends State<InfoVaga> {
                                             padding: EdgeInsets.only(
                                                 left: 20, top: 15),
                                             child: Text(
-                                              'Vagas Disponiveis: 4 ',
+                                              'Vagas Disponiveis: ${widget.vaga.vagasDisponiveis}',
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.black,
@@ -101,7 +107,7 @@ class _InfoVagaState extends State<InfoVaga> {
                                             padding: EdgeInsets.only(
                                                 left: 20, top: 15),
                                             child: Text(
-                                              'Bolsa Disponível: R400,00 - R850,00 ',
+                                              'Bolsa Disponível: ${widget.vaga.bolsaDisponivel}',
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.black,
@@ -587,8 +593,9 @@ class _InfoVagaState extends State<InfoVaga> {
                                   ),
                                 ),
                               ],
+                            ),
                             ))))
               ],
-            )));
+            ));
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/home_screen.dart';
 
 void main() {
-  runApp(
+    runApp(
     const MaterialApp(
       home: HomeScreen(),
     ),
