@@ -91,11 +91,12 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   String query = '';
   late List<Vaga> vagas;
+  RequestManager stateManager = RequestManager();
 
   @override
   void initState() {
     super.initState();
-
+  
     vagas = allVagas;
   }
 
@@ -154,11 +155,26 @@ class HomePageState extends State<HomePage> {
           backgroundColor: const Color(0xFF4065FC),
         ),
         SliverList(
-            delegate: SliverChildBuilderDelegate(
-          (context, index) => VagaCard(vaga: vagas[index]),
-          childCount: vagas.length,
-        ))
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => VagaCard(vaga: vagas[index]),
+            childCount: vagas.length,
+          )
+        )
       ],
     );
   }
 }
+
+
+// ValueListenableBuilder<RequestState>(
+//           valueListenable: stateManager.resultNotifier,
+//           builder: (context, requestState, child) {
+//             if (requestState is RequestLoadInProgress) {
+//               return CircularProgressIndicator();
+//             } else if (requestState is RequestLoadSuccess) {
+//               return Expanded(child: SingleChildScrollView(child: Text(requestState.vagalista.toString())));
+//             } else {
+//               return Container();
+//             }
+//           },
+//         ),
