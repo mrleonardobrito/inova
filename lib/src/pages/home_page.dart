@@ -117,50 +117,48 @@ class HomePageState extends State<HomePage> {
       });
     }
 
-    return Scaffold(
-        bottomNavigationBar: BottomBar(),
-        body: CustomScrollView(
-          scrollBehavior: const ScrollBehavior(),
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(0),
-                child: Container(
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0)),
-                    color: Color(0xFFEFEFEF),
-                  ),
-                  child: Center(
-                      child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0)),
-                      color: Color(0xFFEFEFEF),
-                    ),
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.search, size: 20),
-                        border: InputBorder.none,
-                      ),
-                      onChanged: (query) => searchVaga(query),
-                    ),
-                  )),
-                ),
+    return CustomScrollView(
+      scrollBehavior: const ScrollBehavior(),
+      slivers: [
+        SliverAppBar(
+          pinned: true,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(0),
+            child: Container(
+              width: double.maxFinite,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0)),
+                color: Color(0xFFEFEFEF),
               ),
-              expandedHeight: height * 0.2,
-              backgroundColor: const Color(0xFF4065FC),
+              child: Center(
+                  child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0)),
+                  color: Color(0xFFEFEFEF),
+                ),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search, size: 20),
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (query) => searchVaga(query),
+                ),
+              )),
             ),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-              (context, index) => VagaCard(vaga: vagas[index]),
-              childCount: vagas.length,
-            ))
-          ],
-        ));
+          ),
+          expandedHeight: height * 0.2,
+          backgroundColor: const Color(0xFF4065FC),
+        ),
+        SliverList(
+            delegate: SliverChildBuilderDelegate(
+          (context, index) => VagaCard(vaga: vagas[index]),
+          childCount: vagas.length,
+        ))
+      ],
+    );
   }
 }
