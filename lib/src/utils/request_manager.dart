@@ -8,20 +8,15 @@ class RequestManager {
   final resultNotifier = ValueNotifier<RequestState>(RequestInicial());
   static const url = "http://localhost:3000/api/vagas";
 
-  Future<void> getVagas() async {
+  Future<VagaLista> getVagas() async {
     resultNotifier.value = RequestLoadInProgress();
     final urlParsed = Uri.parse(url);
     http.Response response = await http.get(urlParsed);
-    _handleResponse(response);
-  }
-
-  void _handleResponse(http.Response response) {
-    if (response.statusCode >= 400) {
-      resultNotifier.value = RequestLoadFailure();
-    } else {
+    if (response.statusCode == 200) {
       Map<String, dynamic> decodedBody = jsonDecode(response.body);
-      resultNotifier.value =
-          RequestLoadSuccess(VagaLista.fromJson(decodedBody));
+      return VagaLista.fromJson(decodedBody);
+    } else {
+      return VagaLista(vagas: []);
     }
   }
 }
