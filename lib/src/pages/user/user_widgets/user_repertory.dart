@@ -21,34 +21,37 @@ class _RepertorioState extends State<Repertorio> {
 
   returnLine(numberLine, sizeLine) {
     return ListView(physics: const NeverScrollableScrollPhysics(), children: [
-      Container(
-          width: MediaQuery.of(context).size.width / 3 - 10,
-          child: Row(children: [
-            Text(
-              "${numberLineArr[numberLine]}",
-              style: TextStyle(color: Color(0xFF4065FC), fontSize: 15),
-            ),
-            Spacer(),
-            Container(
-                width: MediaQuery.of(context).size.width / 2.15 - 10,
-                height: 9,
-                child: Expanded(
-                    child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFFD9D9D9),
-                          borderRadius: BorderRadius.all(Radius.circular(60))),
-                    ),
-                    Container(
-                      width: sizeLineArr[sizeLine],
-                      decoration: BoxDecoration(
-                          color: Color(0xFF4065FC),
-                          borderRadius: BorderRadius.all(Radius.circular(60))),
-                    ),
-                  ],
-                )))
-          ]))
+      Expanded(
+          child: Container(
+              width: MediaQuery.of(context).size.width / 3 - 10,
+              child: Row(children: [
+                Text(
+                  "${numberLineArr[numberLine]}",
+                  style: TextStyle(color: Color(0xFF4065FC), fontSize: 15),
+                ),
+                Spacer(),
+                Container(
+                    width: MediaQuery.of(context).size.width / 2.15 - 10,
+                    height: 9,
+                    child: Expanded(
+                        child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Color(0xFFD9D9D9),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(60))),
+                        ),
+                        Container(
+                          width: sizeLineArr[sizeLine],
+                          decoration: BoxDecoration(
+                              color: Color(0xFF4065FC),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(60))),
+                        ),
+                      ],
+                    )))
+              ])))
     ]);
   }
 

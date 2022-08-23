@@ -64,7 +64,6 @@ class _UserPageState extends State<UserPage> {
     final starIcon = const Icon(Icons.star, color: Color(0xFF4065FC));
     final emptyStar = const Icon(Icons.star_border, color: Color(0xFF4065FC));
 
-
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
@@ -265,17 +264,21 @@ class _UserPageState extends State<UserPage> {
                           ],
                         ),
                         Container(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: showAbas == 1
-                                ? Projetos()
-                                : showAbas == 2
-                                    ? Repertorio()
-                                    : showAbas == 3
-                                        ? Text('Tres')
-                                        : Text('Deu errado'),
-                          ),
-                        )
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height / 2 +
+                                (0.06 * MediaQuery.of(context).size.height / 2),
+                            child: Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: showAbas == 1
+                                    ? Projetos()
+                                    : showAbas == 2
+                                        ? Repertorio()
+                                        : showAbas == 3
+                                            ? Text('eita')
+                                            : Text('Deu errado'),
+                              ),
+                            ))
                       ],
                     ),
                   )),
