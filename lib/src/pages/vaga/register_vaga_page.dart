@@ -47,17 +47,24 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                 padding: EdgeInsets.only(top: 16, left: 70),
                                 child: Row(
                                   children: [
-                                    Align(
+                                    Container(
                                       alignment: Alignment.bottomLeft,
-                                      child: Text('Fireman',
+                                      margin: EdgeInsets.only(right: 10),
+                                      child: Text('Daniel Fireman',
                                           style: TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w400,
                                           )),
                                     ),
-                                    Align(
+
+                                    Container(
                                       alignment: Alignment.bottomRight,
-                                      child: Text('Micaele'),
+                                      margin: EdgeInsets.only(right: 30),
+                                      child: Text('Micaele Rayanne',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400,
+                                          )),
                                     )
                                   ],
                                 ))),
@@ -72,7 +79,83 @@ class _RegisterVagaState extends State<RegisterVaga> {
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(20),
-                          ))),
+                          )),
+                    child: Column(
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(top: 30, right: 27),
+                          child: Text('Insira suas informações',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ))
+                        ),
+                          Container(
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(left: 76, top:43),
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Row(
+                                children: [
+                                  Container(
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(
+                                          textStyle: const TextStyle(fontSize: 12),
+                                        ),
+                                        onPressed: () {},
+                                        child: const Text('Inserir Curriculo'),
+                                      )
+                                  ),
+                                  Icon(Icons.school_rounded, color: Colors.green),
+                                  Container(
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(
+                                          textStyle: const TextStyle(fontSize: 12),
+                                        ),
+                                        onPressed: () {},
+                                        child: const Text('Enviar Diploma'),
+                                      )
+                                  ),
+
+                                ]
+                              )
+                            )
+
+                          )
+                  //       Container(
+                  //         child: Padding(
+                  //             padding: EdgeInsets.only(top: 43, left: 70),
+                  //           child: Row(
+                  //               children: [
+                  //                 Container(
+                  //                   alignment: Alignment.bottomLeft,
+                  //                   margin: EdgeInsets.only(right: 10),
+                  //                   child: Text('Inserir Curriculo',
+                  //                       style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w400,
+                  //                       )),
+                  //                 ),
+                  //
+                  //                 Container(
+                  //                   alignment: Alignment.bottomRight,
+                  //                   margin: EdgeInsets.only(right: 10),
+                  //                   child: Text('Enviar Diploma',
+                  //                       style: TextStyle(
+                  //                         fontSize: 13,
+                  //                         fontWeight: FontWeight.w400,
+                  //                       )),
+                  //                 )
+                  //               ]
+                  //           )
+                  //
+                  //
+                  //         )
+                  //       )
+                      ],
+                   ))
+                   ,
+
+
                 ),
               ],
             )));
