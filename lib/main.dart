@@ -11,7 +11,7 @@ import 'src/widget/bottom_bar_navigator.dart';
 void main() {
   runApp(
     const MaterialApp(
-      home: RegisterVaga(),
+      home: EditUser(),
     ),
   );
 }
