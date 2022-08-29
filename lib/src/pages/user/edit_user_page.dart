@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatinif/src/pages/user/user_widgets/edit_user_page_widgets/header_section_widget.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 
 class EditUser extends StatefulWidget {
@@ -16,9 +17,19 @@ class _EditUserState extends State<EditUser> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body: Container(
-          child: Text('Dando inicio a tela de editar usuário'),
+          child: ListView(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width,
+                child: HeaderSectionWidget(),
+              ),
+              Text('Eita')
+            ],
+          )
         )
     );
   }
