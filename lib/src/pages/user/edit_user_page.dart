@@ -27,7 +27,7 @@ class _EditUserState extends State<EditUser> {
                 width: MediaQuery.of(context).size.width,
                 child: HeaderSectionWidget(),
               ),
-              Text('Eita')
+
             ],
           )
         )

@@ -69,9 +69,18 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
               child: ListView(
                 children: [
                   Center(
-                    child: Text('Emanuel Vilela', style: TextStyle(
-                      fontSize: 19
-                    ),),
+                    child: Text(
+                      'Emanuel Vilela',
+                      style: TextStyle(
+                          fontSize: 19, color: Colors.blue),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'Emanuel Vilela',
+                      style: TextStyle(
+                          fontSize: 19, color: Colors.red),
+                    ),
                   ),
                   Center(
                     child: Text('@emanuelvsz'),
