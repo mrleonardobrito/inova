@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/user_comments_page.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -18,7 +16,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
     print(width);
     return Container(
-      color: Colors.grey,
+      color: Colors.transparent,
       child: Stack(children: [
         Positioned(
             top: -260,
@@ -34,7 +32,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
             )),
         Positioned(
           right: width / 2 - ((circleHeight * 0.25) / 2),
-          top: (circleHeight * 0.56) / 2,
+          top: (circleHeight * 0.54) / 2,
           child: Container(
             height: circleHeight * 0.25,
             width: circleHeight * 0.25,
@@ -56,37 +54,57 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   ),
                   borderRadius: BorderRadius.circular(150),
                 ),
+                Center(
+                  child: Opacity(
+                    opacity: .60,
+                    child: Icon(
+                      Icons.camera_alt,
+                      size: 45,
+                      color: Color(0xFFE8ECFF),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
         ),
         Positioned(
-            right: width / 2 - ((circleHeight * 0.5) / 2),
+            right: width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
-            child: Container(
-              height: circleHeight * 0.25,
-              width: circleHeight * 0.5,
-              child: ListView(
-                children: [
-                  Center(
-                    child: Text(
-                      'Emanuel Vilela',
-                      style: TextStyle(
-                          fontSize: 19, color: Colors.blue),
-                    ),
+            child: Row(
+              children: [
+                Container(
+                  height: 50,
+                  width: circleHeight * 0.35,
+                  child: ListView(
+                    children: [
+                      Center(
+                        child: Text(
+                          'Emanuel Vilela',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          '@emanuelvsz',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF808080),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ],
                   ),
-                  Center(
-                    child: Text(
-                      'Emanuel Vilela',
-                      style: TextStyle(
-                          fontSize: 19, color: Colors.red),
-                    ),
-                  ),
-                  Center(
-                    child: Text('@emanuelvsz'),
-                  ),
-                ],
-              ),
+                ),
+                Icon(
+                  Icons.edit,
+                  size: 24,
+                  color: Colors.black,
+                ),
+              ],
             )),
       ]),
     );
