@@ -48,8 +48,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   margin: EdgeInsets.only(left: 10),
                   child: Icon(Icons.arrow_back, color: Colors.white),
                 ),
-              )
-          ),
+              )),
         ),
         Positioned(
           right: width / 2 - ((circleHeight * 0.25) / 2),
@@ -105,6 +104,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
+                            fontFamily: 'Inter'
                           ),
                         ),
                       ),
@@ -114,7 +114,8 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                           style: TextStyle(
                               fontSize: 16,
                               color: Color(0xFF808080),
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Inter'),
                         ),
                       ),
                     ],
