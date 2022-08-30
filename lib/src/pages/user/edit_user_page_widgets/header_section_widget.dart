@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+
+class HeaderSectionWidget extends StatefulWidget {
+  const HeaderSectionWidget({Key? key}) : super(key: key);
+
+  @override
+  _HeaderSectionWidgetState createState() => _HeaderSectionWidgetState();
+}
+
+class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double circleHeight = 450;
+
+    print(width);
+    return Container(
+      color: Colors.transparent,
+      child: Stack(children: [
+        Positioned(
+            top: -260,
+            right: width / 2 - ((circleHeight) / 2),
+            child: Center(
+              child: Container(
+                height: circleHeight,
+                width: circleHeight,
+                decoration: BoxDecoration(
+                    color: Color(0xFF3B64FA),
+                    borderRadius: BorderRadius.circular(360)),
+              ),
+            )),
+        Positioned(
+          right: width / 2 - ((circleHeight * 0.25) / 2),
+          top: (circleHeight * 0.54) / 2,
+          child: Container(
+            height: circleHeight * 0.25,
+            width: circleHeight * 0.25,
+            decoration: BoxDecoration(
+                color: Colors.grey, borderRadius: BorderRadius.circular(1000)),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.black),
+                    child: Image.asset(
+                      "images/luffy.jpg",
+                      height: circleHeight * 0.25,
+                      width: circleHeight * 0.25,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(150),
+                ),
+                Center(
+                  child: Opacity(
+                    opacity: .60,
+                    child: Icon(
+                      Icons.camera_alt,
+                      size: 45,
+                      color: Color(0xFFE8ECFF),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+            right: width / 2 - ((circleHeight * 0.45) / 2),
+            top: (circleHeight * 1.1) / 2,
+            child: Row(
+              children: [
+                Container(
+                  height: 50,
+                  width: circleHeight * 0.35,
+                  child: ListView(
+                    children: [
+                      Center(
+                        child: Text(
+                          'Emanuel Vilela',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          '@emanuelvsz',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF808080),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.edit,
+                  size: 24,
+                  color: Colors.black,
+                ),
+              ],
+            )),
+      ]),
+    );
+  }
+}
