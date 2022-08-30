@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
 import 'package:whatinif/src/utils/request_manager.dart';
-import '../widget/bottom_bar_navigator.dart';
 import '../widget/vaga_card.dart';
 import 'package:whatinif/src/utils/vaga.dart';
-import 'package:http/http.dart' as http;
 
 List<Vaga> allVagas = [
   const Vaga(
@@ -90,13 +85,14 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   String query = '';
-  late List<Vaga> vagas;
+  late List<Vaga> vagas = [];
+  RequestManager stateManager = RequestManager();
 
   @override
   void initState() {
     super.initState();
 
-    vagas = allVagas;
+    stateManager.getVagas();
   }
 
   @override
@@ -153,11 +149,26 @@ class HomePageState extends State<HomePage> {
           expandedHeight: height * 0.2,
           backgroundColor: const Color(0xFF4065FC),
         ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate(
-          (context, index) => VagaCard(vaga: vagas[index]),
-          childCount: vagas.length,
-        ))
+        SliverToBoxAdapter(
+          child: ValueListenableBuilder<RequestState>(
+            valueListenable: stateManager.resultNotifier,
+            builder: (context, notifier, child) {
+              if (notifier is RequestLoadInProgress) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                this.vagas = notifier is RequestLoadSuccess
+                    ? notifier.vagalista.vagas
+                    : allVagas;
+                return ListView.builder(
+                  itemCount: this.vagas.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) =>
+                      VagaCard(vaga: this.vagas[index]),
+                );
+              }
+            },
+          ),
+        )
       ],
     );
   }
