@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/vaga_page.dart';
 import 'package:whatinif/src/utils/vaga.dart';
 
 import '../pages/vaga/info_vaga_page.dart';
