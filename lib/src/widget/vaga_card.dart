@@ -18,8 +18,10 @@ class _VagaCardState extends State<VagaCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const InfoVaga()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => InfoVaga(vaga: widget.vaga)))
             },
         child: Container(
             height: 170,
