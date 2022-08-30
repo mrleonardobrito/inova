@@ -14,33 +14,42 @@ class InfoVaga extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        body: CustomScrollView(scrollBehavior: ScrollBehavior(), slivers: [
-      SliverAppBar(
-        pinned: true,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(0),
-          child: Container(
-            width: double.maxFinite,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0)),
-              color: Color(0xFFEFEFEF),
-            ),
-            child: Center(
-                child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0)),
-                color: Color(0xFFEFEFEF),
-              ),
-            )),
-          ),
+        body: Container(
+      height: height,
+      width: width,
+      color: Colors.red,
+      child: CustomScrollView(scrollBehavior: ScrollBehavior(), slivers: [
+        SliverAppBar(
+          expandedHeight: height * 0.2,
+          backgroundColor: const Color(0xFF4065FC),
         ),
-        expandedHeight: height * 0.2,
-        backgroundColor: const Color(0xFF4065FC),
-      ),
+        SliverToBoxAdapter(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+              Container(height: 50, color: Colors.red),
+              Container(height: 50, color: Colors.blue),
+              Container(height: 50, color: Colors.green),
+            ],
+          ),
+        )
+      ]),
+
       // SliverToBoxAdapter(
       //     child: Container(
       //         height: height,
@@ -605,6 +614,6 @@ class InfoVaga extends StatelessWidget {
       //                 ),
       //               ],
       //             ))))
-    ]));
+    ));
   }
 }
