@@ -285,7 +285,7 @@ class _UserPageState extends State<UserPage> {
             ],
           ),
           Positioned(
-            top: 35,
+            top: 25,
             left: 15,
             child: ClipRRect(
               child: Container(

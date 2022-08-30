@@ -13,6 +13,8 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
+    double textFieldRadius =  10;
+
     print(width);
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 35),
@@ -29,15 +31,15 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 7),
+                    margin: EdgeInsets.only(left: 7, bottom: 10),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Descrição do usuário',
                         style: TextStyle(
                             color: Color(0xFF3B64FA),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
@@ -48,6 +50,19 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                       keyboardType: TextInputType.multiline,
                       maxLines: 5,
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        disabledBorder: InputBorder.none,
                         filled: true,
                         fillColor: Color(0xFFE8ECFF),
                         hintText: "Digite aqui...",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatinif/src/pages/user/user_page.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -30,6 +31,26 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                     borderRadius: BorderRadius.circular(360)),
               ),
             )),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserPage()),
+            );
+          },
+          child: Container(
+              width: width,
+              color: Colors.transparent,
+              height: height * 0.1 / 2,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: Icon(Icons.arrow_back, color: Colors.white),
+                ),
+              )
+          ),
+        ),
         Positioned(
           right: width / 2 - ((circleHeight * 0.25) / 2),
           top: (circleHeight * 0.54) / 2,
@@ -63,7 +84,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                       color: Color(0xFFE8ECFF),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
