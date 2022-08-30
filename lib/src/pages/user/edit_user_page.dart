@@ -10,11 +10,6 @@ class EditUser extends StatefulWidget {
 }
 
 class _EditUserState extends State<EditUser> {
-  int showAbas = 1;
-  bool _isInitialValue = true;
-
-  int _myDuration = 2;
-
   @override
   Widget build(BuildContext context) {
 
