@@ -9,5 +9,5 @@
 
 ## <section id="screens">Telas</section>
 
-<a href=˜./images/screens_design/WINF.pdf˜>Telas</a>
-[WINF.pdf](https://github.com/mrleonardobrito/whatinif/files/9472174/WINF.pdf)
+
+[Screens](https://github.com/mrleonardobrito/whatinif/files/9472174/WINF.pdf)
