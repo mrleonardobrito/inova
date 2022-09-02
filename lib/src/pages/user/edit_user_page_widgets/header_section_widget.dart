@@ -31,17 +31,17 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
   @override
   Widget build(BuildContext context) {
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     double circleHeight = 450;
 
-    print(width);
+    print(_width);
     return Container(
       color: Colors.transparent,
       child: Stack(children: [
         Positioned(
             top: -260,
-            right: width / 2 - ((circleHeight) / 2),
+            right: _width / 2 - ((circleHeight) / 2),
             child: Center(
               child: Container(
                 height: circleHeight,
@@ -59,9 +59,9 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
             );
           },
           child: Container(
-              width: width,
+              width: _width,
               color: Colors.transparent,
-              height: height * 0.1 / 2,
+              height: _height * 0.1 / 2,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
@@ -71,7 +71,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
               )),
         ),
         Positioned(
-            right: width / 2 - ((circleHeight * 0.25) / 2),
+            right: _width / 2 - ((circleHeight * 0.25) / 2),
             top: (circleHeight * 0.54) / 2,
             child: GestureDetector(
               onTap: getImage,
@@ -107,7 +107,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
               ),
             )),
         Positioned(
-            right: width / 2 - ((circleHeight * 0.45) / 2),
+            right: _width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
             child: Row(
               children: [
