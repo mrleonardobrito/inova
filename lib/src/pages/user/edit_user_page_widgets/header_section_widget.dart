@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:whatinif/src/pages/user/user_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -8,9 +12,25 @@ class HeaderSectionWidget extends StatefulWidget {
   _HeaderSectionWidgetState createState() => _HeaderSectionWidgetState();
 }
 
+
+
 class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
+  File? _image;
+
+  Future getImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if(image == null) return;
+
+    final imageTemporary = File(image.path);
+
+    setState(() {
+      this._image = imageTemporary;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double circleHeight = 450;
@@ -51,43 +71,41 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
               )),
         ),
         Positioned(
-          right: width / 2 - ((circleHeight * 0.25) / 2),
-          top: (circleHeight * 0.54) / 2,
-          child: Container(
-            height: circleHeight * 0.25,
-            width: circleHeight * 0.25,
-            decoration: BoxDecoration(
-                color: Colors.grey, borderRadius: BorderRadius.circular(1000)),
-            child: Stack(
-              children: [
-                ClipRRect(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.black),
-                    child: Image.asset(
-                      "images/luffy.jpg",
-                      height: circleHeight * 0.25,
-                      width: circleHeight * 0.25,
-                      fit: BoxFit.fitHeight,
+            right: width / 2 - ((circleHeight * 0.25) / 2),
+            top: (circleHeight * 0.54) / 2,
+            child: GestureDetector(
+              onTap: getImage,
+              child: Container(
+                height: circleHeight * 0.25,
+                width: circleHeight * 0.25,
+                decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(1000)),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.black),
+                        child: _image != null ? Image.file(_image!) : Center(child: Text('Adicione a imagem'),)
+                      ),
+                      borderRadius: BorderRadius.circular(150),
                     ),
-                  ),
-                  borderRadius: BorderRadius.circular(150),
-                ),
-                Center(
-                  child: Opacity(
-                    opacity: .60,
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 45,
-                      color: Color(0xFFE8ECFF),
+                    Center(
+                      child: Opacity(
+                        opacity: .60,
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: 45,
+                          color: Color(0xFFE8ECFF),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
+            )),
         Positioned(
             right: width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
@@ -102,10 +120,9 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                         child: Text(
                           'Emanuel Vilela',
                           style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'Inter'
-                          ),
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontFamily: 'Inter'),
                         ),
                       ),
                       Center(

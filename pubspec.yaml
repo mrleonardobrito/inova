@@ -21,6 +21,7 @@ dependencies:
     sdk: flutter
   mask_text_input_formatter: ^2.3.0
   http: ^0.13.5
+  image_picker: ^0.8.3
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +52,7 @@ flutter:
     - fonts:
         - family: Inter
           fonts:
-            - asset: C:/Users/userm/StudioProjects/whatinif/assets/fonts/Inter-Thin.ttf
+            - asset: ./assets/fonts/Inter-Thin.tff
               style: italic
 
 
