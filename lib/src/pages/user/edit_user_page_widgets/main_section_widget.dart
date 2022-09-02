@@ -69,6 +69,54 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                       ),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.picture_as_pdf,
+                                  size: 31,
+                                  color: Color(0xFF4065FC),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  child: Text('Inserir currículo', style: TextStyle(color: Color(0xFF4065FC), fontSize: 13),),
+                                )
+                              ],
+                            )
+                          ),
+                          Spacer(),
+                          GestureDetector(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.school,
+                                    size: 31,
+                                    color: Color(0xFF4065FC),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5),
+                                    child: Text('Inserir diploma', style: TextStyle(color: Color(0xFF4065FC), fontSize: 13),),
+                                  )
+                                ],
+                              )
+                          ),
+                        ],
+                      ),
+                    )
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text('Projetos do usuário', style: TextStyle(color: Color(0xFF4065FC), fontSize: 13),),
+                      ],
+                    )
+                  )
                 ],
               ),
             )
