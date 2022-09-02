@@ -14,47 +14,49 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
     double _height = MediaQuery.of(context).size.height;
 
     double textFieldRadius = 10;
+    double _circleHeight = 40;
 
     print(_width);
 
-    final listViewMargin = EdgeInsets.only(right: 10);
-
-    int _itemsCount = 6;
-
-    final itemList = 0;
+    final listViewMargin = EdgeInsets.only(right: 13);
 
     const projectData = [
       {
         "nome": "DIT",
         "orientador": "Tarsis Marinho",
+        "colaborador": "Victor Lemos",
         "descricao":
             'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
         "dataTermino": "02/03/2017",
       },
       {
-        "nome": "LEAD",
-        "orientador": "Daniel Lacert Fireman",
+        "nome": "INOVA",
+        "orientador": "Emanuel Vilela",
+        "colaborador": "Leonardo Ferreira",
         "descricao":
             'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
       },
       {
         "nome": "LEAD",
-        "orientador": "Daniel Lacert Fireman",
+        "orientador": "Daniel Fireman",
+        "colaborador": "Micaele Rayanne",
         "descricao":
         'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
       },
       {
         "nome": "LEAD",
-        "orientador": "Daniel Lacert Fireman",
+        "orientador": "Daniel Fireman",
+        "colaborador": "Micaele Rayanne",
         "descricao":
         'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
       },
       {
         "nome": "LEAD",
-        "orientador": "Daniel Lacert Fireman",
+        "orientador": "Daniel Fireman",
+        "colaborador": "Micaele Rayanne",
         "descricao":
         'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
         "dataTermino": "02/03/2022",
@@ -181,7 +183,7 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                               ),
                             ),
                             Container(
-                                height: 100,
+                                height: 130,
                                 width: _width,
                                 child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
@@ -189,13 +191,125 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                                     itemBuilder: (context, index) {
                                       return Container(
                                         margin: listViewMargin,
-                                        width: 100.0,
+                                        width: 150.0,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFE8ECFF),
                                           borderRadius: BorderRadius.circular(10)
                                         ),
-                                        child: Text(
-                                            '${projectData[index]["nome"]}'),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(10),
+                                          child: Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Container(
+                                              child: Column(
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.only(bottom: 3),
+                                                    child: Align(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        '${projectData[index]["nome"]}', style: TextStyle(
+                                                          fontSize: 15,
+                                                          color: Color(0xFF4065FC),
+                                                          fontWeight: FontWeight.w600
+                                                      ),),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(top: 1),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        height: _circleHeight,
+                                                        width: _circleHeight,
+                                                        margin: EdgeInsets.only(right: 5),
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius: BorderRadius.circular(180)
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              width: 80,
+                                                              child: Align(
+                                                                alignment: Alignment.centerLeft,
+                                                                child: Text(
+                                                                  '${projectData[index]["orientador"]}', style: TextStyle(
+                                                                    fontSize: 10,
+                                                                    color: Color(0xFF4065FC),
+                                                                    fontWeight: FontWeight.w600
+                                                                ),),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              width: 80,
+                                                              child: Align(
+                                                                alignment: Alignment.centerLeft,
+                                                                child: Text(
+                                                                  "Orientador", style: TextStyle(
+                                                                    fontSize: 8,
+                                                                    color: Color(0xFF8599EA),
+                                                                    fontWeight: FontWeight.w600
+                                                                ),),
+                                                              )
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Spacer(),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        height: _circleHeight,
+                                                        width: _circleHeight,
+                                                        margin: EdgeInsets.only(right: 5),
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius: BorderRadius.circular(180)
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        color: Colors.transparent,
+                                                        width: 80,
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              child: Align(
+                                                                alignment: Alignment.topLeft,
+                                                                child: Text(
+                                                                  '${projectData[index]["colaborador"]}', style: TextStyle(
+                                                                    fontSize: 10,
+                                                                    color: Color(0xFF4065FC),
+                                                                    fontWeight: FontWeight.w600
+                                                                ),),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              child: Align(
+                                                                alignment: Alignment.topLeft,
+                                                                child: Text(
+                                                                  "Colaborador", style: TextStyle(
+                                                                    fontSize: 8,
+                                                                    color: Color(0xFF8599EA),
+                                                                    fontWeight: FontWeight.w600
+                                                                ),),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        )
                                       );
                                     }))
                           ],
