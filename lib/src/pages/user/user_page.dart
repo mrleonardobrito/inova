@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/home_page.dart';
 import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
 import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
@@ -107,12 +106,7 @@ class _UserPageState extends State<UserPage> {
                           vertical: 10.0, horizontal: 10.0),
                       child: Align(
                         alignment: Alignment.topRight,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: Color(0xff4065FC))),
-                          color: Colors.white,
-                          textColor: Colors.black,
+                        child: TextButton(
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: 7, horizontal: 13),
