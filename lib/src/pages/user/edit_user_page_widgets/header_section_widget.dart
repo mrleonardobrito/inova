@@ -149,14 +149,4 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
       ]),
     );
   }
-  void pickMedia() async{
-    XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (file != null){
-      imagePath = file.path;
-      setState(() {
-
-      });
-    }
-  }
-  
 }
