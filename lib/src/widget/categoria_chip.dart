@@ -10,6 +10,7 @@ class VagaChip extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 5, top: 5, bottom: 5),
       child: Chip(
+        elevation: 5.0,
         backgroundColor: Color(0xFF9AAEFF),
         label: Text(
           label,
