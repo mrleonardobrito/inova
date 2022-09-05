@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:whatinif/src/pages/register_page.dart';
+import 'package:whatinif/src/pages/user/user_page.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -19,18 +21,21 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: _height,
+          width: _width,
           color: Color(0xFF4065FC),
-          child: ListView(
+          child: Column(
             children: [
               Container(
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  width: MediaQuery.of(context).size.width * 0.75,
+                  height: _height * 0.25,
+                  width: _width * 0.75,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 35, bottom: 30),
+                    padding: EdgeInsets.only(left: 0, bottom: 30),
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
@@ -44,16 +49,17 @@ class _LoginState extends State<Login> {
                   )),
               Container(
                 child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
+                    height: _height * 0.75,
+                    width: _width,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50),
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
                         )),
                     child: Padding(
-                      padding: EdgeInsets.all(30),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 30, horizontal: 35),
                       child: ListView(
                         children: [
                           Text(
@@ -63,15 +69,8 @@ class _LoginState extends State<Login> {
                           ),
                           Container(
                               child: Padding(
-                            padding: EdgeInsets.only(top: 20),
+                            padding: EdgeInsets.only(top: 25),
                             child: TextFormField(
-                              /* validator: (value){
-                                if(value.length < 10){
-                                  return "O seu e-mail parece pequeno.";
-                                }else if(!value.contains("@")){
-                                  return "Seu e-mail não contém um @";
-                                }
-                              }, */
                               decoration: InputDecoration(
                                 hintText: 'Email...',
                               ),
@@ -100,104 +99,117 @@ class _LoginState extends State<Login> {
                               obscureText: !_showPassword,
                             ),
                           )),
-                          Padding(
-                            padding: EdgeInsets.only(top: 30),
-                            child: ElevatedButton(
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5.0),
-                                  child: Row(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Cadastro()),
+                              );
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(top: 13),
+                              child: Center(
+                                child: Text(
+                                  'Ainda não é cadastrado? cadastre-se aqui!',
+                                  style: TextStyle(
+                                      color: Color(0xFF4065FC),
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: _height * 0.33),
+                                  child: ElevatedButton(
+                                    child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 7.0),
                                         child: Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(60))),
+                                          width: _width,
+                                          child: Row(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              15))),
+                                                ),
+                                              ),
+                                              Center(
+                                                  child: Padding(
+                                                    padding:
+                                                    EdgeInsets.only(left: 35),
+                                                    child: Center(
+                                                      child: Text(
+                                                        'Entrar com conta Google',
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                            FontWeight.w500),
+                                                      ),
+                                                    ),
+                                                  ))
+                                            ],
+                                          ),
+                                        )
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      onPrimary: Colors.white,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                    ),
+                                    onPressed: () {
+                                      print('Pressed');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  width: _width,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 20),
+                                    child: ElevatedButton(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12.0),
+                                        child: Text(
+                                          'Entrar',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 16),
                                         ),
                                       ),
-                                      Align(
-                                          alignment: Alignment.bottomCenter,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(left: 35),
-                                            child: Center(
-                                              child: Text(
-                                                'Entrar com o Google',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ),
-                                          ))
-                                    ],
-                                  )),
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                                onPrimary: Colors.white,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(60))),
-                              ),
-                              onPressed: () {
-                                print('Pressed');
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20),
-                            child: ElevatedButton(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 11.0),
-                                child: Text(
-                                  'Entrar',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF3A64FA),
-                                onPrimary: Colors.white,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(60))),
-                              ),
-                              onPressed: () {
-                                print('Pressed');
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 5),
-                            child: ElevatedButton(
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.symmetric(vertical: 11.0),
-                                child: Text(
-                                  'Cadastrar-se',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF3A64FA),
-                                onPrimary: Colors.white,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(60))),
-                              ),
-                              onPressed: () {
-                                print('Pressed');
-                              },
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFF3A64FA),
+                                        onPrimary: Colors.white,
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15))),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => UserPage()),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           )
                         ],

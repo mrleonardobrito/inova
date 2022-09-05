@@ -101,6 +101,7 @@ packages:
     source: hosted
     version: "4.0.1"
   image_picker:
+    dependency: "direct main"
     dependency: "direct dev"
     description:
       name: image_picker
