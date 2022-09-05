@@ -149,22 +149,24 @@ class _UserPageState extends State<UserPage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 3),
-                        child: Text(
-                          '${userData["descricaoAcademica"]}',
-                          style: TextStyle(
-                              color: Color(0xFF808080),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
+                          padding: EdgeInsets.only(top: 3),
+                          child: Container(
+                            margin: EdgeInsets.only(bottom: 7),
+                            child: Text(
+                              '${userData["descricaoAcademica"]}',
+                              style: TextStyle(
+                                  color: Color(0xFF808080),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          )),
                       Padding(
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text(
                           '${userData["descricao"]}',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 14,
+                              fontSize: 13,
                               fontWeight: FontWeight.normal),
                         ),
                       )
@@ -199,7 +201,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Text(
                                     '${carouselItems[0]}',
                                     style: TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 14,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -223,7 +225,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Text(
                                     '${carouselItems[1]}',
                                     style: TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 14,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -247,7 +249,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Text(
                                     '${carouselItems[2]}',
                                     style: TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 14,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -279,7 +281,7 @@ class _UserPageState extends State<UserPage> {
             ],
           ),
           Positioned(
-            top: 35,
+            top: 25,
             left: 15,
             child: ClipRRect(
               child: Container(
