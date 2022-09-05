@@ -105,7 +105,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   ],
                 ),
               ),
-            )),
+            )),          
         Positioned(
             right: _width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
@@ -145,7 +145,18 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                 ),
               ],
             )),
+
       ]),
     );
   }
+  void pickMedia() async{
+    XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (file != null){
+      imagePath = file.path;
+      setState(() {
+
+      });
+    }
+  }
+  
 }
