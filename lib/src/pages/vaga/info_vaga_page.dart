@@ -1,7 +1,232 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:whatinif/src/widget/categoria_chip.dart';
 
 import '../../utils/vaga.dart';
+
+Widget titleVagaWidget() {
+  return Row(children: [
+    Container(
+      child: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text(
+          'DadosJusBr',
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+    Spacer(),
+    Container(
+      child: Padding(
+        padding: EdgeInsets.only(right: 10),
+        child: Text(
+          '400h',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    )
+  ]);
+}
+
+Widget professoresWidget() {
+  return Container(
+    child: Padding(
+      padding: EdgeInsets.only(left: 20, top: 15),
+      child: Text(
+        'Professores:  Daniel Fireman e Felipe Alencar',
+        style: TextStyle(
+          fontSize: 12,
+          color: Colors.grey,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget vagaWidget() {
+  return Container(
+    child: Padding(
+      padding: EdgeInsets.only(left: 20, top: 15),
+      child: Text(
+        'Vagas Disponiveis: 4 ',
+        style: TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget bolsaWidget() {
+  return Container(
+    child: Padding(
+      padding: EdgeInsets.only(left: 20, top: 15),
+      child: Text(
+        'Bolsa Disponível: R400,00 - R850,00 ',
+        style: TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget estrelasWidget() {
+  return Row(
+    children: [
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 20, top: 15),
+          child: Text(
+            'Avaliação dos Usuarios:',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 20, top: 13),
+          child: Row(
+            children: [
+              Icon(Icons.star, color: Colors.blueAccent, size: 20),
+              Icon(Icons.star, color: Colors.blueAccent, size: 20),
+              Icon(Icons.star, color: Colors.blueAccent, size: 20),
+              Icon(Icons.star, color: Colors.blueAccent, size: 20),
+              Icon(Icons.star, color: Colors.blueAccent, size: 20),
+            ],
+          ),
+        ),
+      )
+    ],
+  );
+}
+
+Widget descricaoDaVaga() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 20),
+          child: Text(
+            'Descrição completa da vaga',
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Proposta',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Oque irei fazer na vaga?',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget categoriasWidget() {
+  const listaItens = <String>[
+    "Projeto",
+    "Informática",
+    "Programação Web",
+    "API",
+    "FrontEnd",
+    "BackEnd",
+    "SCRUM",
+    "Metodologia Ágil",
+    "Data Science"
+  ];
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Categorias',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.only(left: 10, right: 10),
+        child: Wrap(
+          children: listaItens.map((label) => VagaChip(label: label)).toList(),
+        ),
+      ),
+    ],
+  );
+}
 
 class InfoVaga extends StatelessWidget {
   final Vaga vaga;
@@ -17,34 +242,36 @@ class InfoVaga extends StatelessWidget {
         body: Container(
       height: height,
       width: width,
-      color: Colors.red,
+      color: Color(0xFFEFEFEF),
       child: CustomScrollView(scrollBehavior: ScrollBehavior(), slivers: [
         SliverAppBar(
-          expandedHeight: height * 0.2,
+          expandedHeight: height * 0.20,
           backgroundColor: const Color(0xFF4065FC),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(0),
+            child: Container(
+              height: 25,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0)),
+                color: Color(0xFFEFEFEF),
+              ),
+            ),
+          ),
         ),
         SliverToBoxAdapter(
           child: ListView(
             shrinkWrap: true,
             children: [
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
-              Container(height: 50, color: Colors.red),
-              Container(height: 50, color: Colors.blue),
-              Container(height: 50, color: Colors.green),
+              titleVagaWidget(),
+              professoresWidget(),
+              vagaWidget(),
+              bolsaWidget(),
+              estrelasWidget(),
+              descricaoDaVaga(),
+              categoriasWidget(),
             ],
           ),
         )

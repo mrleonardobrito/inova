@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatinif/src/utils/vaga.dart';
 
 import '../pages/vaga/info_vaga_page.dart';
+import 'categoria_chip.dart';
 
 class VagaCard extends StatefulWidget {
   final Vaga vaga;
@@ -67,7 +68,7 @@ class _VagaCardState extends State<VagaCard> {
                             style: TextStyle(
                                 fontSize: 14, color: Color(0xFF808080)))),
                     Container(
-                      height: 30,
+                      height: 40,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
                         itemCount: 4,
@@ -75,22 +76,10 @@ class _VagaCardState extends State<VagaCard> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           if (index > 2) {
-                            return Container(
-                                margin: const EdgeInsets.only(right: 5),
-                                child: const Chip(
-                                    backgroundColor: Color(0xFF9AAEFF),
-                                    label: Icon(Icons.add, size: 15.0)));
+                            return VagaChip(label: "+");
                           } else {
-                            return Container(
-                                margin: const EdgeInsets.only(right: 5),
-                                child: Chip(
-                                    backgroundColor: Color(0xFF9AAEFF),
-                                    label: Text(
-                                      widget.vaga.categorias[index],
-                                      style: const TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    )));
+                            return VagaChip(
+                                label: widget.vaga.categorias[index]);
                           }
                         },
                       ),
