@@ -44,7 +44,9 @@ class _LandingPageState extends State<LandingPage> {
                             borderRadius: BorderRadius.circular(5)),
                         child: TextButton(
                           onPressed: () {},
-                          onLongPress: (){print('mim de papai');},
+                          onLongPress: () {
+                            print('mim de asa papai');
+                          },
                           child: Text(
                             'Entrar no aplicativo',
                             style: TextStyle(
@@ -62,15 +64,17 @@ class _LandingPageState extends State<LandingPage> {
                           },
                           child: Text(
                             'Ainda não é cadastrado? Clique aqui.',
-                            style:
-                            TextStyle(fontSize: 10, color: Color(0xFF3A64FA), decoration: TextDecoration.none),
+                            style: TextStyle(
+                                fontSize: 10,
+                                color: Color(0xFF3A64FA),
+                                decoration: TextDecoration.none),
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              )
+              ),
             ),
           )
         ],

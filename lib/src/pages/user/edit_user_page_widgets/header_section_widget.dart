@@ -16,6 +16,7 @@ class HeaderSectionWidget extends StatefulWidget {
 
 class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
   File? _image;
+  File? _school;
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
