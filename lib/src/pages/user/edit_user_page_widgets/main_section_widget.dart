@@ -69,6 +69,8 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
       },
     ];
 
+    final formKey = GlobalKey<FormState>();
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 35),
       child: Column(
@@ -97,29 +99,35 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                   ),
                 ),
                 Container(
-                  child: TextFormField(
-                    minLines: 5,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(textFieldRadius),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
+                  child: Form(
+                    key: formKey,
+                    child: TextFormField(
+                      minLines: 5,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 5,
+                      validator: (String? value){
+                        if(value == null || value.isEmpty) return "Email necessário";
+                      },
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(textFieldRadius),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(textFieldRadius),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(textFieldRadius),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
                           ),
-                        ),
-                        disabledBorder: InputBorder.none,
-                        filled: true,
-                        fillColor: Color(0xFFE8ECFF),
-                        hintText: "Digite aqui...",
-                        hintStyle: TextStyle(fontSize: 14)),
-                  ),
+                          disabledBorder: InputBorder.none,
+                          filled: true,
+                          fillColor: Color(0xFFE8ECFF),
+                          hintText: "Digite aqui...",
+                          hintStyle: TextStyle(fontSize: 14)),
+                    ),
+                  )
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 20),
@@ -150,7 +158,7 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                         Spacer(),
                         TextButton(
                           onPressed: () {
-                            getSchool();
+                            formKey.currentState?.validate();
                           },
                           child: Row(
                             children: [
