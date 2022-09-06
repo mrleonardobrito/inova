@@ -103,8 +103,8 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                     key: formKey,
                     child: TextFormField(
                       minLines: 5,
-                      keyboardType: TextInputType.multiline,
                       maxLines: 5,
+                      keyboardType: TextInputType.multiline,
                       validator: (String? value){
                         if(value == null || value.isEmpty) return "Email necessário";
                       },

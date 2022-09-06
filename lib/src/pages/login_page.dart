@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:whatinif/src/pages/home_page.dart';
 import 'package:whatinif/src/pages/register_page.dart';
 import 'package:whatinif/src/pages/user/user_page.dart';
 
@@ -23,6 +24,15 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+
+    final formKey = GlobalKey<FormState>();
+    String? _email = 'adminINOVA@gmail.com';
+    String? _senha = '40028922';
+
+    bool validaEmail = false;
+    bool validaSenha = false;
+
+    bool senhaIsEmpty = true;
 
     return Scaffold(
       body: Container(
@@ -67,38 +77,61 @@ class _LoginState extends State<Login> {
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 25),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Email...',
-                              ),
-                            ),
-                          )),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Senha...',
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _showPassword = !_showPassword;
-                                    });
-                                  },
-                                  child: Icon(
-                                    _showPassword
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                    color: Color(0xFF4065FC),
-                                  ),
-                                ),
-                              ),
-                              obscureText: !_showPassword,
-                            ),
-                          )),
+                          Form(
+                              key: formKey,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      child: Padding(
+                                    padding: EdgeInsets.only(top: 25),
+                                    child: TextFormField(
+                                      validator: (String? value) {
+                                        if (value != _email)
+                                          return "E-mail incorreto";
+                                        if (value == _email) {
+                                          setState(() {
+                                            validaEmail = true;
+                                          });
+                                        }
+                                      },
+                                      decoration: InputDecoration(
+                                        hintText: 'Email...',
+                                      ),
+                                    ),
+                                  )),
+                                  Container(
+                                      child: Padding(
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: TextFormField(
+                                      validator: (String? value) {
+                                        if (value != _senha) {
+                                          return "Senha incorreta";
+                                        }else if (value == _senha)
+                                          setState(() {
+                                            validaSenha = true;
+                                          });
+                                      },
+                                      decoration: InputDecoration(
+                                        hintText: 'Senha...',
+                                        suffixIcon: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _showPassword = !_showPassword;
+                                            });
+                                          },
+                                          child: Icon(
+                                            _showPassword
+                                                ? Icons.visibility_off
+                                                : Icons.visibility,
+                                            color: Color(0xFF4065FC),
+                                          ),
+                                        ),
+                                      ),
+                                      obscureText: !_showPassword,
+                                    ),
+                                  )),
+                                ],
+                              )),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -127,7 +160,8 @@ class _LoginState extends State<Login> {
                                   padding: EdgeInsets.only(top: _height * 0.33),
                                   child: ElevatedButton(
                                     child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 7.0),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 7.0),
                                         child: Container(
                                           width: _width,
                                           child: Row(
@@ -140,30 +174,29 @@ class _LoginState extends State<Login> {
                                                   decoration: BoxDecoration(
                                                       color: Colors.grey,
                                                       borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              15))),
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  15))),
                                                 ),
                                               ),
                                               Center(
                                                   child: Padding(
-                                                    padding:
+                                                padding:
                                                     EdgeInsets.only(left: 35),
-                                                    child: Center(
-                                                      child: Text(
-                                                        'Entrar com conta Google',
-                                                        style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 14,
-                                                            fontWeight:
+                                                child: Center(
+                                                  child: Text(
+                                                    'Entrar com conta Google',
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
                                                             FontWeight.w500),
-                                                      ),
-                                                    ),
-                                                  ))
+                                                  ),
+                                                ),
+                                              ))
                                             ],
                                           ),
-                                        )
-                                    ),
+                                        )),
                                     style: ElevatedButton.styleFrom(
                                       primary: Colors.white,
                                       onPrimary: Colors.white,
@@ -200,11 +233,16 @@ class _LoginState extends State<Login> {
                                                 Radius.circular(15))),
                                       ),
                                       onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => UserPage()),
-                                        );
+                                        formKey.currentState?.validate();
+                                        if (validaSenha == true &&
+                                            validaEmail == true) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()),
+                                          );
+                                        }
                                       },
                                     ),
                                   ),
