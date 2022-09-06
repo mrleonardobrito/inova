@@ -12,6 +12,8 @@ double textFieldRadius = 10;
 class _RegisterVagaState extends State<RegisterVaga> {
   @override
   Widget build(BuildContext context) {
+
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -64,7 +66,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width / 3.5,
+                                  width: MediaQuery.of(context).size.width / 3.7,
                                   child: Column(
                                     children: [
                                       Align(
@@ -109,7 +111,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width / 3.5,
+                                  width: MediaQuery.of(context).size.width / 3.7,
                                   child: Column(
                                     children: [
                                       Align(
@@ -209,7 +211,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                       onPressed: () {},
                       child: Row(
                         children: [
-                          Icon(Icons.comment_bank_rounded, color: Colors.blue),
+                          Icon(Icons.insert_comment_rounded, color: Colors.blue),
                           Container(
                             margin: EdgeInsets.only(left: 10),
                             child: const Text('Inserir Comentário'),
@@ -218,6 +220,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                       ),
                     ),
                     Container(
+                      width: _width - _width * 0.15,
                       child: TextFormField(
                         minLines: 5,
                         maxLines: 5,
