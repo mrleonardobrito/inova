@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
-import 'package:whatinif/src/pages/home_page.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
-import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
-import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
-import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
 class RegisterVaga extends StatefulWidget {
   const RegisterVaga({Key? key}) : super(key: key);
@@ -15,7 +8,6 @@ class RegisterVaga extends StatefulWidget {
 }
 
 double textFieldRadius = 10;
-
 
 class _RegisterVagaState extends State<RegisterVaga> {
   @override
@@ -28,56 +20,131 @@ class _RegisterVagaState extends State<RegisterVaga> {
         child: ListView(
           children: [
             Container(
-                height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.width * 0.75,
-                child: ListView(
-                  children: [
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
+              height: MediaQuery.of(context).size.height * 0.25,
+              width: MediaQuery.of(context).size.width * 0.75,
+              child: ListView(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
                     ),
-                    Container(
-                      child: Padding(
-                          padding: EdgeInsets.only(top: 60, left: 23),
-                          child: Text(
-                              'LEAD - Laboratório de Engenharia e Base de Dados',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                              ))),
-                    ),
-                    Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                            padding: EdgeInsets.only(top: 16, left: 70),
+                  ),
+                  Container(
+                    child: Padding(
+                        padding: EdgeInsets.only(top: 60, left: 23),
+                        child: Text(
+                            'LEAD - Laboratório de Engenharia e Base de Dados',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ))),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(top: 20),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: Row(
+                        children: [
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            margin: EdgeInsets.only(right: 10),
                             child: Row(
                               children: [
                                 Container(
-                                  alignment: Alignment.bottomLeft,
-                                  margin: EdgeInsets.only(right: 10),
-                                  child: Text('Daniel Fireman',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400,
-                                      )),
+                                  margin: EdgeInsets.only(right: 5),
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(60)
+                                  ),
                                 ),
                                 Container(
-                                  alignment: Alignment.bottomRight,
-                                  margin: EdgeInsets.only(right: 30),
-                                  child: Text('Micaele Rayanne',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                )
+                                  width: MediaQuery.of(context).size.width / 3.5,
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text('Daniel Fireman',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.normal,
+                                            )),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Coordenador',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Color(0xFFC5C2C2),
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
-                            ))),
-                  ],
-                )),
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            margin: EdgeInsets.only(right: 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(60)
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 3.5,
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text('Micaele Rayanne',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.normal,
+                                            )),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Colaborador',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Color(0xFFC5C2C2),
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Container(
               child: Container(
                 height: MediaQuery.of(context).size.height,
@@ -138,13 +205,11 @@ class _RegisterVagaState extends State<RegisterVaga> {
                       margin: EdgeInsets.only(bottom: 20),
                       color: Color(0xFF9D9D9D),
                     ),
-
                     TextButton(
                       onPressed: () {},
                       child: Row(
                         children: [
-                          Icon(Icons.comment_bank_rounded,
-                              color: Colors.blue),
+                          Icon(Icons.comment_bank_rounded, color: Colors.blue),
                           Container(
                             margin: EdgeInsets.only(left: 10),
                             child: const Text('Inserir Comentário'),
@@ -152,7 +217,6 @@ class _RegisterVagaState extends State<RegisterVaga> {
                         ],
                       ),
                     ),
-
                     Container(
                       child: TextFormField(
                         minLines: 5,
@@ -160,14 +224,15 @@ class _RegisterVagaState extends State<RegisterVaga> {
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                              borderRadius:  BorderRadius.circular(textFieldRadius),
+                              borderRadius:
+                                  BorderRadius.circular(textFieldRadius),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
                             ),
                             border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.circular(textFieldRadius),
+                                  BorderRadius.circular(textFieldRadius),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
