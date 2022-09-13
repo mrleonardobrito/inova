@@ -10,6 +10,8 @@ class RegisterVaga extends StatefulWidget {
 double textFieldRadius = 10;
 
 class _RegisterVagaState extends State<RegisterVaga> {
+  bool isChecked = true;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -20,6 +22,8 @@ class _RegisterVagaState extends State<RegisterVaga> {
       {"pessoa": "Eduardo Fireboy", "cargo": "Colaborador"},
       {"pessoa": "Felipe Alencar", "cargo": "Coordenador"},
     ];
+
+    double checkBoxSize = 20;
 
     return Scaffold(
       body: Container(
@@ -231,6 +235,42 @@ class _RegisterVagaState extends State<RegisterVaga> {
                             hintStyle: TextStyle(fontSize: 14)),
                       ),
                     ),
+
+                    Container(
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                              onTap: (){
+                                setState(() {
+                                  isChecked = !isChecked;
+                                  print(isChecked);
+                                });
+                              },
+                              child: Container(
+                                  height: checkBoxSize,
+                                  width: checkBoxSize,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFE8ECFF),
+                                      borderRadius: BorderRadius.circular(60)
+                                  ),
+                                  child: isChecked == true ? Container(
+                                    height: checkBoxSize,
+                                    width: checkBoxSize,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFFE8ECFF),
+                                        borderRadius: BorderRadius.circular(60)
+                                    ),
+                                  ) : Center(
+                                    child: Icon(Icons.check_circle_rounded, color: Color(0xFF3B64FA), size: 24,),
+                                  )
+                              )
+                          ),
+                          Text("É viado?")
+                        ],
+                      )
+                    )
+
+
                   ],
                 ),
               ),
