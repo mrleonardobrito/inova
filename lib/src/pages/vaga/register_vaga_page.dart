@@ -13,6 +13,14 @@ class _RegisterVagaState extends State<RegisterVaga> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
+
+    const people = [
+      {"pessoa": "Micaele Rayanne", "cargo": "Colaborador"},
+      {"pessoa": "Daniel Fireman", "cargo": "Coordenador"},
+      {"pessoa": "Eduardo Fireboy", "cargo": "Colaborador"},
+      {"pessoa": "Felipe Alencar", "cargo": "Coordenador"},
+    ];
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -47,101 +55,65 @@ class _RegisterVagaState extends State<RegisterVaga> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.only(top: 20),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: Row(
-                        children: [
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            margin: EdgeInsets.only(right: 10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(right: 5),
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(60)),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 3.7,
-                                  child: Column(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text('Daniel Fireman',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.normal,
-                                            )),
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: Container(
+                          width: _width,
+                          height: 50,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: people.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                alignment: Alignment.bottomLeft,
+                                margin: EdgeInsets.only(right: 10),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 5),
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(60)),
                                       ),
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Coordenador',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: Color(0xFFC5C2C2),
-                                            fontWeight: FontWeight.normal,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width / 3.7,
+                                      height: 28,
+                                      child: Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                                '${people[index]["pessoa"]}',
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.normal,
+                                                )),
                                           ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            margin: EdgeInsets.only(right: 10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(right: 5),
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(60)),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 3.7,
-                                  child: Column(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text('Micaele Rayanne',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.normal,
-                                            )),
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              '${people[index]["cargo"]}',
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                color: Color(0xFFC5C2C2),
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Colaborador',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: Color(0xFFC5C2C2),
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
-                        ],
-                      ),
-                    ),
+                        )),
                   ),
                 ],
               ),
@@ -176,8 +148,10 @@ class _RegisterVagaState extends State<RegisterVaga> {
                               onPressed: () {},
                               child: Row(
                                 children: [
-                                  Icon(Icons.picture_as_pdf_rounded,
-                                      color: Color(0XFF3B64FA),),
+                                  Icon(
+                                    Icons.picture_as_pdf_rounded,
+                                    color: Color(0XFF3B64FA),
+                                  ),
                                   Container(
                                     margin: EdgeInsets.only(left: 10),
                                     child: const Text('Inserir Curriculo'),
@@ -189,8 +163,10 @@ class _RegisterVagaState extends State<RegisterVaga> {
                               onPressed: () {},
                               child: Row(
                                 children: [
-                                  Icon(Icons.school_rounded,
-                                      color: Color(0xFF3B64FA),),
+                                  Icon(
+                                    Icons.school_rounded,
+                                    color: Color(0xFF3B64FA),
+                                  ),
                                   Container(
                                     margin: EdgeInsets.only(left: 10),
                                     child: const Text('Enviar Diploma'),
@@ -210,21 +186,22 @@ class _RegisterVagaState extends State<RegisterVaga> {
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 50, top: 20),
-                     child: TextButton(
-                       onPressed: () {},
-                       child: Row(
-                         children: [
-                           Icon(Icons.insert_comment_rounded,
-                             color: Color(0XFF3B64FA),),
-                           Container(
-                             margin: EdgeInsets.only(top: 15, left: 10),
-                             child: const Text('Inserir Comentário'),
-                           )
-                         ],
-                       ),
-                     ),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.insert_comment_rounded,
+                              color: Color(0XFF3B64FA),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 15, left: 10),
+                              child: const Text('Inserir Comentário'),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(top: 10),
                       width: _width - _width * 0.15,
@@ -258,7 +235,6 @@ class _RegisterVagaState extends State<RegisterVaga> {
                 ),
               ),
             ),
-
           ],
         ),
       ),
