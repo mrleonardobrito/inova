@@ -11,6 +11,8 @@ double textFieldRadius = 10;
 
 class _RegisterVagaState extends State<RegisterVaga> {
   bool isChecked = true;
+  bool check = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +105,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                             child: Text(
                                               '${people[index]["cargo"]}',
                                               style: TextStyle(
-                                                fontSize: 10,
+                                                fontSize: 8,
                                                 color: Color(0xFFC5C2C2),
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -189,7 +191,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                       color: Color(0xFF9D9D9D),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 50, top: 20),
+                      margin: EdgeInsets.only(left: 40, top: 20),
                       child: TextButton(
                         onPressed: () {},
                         child: Row(
@@ -237,6 +239,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                     ),
 
                     Container(
+                      margin: EdgeInsets.only(left: 55, right: 40, top: 10),
                       child: Row(
                         children: [
                           GestureDetector(
@@ -247,6 +250,7 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                 });
                               },
                               child: Container(
+                                  margin: EdgeInsets.only(right: 5),
                                   height: checkBoxSize,
                                   width: checkBoxSize,
                                   decoration: BoxDecoration(
@@ -265,12 +269,82 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   )
                               )
                           ),
-                          Text("É viado?")
+                          Text("Maior de Idade?"),
+                          Spacer(),
+                          GestureDetector(
+                              onTap: (){
+                                setState(() {
+                                  check = !check;
+                                  print(check);
+                                });
+                              },
+                              child: Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  height: checkBoxSize,
+                                  width: checkBoxSize,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFE8ECFF),
+                                      borderRadius: BorderRadius.circular(60)
+                                  ),
+                                  child: check == true ? Container(
+                                    height: checkBoxSize,
+                                    width: checkBoxSize,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFFE8ECFF),
+                                        borderRadius: BorderRadius.circular(60)
+                                    ),
+                                  ) : Center(
+                                    child: Icon(Icons.check_circle_rounded, color: Color(0xFF3B64FA), size: 24,),
+                                  )
+                              )
+                          ),
+                          Text("Curso superior?"),
                         ],
-                      )
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      margin: EdgeInsets.only(left: 50, top: 43),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Row(
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.handshake_rounded,
+                                    color: Color(0XFF3B64FA),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 10),
+                                    child: const Text('Concordo com os termos de whatinif'),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 90),
+                      alignment: Alignment.bottomCenter,
+                      width: _width - 10,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF3B64FA),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Center(
+                            child: Text(
+                              'Concluir',
+                              style: TextStyle(color: Colors.white, fontSize: 17),
+                            )),
+                      ),
                     )
-
-
                   ],
                 ),
               ),
