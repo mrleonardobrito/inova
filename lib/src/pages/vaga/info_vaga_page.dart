@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
 import 'package:whatinif/src/widget/categoria_chip.dart';
 
 import '../../utils/vaga.dart';
@@ -231,112 +230,63 @@ Widget categoriasWidget() {
 }
 
 Widget conhecimentosNecessariosWidget() {
+  const listaConhecimentos = <String>[
+    '- Conhecimento básico em ciências de dados',
+    '- Conhecimento em tecnologias web: HTML, CSS e JS',
+    '- Facilidade em escrever e revisar código',
+    '- Conhecimento em metodologia ágil',
+    '- Saber usar GitHub',
+    '- Conhecimento em Excel(opcional)'
+  ];
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-          child: Padding(
-              padding: EdgeInsets.only(left: 20, top: 15),
-              child: Text(
-                'Conhecimentos Necessários',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ))),
-      Container(
-          child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Conhecimento básico em ciências de dados',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 15),
+          child: Text(
+            'Conhecimentos Necessários',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      ListView.builder(
+        shrinkWrap: true,
+        itemCount: listaConhecimentos.length,
+        itemBuilder: (context, index) => Container(
+          margin: EdgeInsets.only(left: 20, top: 10),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              listaConhecimentos[index],
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.black,
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Conhecimento em tecnologias web: HTML, CSS e JS',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Facilidade em escrever e revisar código',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Conhecimento em metodologia ágil',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Saber usar GitHub',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, top: 10),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                '- Conhecimento em Excel(opcional)',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ))
+        ),
+      )
     ],
   );
 }
 
 Widget aoFinalDoTrabalhoWidget() {
+  const listaAoFinal = <String>[
+    '- Experiência profissional comprovada',
+    '- Conhecimento sobre como produzir APIs',
+    '- Prática em metodologias ágeis de trabalho'
+  ];
+
   return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     Container(
       child: Padding(
-        padding: EdgeInsets.only(left: 20, top: 15),
+        padding: EdgeInsets.only(left: 10, top: 15),
         child: Text(
           'Ao final da prática o aluno haverá',
           style: TextStyle(
@@ -348,13 +298,13 @@ Widget aoFinalDoTrabalhoWidget() {
       ),
     ),
     Container(
-        child: Column(children: [
-      Container(
-        margin: EdgeInsets.only(left: 20, top: 10),
-        child: Align(
-          alignment: Alignment.bottomLeft,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: listaAoFinal.length,
+        itemBuilder: (context, index) => Container(
+          margin: EdgeInsets.only(left: 20, top: 10),
           child: Text(
-            '- Experiência profissional comprovada',
+            listaAoFinal[index],
             style: TextStyle(
               fontSize: 12,
               color: Colors.black,
@@ -362,40 +312,14 @@ Widget aoFinalDoTrabalhoWidget() {
           ),
         ),
       ),
-      Container(
-        margin: EdgeInsets.only(left: 20, top: 10),
-        child: Align(
-          alignment: Alignment.bottomLeft,
-          child: Text(
-            '- Conhecimento sobre como produzir APIs',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 20, top: 10, bottom: 25),
-        child: Align(
-          alignment: Alignment.bottomLeft,
-          child: Text(
-            '- Prática em metodologias ágeis de trabalho',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ),
-    ]))
+    )
   ]);
 }
 
 Widget interessaNaVagaButton(width) {
   return Container(
     height: 40,
-    margin: EdgeInsets.only(left: 20, bottom: 25, right: 20),
+    margin: EdgeInsets.only(left: 20, bottom: 25, right: 20, top: 20),
     decoration: BoxDecoration(
         color: Color(0xFF4065FC), borderRadius: BorderRadius.circular(10)),
     child: TextButton(
