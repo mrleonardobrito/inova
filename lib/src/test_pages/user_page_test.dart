@@ -7,13 +7,11 @@ class UserPageTest extends StatefulWidget {
   _UserPageTestState createState() => _UserPageTestState();
 }
 
-
 class _UserPageTestState extends State<UserPageTest> {
   @override
   Widget build(BuildContext context) {
-
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
@@ -27,45 +25,28 @@ class _UserPageTestState extends State<UserPageTest> {
                   Container(
                     height: height * 0.07,
                     width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF)
-                    ),
+                    decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   ),
                   Container(
                     height: height * 0.13,
                     width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFF4065FC)
-                    ),
+                    decoration: BoxDecoration(color: Color(0xFF4065FC)),
                   ),
                   Container(
                     height: height * 0.21,
                     width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF)
-                    ),
+                    decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   ),
                   Spacer(),
                   Container(
                     height: height * 0.07,
                     width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFF4065FC)
-                    ),
+                    decoration: BoxDecoration(color: Color(0xFF4065FC)),
                   ),
                   Container(
                     height: height * 0.42,
                     width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFFE8ECFF)
-                    ),
-                  ),
-                  Container(
-                    height: height * 0.10,
-                    width: width,
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF)
-                    ),
+                    decoration: BoxDecoration(color: Color(0xFFE8ECFF)),
                   ),
                 ],
               ),
@@ -88,8 +69,7 @@ class _UserPageTestState extends State<UserPageTest> {
                 ),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }
