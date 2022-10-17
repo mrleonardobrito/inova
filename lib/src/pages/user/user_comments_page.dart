@@ -20,7 +20,7 @@ class _CommentsPageState extends State<CommentsPage> {
               child: TextButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
-                    onPrimary: Color(0xff4065FC),
+                    onPrimary: Color(0xFF4065FC),
                   ),
                   onPressed: () {
                     Navigator.push(

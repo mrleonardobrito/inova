@@ -85,7 +85,7 @@ class _ProjetosState extends State<Projetos> {
                     height: 107,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      color: Colors.white,
+                      color: Color(0xFFE8ECFF),
                     ),
                     child: Padding(
                       padding:

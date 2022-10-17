@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/user/edit_user_page.dart';
+import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
+import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
+
 
 class UserPageTest extends StatefulWidget {
   const UserPageTest({Key? key}) : super(key: key);
@@ -216,14 +219,16 @@ class _UserPageTestState extends State<UserPageTest> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 1
-                              ? Color(0xFF3357EB)
+                              ? Color(0xFFD8DFFC)
                               : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[0]}',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: showAbas == 1
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -239,14 +244,16 @@ class _UserPageTestState extends State<UserPageTest> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 2
-                              ? Color(0xFF3357EB)
+                              ? Color(0xFFD8DFFC)
                               : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[1]}',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: showAbas == 2
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -262,14 +269,16 @@ class _UserPageTestState extends State<UserPageTest> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 3
-                              ? Color(0xFF3357EB)
+                              ? Color(0xFFD8DFFC)
                               : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[2]}',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: showAbas == 3
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -282,7 +291,23 @@ class _UserPageTestState extends State<UserPageTest> {
                 Container(
                   height: height * screenComponentsSize[4]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFFE8ECFF)),
+                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 2 +
+                        (0.06 * MediaQuery.of(context).size.height / 2),
+                    child: Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: showAbas == 1
+                            ? Projetos()
+                            : showAbas == 2
+                            ? Repertorio()
+                            : showAbas == 3
+                            ? Text('eita')
+                            : Text('Deu errado'),
+                      ),
+                    ),),
                 ),
               ],
             ),

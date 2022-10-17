@@ -274,10 +274,10 @@ class _UserPageState extends State<UserPage> {
                                             ? Text('eita')
                                             : Text('Deu errado'),
                               ),
-                            ))
+                            ),),
                       ],
                     ),
-                  )),
+                  ),),
             ],
           ),
           Positioned(
