@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
