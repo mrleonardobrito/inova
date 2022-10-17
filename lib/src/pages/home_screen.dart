@@ -21,34 +21,39 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: screens[_currentIndex],
-        bottomNavigationBar: SizedBox(
-          height: height * 0.10,
-          child: BottomNavigationBar(
-            unselectedLabelStyle: TextStyle(fontSize: 12),
-            currentIndex: _currentIndex,
-            onTap: onTabTapped,
-            items: [
-              BottomNavigationBarItem(
-                  label: 'Home',
-                  icon: Icon(
-                    Icons.house_rounded,
-                    size: bottomBarIconSize,
-                  )),
-              BottomNavigationBarItem(
-                  label: 'Perfil',
-                  icon: Icon(
-                    Icons.account_circle_rounded,
-                    size: bottomBarIconSize,
-                  )),
-            ],
-          ),
-        ));
+      body: screens[_currentIndex],
+      bottomNavigationBar: SizedBox(
+        height: height * 0.10,
+        child: BottomNavigationBar(
+          unselectedLabelStyle: TextStyle(fontSize: 12),
+          currentIndex: _currentIndex,
+          onTap: onTabTapped,
+          items: [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(
+                Icons.house_rounded,
+                size: bottomBarIconSize,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Perfil',
+              icon: Icon(
+                Icons.account_circle_rounded,
+                size: bottomBarIconSize,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    setState(
+      () {
+        _currentIndex = index;
+      },
+    );
   }
 }

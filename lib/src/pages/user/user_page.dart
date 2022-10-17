@@ -3,7 +3,6 @@ import 'package:whatinif/src/pages/user/edit_user_page.dart';
 import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
 import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
 
-
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
 
@@ -16,9 +15,11 @@ class _UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Variáveis globais de estilização
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    // Data consts
     const userData = {
       "nome": "Emanuel Vilela",
       "descricaoAcademica": "4° ano - 914",
@@ -211,10 +212,12 @@ class _UserPageState extends State<UserPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            showAbas = 1;
-                            print(showAbas);
-                          });
+                          setState(
+                            () {
+                              showAbas = 1;
+                              print(showAbas);
+                            },
+                          );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
@@ -237,9 +240,11 @@ class _UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            showAbas = 2;
-                          });
+                          setState(
+                            () {
+                              showAbas = 2;
+                            },
+                          );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
@@ -262,9 +267,11 @@ class _UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            showAbas = 3;
-                          });
+                          setState(
+                            () {
+                              showAbas = 3;
+                            },
+                          );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
@@ -302,12 +309,13 @@ class _UserPageState extends State<UserPage> {
                         child: showAbas == 1
                             ? Projetos()
                             : showAbas == 2
-                            ? Repertorio()
-                            : showAbas == 3
-                            ? Text('eita')
-                            : Text('Deu errado'),
+                                ? Repertorio()
+                                : showAbas == 3
+                                    ? Text('eita')
+                                    : Text('Deu errado'),
                       ),
-                    ),),
+                    ),
+                  ),
                 ),
               ],
             ),
