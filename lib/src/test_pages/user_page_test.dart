@@ -215,7 +215,6 @@ class _UserPageTestState extends State<UserPageTest> {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
-                          height: 50,
                           color: showAbas == 1
                               ? Color(0xFF3357EB)
                               : Color(0xFF3B64FA),
@@ -239,7 +238,6 @@ class _UserPageTestState extends State<UserPageTest> {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
-                          height: 50,
                           color: showAbas == 2
                               ? Color(0xFF3357EB)
                               : Color(0xFF3B64FA),
@@ -263,7 +261,6 @@ class _UserPageTestState extends State<UserPageTest> {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
-                          height: 50,
                           color: showAbas == 3
                               ? Color(0xFF3357EB)
                               : Color(0xFF3B64FA),
