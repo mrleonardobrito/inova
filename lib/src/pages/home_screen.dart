@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/user/user_page.dart';
-import 'package:whatinif/src/test_pages/user_page_test.dart';
 
 import 'home_page.dart';
 
@@ -14,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> screens = [HomePage(), UserPage(), UserPageTest()];
+  final List<Widget> screens = [HomePage(), UserPage()];
 
   double bottomBarIconSize = 32;
 
@@ -38,12 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               BottomNavigationBarItem(
                   label: 'Perfil',
-                  icon: Icon(
-                    Icons.account_circle_rounded,
-                    size: bottomBarIconSize,
-                  )),
-              BottomNavigationBarItem(
-                  label: 'Teste',
                   icon: Icon(
                     Icons.account_circle_rounded,
                     size: bottomBarIconSize,
