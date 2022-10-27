@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/edit_user_page.dart';
+import 'package:whatinif/src/pages/user/edit_user_page/edit_user_page.dart';
 import 'package:whatinif/src/pages/user/user_page_widgets/user_projects.dart';
 import 'package:whatinif/src/pages/user/user_page_widgets/user_repertory.dart';
 

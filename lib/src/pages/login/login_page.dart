@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:whatinif/src/pages/home/home_page.dart';
 import 'package:whatinif/src/pages/register/register_page.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
+import 'package:whatinif/src/pages/user/user_page/user_page.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
