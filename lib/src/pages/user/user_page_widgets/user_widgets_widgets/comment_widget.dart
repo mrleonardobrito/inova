@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/pages/user/user_comments_page.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:whatinif/src/widgets/bottom_bar_navigator.dart';
 
 class CommentsWidget extends StatefulWidget {
   const CommentsWidget({Key? key}) : super(key: key);

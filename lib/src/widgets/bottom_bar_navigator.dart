@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/user/user_page.dart';
-import '../pages/home_page.dart';
+import '../pages/home/home_page.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);

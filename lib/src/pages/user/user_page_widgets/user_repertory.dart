@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/home_page.dart';
+import 'package:whatinif/src/pages/home/home_page.dart';
 import 'package:whatinif/src/pages/user/user_comments_page.dart';
-import 'package:whatinif/src/pages/user/user_widgets/user_widgets_widgets/comment_widget.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:whatinif/src/pages/user/user_page_widgets/user_widgets_widgets/comment_widget.dart';
+import 'package:whatinif/src/widgets/bottom_bar_navigator.dart';
 import 'package:whatinif/src/pages/user/edit_user_page.dart';
 
 class Repertorio extends StatefulWidget {

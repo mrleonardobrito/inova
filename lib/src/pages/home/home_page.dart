@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/utils/request_manager.dart';
-import '../widget/vaga_card.dart';
+import '../../widgets/vaga_card.dart';
 import 'package:whatinif/src/utils/vaga.dart';
 
 List<Vaga> allVagas = [
