@@ -52,10 +52,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
             )),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UserPage()),
-            );
+            Navigator.pop(context);
           },
           child: Container(
               width: _width,
