@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.whatinif">
+    package="com.example.inova">
    <application
-        android:label="whatinif"
+        android:label="inova"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

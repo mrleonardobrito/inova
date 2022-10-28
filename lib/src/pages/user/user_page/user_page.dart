@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/edit_user_page/edit_user_page.dart';
-import 'package:whatinif/src/pages/user/user_page_widgets/user_projects.dart';
-import 'package:whatinif/src/pages/user/user_page_widgets/user_repertory.dart';
-import 'package:whatinif/src/utils/data.dart';
+import 'package:inova/src/pages/user/edit_user_page.dart';
+import 'package:inova/src/pages/user/user_widgets/user_projects.dart';
+import 'package:inova/src/pages/user/user_widgets/user_repertory.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -12,13 +11,68 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  int showAbas = 1;
+
   @override
   Widget build(BuildContext context) {
+    // Variáveis globais de estilização
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    // Data consts
+    const userData = {
+      "nome": "Emanuel Vilela",
+      "descricaoAcademica": "4° ano - 914",
+      "descricao":
+          "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+    };
+
+    const carouselItems = ["Projetos", "Repertório", "Teste"];
+
+    const projectData = [
+      {
+        "nome": "DadosJusBrasil",
+        "orientador": "Daniel Lacert Fireman",
+        "descricao":
+            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
+        "dataTermino": "02/03/2017",
+      },
+      {
+        "nome": "Meta",
+        "orientador": "Felipe Alencar",
+        "descricao":
+            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
+        "dataTermino": "02/03/2022",
+      },
+      {
+        "nome": "Facebook",
+        "orientador": "Mark Zuckerberg",
+        "descricao":
+            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+        "dataTermino": "Em andamento",
+      },
+      {
+        "nome": "uTorrent Mobile",
+        "orientador": "Tarsis Marinho",
+        "descricao": 'Aplicativo para piratear arquivos',
+        "dataTermino": "31/08/2020",
+      },
+    ];
+
+    List screenComponentsSize = [
+      {"componentName": "header", "size": 0.07},
+      {"componentName": "background", "size": 0.13},
+      {"componentName": "userData", "size": 0.21},
+      {"componentName": "navBar", "size": 0.07},
+      {"componentName": "navBarItems", "size": 0.42}
+    ];
+
+    List colors = [
+      {"naviGrey": 0xFFF5F5F5},
+    ];
+
     return Scaffold(
-      backgroundColor: getColor("white"),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
         height: height,
         width: width,
@@ -27,31 +81,20 @@ class _UserPageState extends State<UserPage> {
             Column(
               children: [
                 Container(
-                  height: height * userScreenComponentsSize[0]["size"],
+                  height: height * screenComponentsSize[0]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: getColor("white")),
-                  child: TextButton(
-                    onPressed: (){print('ee');},
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 50),
-                          child: Icon(Icons.arrow_back, color: getColor("black"), size: iconHeaderSize,),
-                        ),
-                      ],
-                    ),
-                  )
+                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                 ),
                 Container(
-                  height: height * userScreenComponentsSize[1]["size"],
+                  height: height * screenComponentsSize[1]["size"],
+                  width: width,
+                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
+                ),
+                Container(
+                  height: height * screenComponentsSize[2]["size"],
                   width: width,
                   decoration:
-                      BoxDecoration(color: getColor("backgroundPurple")),
-                ),
-                Container(
-                  height: height * userScreenComponentsSize[2]["size"],
-                  width: width,
-                  decoration: BoxDecoration(color: getColor("naviGrey")),
+                      BoxDecoration(color: Color(colors[0]["naviGrey"])),
                   child: Center(
                     child: Column(
                       children: [
@@ -92,7 +135,7 @@ class _UserPageState extends State<UserPage> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14,
-                                                color: getColor("black")),
+                                                color: Colors.black),
                                           ),
                                         ),
                                       ),
@@ -113,7 +156,7 @@ class _UserPageState extends State<UserPage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 100,
-                          color: getColor("naviGrey"),
+                          color: Color(0xFFF5F5F5),
                           child: Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: ListView(
@@ -136,7 +179,7 @@ class _UserPageState extends State<UserPage> {
                                     child: Text(
                                       '${userData["descricaoAcademica"]}',
                                       style: TextStyle(
-                                          color: getColor("darkGrey"),
+                                          color: Color(0xFF808080),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w500),
                                     ),
@@ -147,7 +190,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Text(
                                     '${userData["descricao"]}',
                                     style: TextStyle(
-                                        color: getColor("black"),
+                                        color: Colors.black,
                                         fontSize: 13,
                                         fontWeight: FontWeight.normal),
                                   ),
@@ -162,10 +205,9 @@ class _UserPageState extends State<UserPage> {
                 ),
                 Spacer(),
                 Container(
-                  height: height * userScreenComponentsSize[3]["size"],
+                  height: height * screenComponentsSize[3]["size"],
                   width: width,
-                  decoration:
-                      BoxDecoration(color: getColor("backgroundPurple")),
+                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
                   child: Row(
                     children: [
                       GestureDetector(
@@ -180,16 +222,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 1
-                              ? getColor("lightPurplegrey")
-                              : getColor("iconPurple"),
+                              ? Color(0xFFD8DFFC)
+                              : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[0]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 1
-                                    ? getColor("iconPurple")
-                                    : getColor("lightPurplegrey"),
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -207,16 +249,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 2
-                              ? getColor("lightPurplegrey")
-                              : getColor("iconPurple"),
+                              ? Color(0xFFD8DFFC)
+                              : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[1]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 2
-                                    ? getColor("iconPurple")
-                                    : getColor("lightPurplegrey"),
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -234,16 +276,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 3
-                              ? getColor("lightPurplegrey")
-                              : getColor("iconPurple"),
+                              ? Color(0xFFD8DFFC)
+                              : Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
                               '${carouselItems[2]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 3
-                                    ? getColor("iconPurple")
-                                    : getColor("lightPurplegrey"),
+                                    ? Color(0xFF3B64FA)
+                                    : Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -254,9 +296,9 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 Container(
-                  height: height * userScreenComponentsSize[4]["size"],
+                  height: height * screenComponentsSize[4]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: getColor("white")),
+                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2 +
@@ -284,7 +326,7 @@ class _UserPageState extends State<UserPage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: getColor("black")),
+                      color: Colors.black),
                   child: Image.asset(
                     "images/xereque.png",
                     height: height * 0.11,

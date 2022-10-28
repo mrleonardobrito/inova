@@ -1,13 +1,16 @@
-# Aplicativo mobile para Android e IOS
+# inova
 
-### <p>Objetivo: desenvolver uma aplicação que gerencie vagas de projetos do Instituto Federal de Alagoas - Campus Arapiraca</p>
+A new Flutter project.
 
-#### Sumário
+## Getting Started
 
-* <a href="#screens">Telas</a>
+This project is a starting point for a Flutter application.
 
+A few resources to get you started if this is your first Flutter project:
 
-## <section id="screens">Telas</section>
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-
-[Screens](https://github.com/mrleonardobrito/whatinif/files/9472174/WINF.pdf)
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

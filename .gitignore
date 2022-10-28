@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+migrate_working_dir/
 
 # IntelliJ related
 *.iml
@@ -29,7 +30,6 @@
 .packages
 .pub-cache/
 .pub/
-.vscode/
 /build/
 
 # Web related

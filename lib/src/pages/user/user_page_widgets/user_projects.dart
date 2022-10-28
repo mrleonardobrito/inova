@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/home/home_page.dart';
-import 'package:whatinif/src/widgets/bottom_bar_navigator.dart';
-import 'package:whatinif/src/pages/user/edit_user_page/edit_user_page.dart';
+import 'package:inova/src/pages/home_page.dart';
+import 'package:inova/src/widget/bottom_bar_navigator.dart';
+import 'package:inova/src/pages/user/edit_user_page.dart';
 
 class Projetos extends StatefulWidget {
   const Projetos({Key? key}) : super(key: key);

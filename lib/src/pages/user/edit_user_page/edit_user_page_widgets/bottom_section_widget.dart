@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/user_page/user_page.dart';
+import 'package:inova/src/pages/user/user_page.dart';
 
 class BottomSectionWidget extends StatefulWidget {
   const BottomSectionWidget({Key? key}) : super(key: key);
