@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/user/edit_user_page_widgets/bottom_section_widget.dart';
-import 'package:inova/src/pages/user/edit_user_page_widgets/header_section_widget.dart';
-import 'package:inova/src/pages/user/edit_user_page_widgets/main_section_widget.dart';
+import 'package:inova/src/widgets/edit_user/bottom_section_widget.dart';
+import 'package:inova/src/widgets/edit_user/header_section_widget.dart';
+import 'package:inova/src/widgets/edit_user/main_section_widget.dart';
 
 class EditUser extends StatefulWidget {
   const EditUser({Key? key}) : super(key: key);

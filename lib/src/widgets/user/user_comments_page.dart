@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/widget/bottom_bar_navigator.dart';
+import 'package:inova/src/widgets/global/bottom_bar_navigator.dart';
 
 class CommentsPage extends StatefulWidget {
   const CommentsPage({Key? key}) : super(key: key);
