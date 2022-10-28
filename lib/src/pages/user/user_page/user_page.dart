@@ -12,15 +12,10 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  int showAbas = 1;
-
   @override
   Widget build(BuildContext context) {
-    // Variáveis globais de estilização
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
-    // Data consts
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
@@ -32,17 +27,17 @@ class _UserPageState extends State<UserPage> {
             Column(
               children: [
                 Container(
-                  height: height * screenComponentsSize[0]["size"],
+                  height: height * userScreenComponentsSize[0]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                 ),
                 Container(
-                  height: height * screenComponentsSize[1]["size"],
+                  height: height * userScreenComponentsSize[1]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFF4065FC)),
                 ),
                 Container(
-                  height: height * screenComponentsSize[2]["size"],
+                  height: height * userScreenComponentsSize[2]["size"],
                   width: width,
                   decoration:
                       BoxDecoration(color: getColor("naviGrey")),
@@ -156,7 +151,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 Spacer(),
                 Container(
-                  height: height * screenComponentsSize[3]["size"],
+                  height: height * userScreenComponentsSize[3]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFF4065FC)),
                   child: Row(
@@ -247,7 +242,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 Container(
-                  height: height * screenComponentsSize[4]["size"],
+                  height: height * userScreenComponentsSize[4]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   child: Container(

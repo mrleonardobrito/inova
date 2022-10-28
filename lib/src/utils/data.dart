@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:whatinif/src/utils/colors.dart';
 
+// App content
+
+getColor(String colorName) {
+  for (int i = 0; i < colors.length; i++) {
+    if(colors[i]["colorName"] == colorName){
+      return colors[i]["colorValue"];
+    }else{
+      return Colors.red;
+    }
+  }
+}
+
+// UserPage content
 const userData = {
   "nome": "Emanuel Vilela",
   "descricaoAcademica": "4° ano - 914",
@@ -8,6 +22,8 @@ const userData = {
 };
 
 const carouselItems = ["Projetos", "Repertório", "Teste"];
+
+int showAbas = 1;
 
 List projectData = [
   {
@@ -39,7 +55,7 @@ List projectData = [
   },
 ];
 
-List screenComponentsSize = [
+List userScreenComponentsSize = [
   {"componentName": "header", "size": 0.07},
   {"componentName": "background", "size": 0.13},
   {"componentName": "userData", "size": 0.21},
@@ -47,47 +63,3 @@ List screenComponentsSize = [
   {"componentName": "navBarItems", "size": 0.42}
 ];
 
-const colors = [
-  {
-    "colorName": "naviGrey",
-    "colorValue": Color(0xFFF5F5F5),
-  },
-  {
-    "colorName": "fontGrey",
-    "colorValue": Color(0xFFBFBFBF),
-  },
-  {
-    "colorName": "black",
-    "colorValue": Color(0xFF000000),
-  },
-  {
-    "colorName": "white",
-    "colorValue": Color(0xFFFFFFFF),
-  },
-  {
-    "colorName": "red",
-    "colorValue": Colors.red,
-  },
-  {
-    "colorName": "backgroundPurple",
-    "colorValue": Color(0xFF4065FC),
-  },
-  {
-    "colorName": "iconPurple",
-    "colorValue": Color(0xFF3B64FA),
-  },
-  {
-    "colorName": "lightPurplegrey",
-    "colorValue": Color(0xFFE8ECFF),
-  }
-];
-
-getColor(String colorName) {
-  for (int i = 0; i < colors.length; i++) {
-    if(colors[i]["colorName"] == colorName){
-      return colors[i]["colorValue"];
-    }else{
-      return Colors.red;
-    }
-  }
-}
