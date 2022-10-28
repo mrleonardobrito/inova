@@ -1,0 +1,11 @@
+Header - 7%
+InfoBlueContainer - 13%
+InfoWhiteContainer - 21%
+InfoNavBar - 5%
+InfoItem - 42%
+Bottom - 10%
+
+
+items: 
+
+Editar-Perfil-Button: 
