@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:inova/src/widget/bottom_bar_navigator.dart';
 
 class CommentsPage extends StatefulWidget {
   const CommentsPage({Key? key}) : super(key: key);
@@ -9,7 +9,6 @@ class CommentsPage extends StatefulWidget {
 }
 
 class _CommentsPageState extends State<CommentsPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

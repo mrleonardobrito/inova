@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:whatinif/src/pages/login_page.dart';
+import 'package:inova/src/pages/login_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -108,7 +108,8 @@ class _CadastroState extends State<Cadastro> {
                                 suffixIcon: GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      _showConfirmPassword = !_showConfirmPassword;
+                                      _showConfirmPassword =
+                                          !_showConfirmPassword;
                                     });
                                   },
                                   child: Icon(
@@ -163,8 +164,8 @@ class _CadastroState extends State<Cadastro> {
                                   padding: EdgeInsets.only(top: 100),
                                   child: ElevatedButton(
                                     child: Padding(
-                                        padding:
-                                        const EdgeInsets.symmetric(vertical: 6.0),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 6.0),
                                         child: Row(
                                           children: [
                                             Align(
@@ -174,22 +175,26 @@ class _CadastroState extends State<Cadastro> {
                                                 width: 30,
                                                 decoration: BoxDecoration(
                                                     color: Colors.grey,
-                                                    borderRadius: BorderRadius.all(
-                                                        Radius.circular(15))),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                15))),
                                               ),
                                             ),
                                             Align(
-                                                alignment: Alignment.bottomCenter,
+                                                alignment:
+                                                    Alignment.bottomCenter,
                                                 child: Padding(
-                                                  padding: EdgeInsets.only(left: 35),
+                                                  padding:
+                                                      EdgeInsets.only(left: 35),
                                                   child: Center(
                                                     child: Text(
                                                       'Cadastrar-se com o Google',
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 14,
-                                                          fontWeight:
-                                                          FontWeight.normal),
+                                                          fontWeight: FontWeight
+                                                              .normal),
                                                     ),
                                                   ),
                                                 ))
@@ -199,8 +204,8 @@ class _CadastroState extends State<Cadastro> {
                                       primary: Colors.white,
                                       onPrimary: Colors.white,
                                       shape: const RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.all(Radius.circular(15))),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
                                     ),
                                     onPressed: () {
                                       print('Pressed');
@@ -219,8 +224,8 @@ class _CadastroState extends State<Cadastro> {
                                         });
                                       },
                                       child: Padding(
-                                        padding:
-                                        const EdgeInsets.symmetric(vertical: 12.0),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12.0),
                                         child: Text(
                                           'Cadastrar-se',
                                           style: TextStyle(
@@ -233,8 +238,8 @@ class _CadastroState extends State<Cadastro> {
                                         primary: Color(0xFF3A64FA),
                                         onPrimary: Colors.white,
                                         shape: const RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.all(Radius.circular(15))),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15))),
                                       ),
                                       onPressed: () {
                                         print('Pressed');

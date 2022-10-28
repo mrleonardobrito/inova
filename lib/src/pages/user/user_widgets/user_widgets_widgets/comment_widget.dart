@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/user_comments_page.dart';
-import 'package:whatinif/src/widget/bottom_bar_navigator.dart';
+import 'package:inova/src/pages/user/user_comments_page.dart';
+import 'package:inova/src/widget/bottom_bar_navigator.dart';
 
 class CommentsWidget extends StatefulWidget {
   const CommentsWidget({Key? key}) : super(key: key);
@@ -62,12 +62,16 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                     width: 40,
                                     decoration: BoxDecoration(
                                         color: Color(0xFF4065FC),
-                                        border: Border.all(width: 1, color: const Color(0xFF4065FC)),
-                                        borderRadius: BorderRadius.all(Radius.circular(60))),
+                                        border: Border.all(
+                                            width: 1,
+                                            color: const Color(0xFF4065FC)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60))),
                                     child: ClipRRect(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
+                                            borderRadius:
+                                                BorderRadius.circular(100),
                                             color: Colors.black),
                                         child: Image.asset(
                                           "images/xereque.png",

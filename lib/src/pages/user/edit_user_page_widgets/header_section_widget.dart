@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:whatinif/src/pages/user/user_page.dart';
+import 'package:inova/src/pages/user/user_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if(image == null) return;
+    if (image == null) return;
 
     final imageTemporary = File(image.path);
 
@@ -29,7 +29,6 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     double circleHeight = 450;
@@ -84,11 +83,14 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   children: [
                     ClipRRect(
                       child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.black),
-                        child: _image != null ? Image.file(_image!) : Center(child: Text('Adicione a imagem'),)
-                      ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.black),
+                          child: _image != null
+                              ? Image.file(_image!)
+                              : Center(
+                                  child: Text('Adicione a imagem'),
+                                )),
                       borderRadius: BorderRadius.circular(150),
                     ),
                     Center(
@@ -104,7 +106,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   ],
                 ),
               ),
-            )),          
+            )),
         Positioned(
             right: _width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
@@ -144,7 +146,6 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                 ),
               ],
             )),
-
       ]),
     );
   }

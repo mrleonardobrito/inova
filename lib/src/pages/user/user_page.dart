@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/edit_user_page.dart';
-import 'package:whatinif/src/pages/user/user_widgets/user_projects.dart';
-import 'package:whatinif/src/pages/user/user_widgets/user_repertory.dart';
+import 'package:inova/src/pages/user/edit_user_page.dart';
+import 'package:inova/src/pages/user/user_widgets/user_projects.dart';
+import 'package:inova/src/pages/user/user_widgets/user_repertory.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
