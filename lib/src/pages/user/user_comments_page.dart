@@ -9,7 +9,6 @@ class CommentsPage extends StatefulWidget {
 }
 
 class _CommentsPageState extends State<CommentsPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
