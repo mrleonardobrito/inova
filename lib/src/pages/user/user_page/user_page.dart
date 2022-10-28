@@ -20,6 +20,8 @@ class _UserPageState extends State<UserPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    // Data consts
+
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
@@ -43,7 +45,7 @@ class _UserPageState extends State<UserPage> {
                   height: height * screenComponentsSize[2]["size"],
                   width: width,
                   decoration:
-                      BoxDecoration(color: Color(colors[0]["naviGrey"])),
+                      BoxDecoration(color: getColor("naviGrey")),
                   child: Center(
                     child: Column(
                       children: [

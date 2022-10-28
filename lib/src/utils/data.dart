@@ -4,31 +4,31 @@ const userData = {
   "nome": "Emanuel Vilela",
   "descricaoAcademica": "4° ano - 914",
   "descricao":
-  "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+      "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
 };
 
-List carouselItems = ["Projetos", "Repertório", "Teste"];
+const carouselItems = ["Projetos", "Repertório", "Teste"];
 
 List projectData = [
   {
     "nome": "DadosJusBrasil",
     "orientador": "Daniel Lacert Fireman",
     "descricao":
-    'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
+        'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
     "dataTermino": "02/03/2017",
   },
   {
     "nome": "Meta",
     "orientador": "Felipe Alencar",
     "descricao":
-    'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
+        'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
     "dataTermino": "02/03/2022",
   },
   {
     "nome": "Facebook",
     "orientador": "Mark Zuckerberg",
     "descricao":
-    'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+        'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
     "dataTermino": "Em andamento",
   },
   {
@@ -47,12 +47,47 @@ List screenComponentsSize = [
   {"componentName": "navBarItems", "size": 0.42}
 ];
 
-List colors = [
-  {"naviGrey": 0xFFF5F5F5},
-  {"fontGrey": 0xFFBFBFBF},
-  {"black": 0xFF000000},
-  {"white": 0xFFFFFFFF},
-  {"backgroundPurple": 0xFF4065FC},
-  {"iconPurple": 0xFF3B64FA},
-  {"lightPurplegrey": 0xFFE8ECFF}
+const colors = [
+  {
+    "colorName": "naviGrey",
+    "colorValue": Color(0xFFF5F5F5),
+  },
+  {
+    "colorName": "fontGrey",
+    "colorValue": Color(0xFFBFBFBF),
+  },
+  {
+    "colorName": "black",
+    "colorValue": Color(0xFF000000),
+  },
+  {
+    "colorName": "white",
+    "colorValue": Color(0xFFFFFFFF),
+  },
+  {
+    "colorName": "red",
+    "colorValue": Colors.red,
+  },
+  {
+    "colorName": "backgroundPurple",
+    "colorValue": Color(0xFF4065FC),
+  },
+  {
+    "colorName": "iconPurple",
+    "colorValue": Color(0xFF3B64FA),
+  },
+  {
+    "colorName": "lightPurplegrey",
+    "colorValue": Color(0xFFE8ECFF),
+  }
 ];
+
+getColor(String colorName) {
+  for (int i = 0; i < colors.length; i++) {
+    if(colors[i]["colorName"] == colorName){
+      return colors[i]["colorValue"];
+    }else{
+      return Colors.red;
+    }
+  }
+}
