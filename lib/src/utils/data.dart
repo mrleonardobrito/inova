@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const userData = {
   "nome": "Emanuel Vilela",
   "descricaoAcademica": "4° ano - 914",
@@ -5,9 +7,9 @@ const userData = {
   "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
 };
 
-const carouselItems = ["Projetos", "Repertório", "Teste"];
+List carouselItems = ["Projetos", "Repertório", "Teste"];
 
-const projectData = [
+List projectData = [
   {
     "nome": "DadosJusBrasil",
     "orientador": "Daniel Lacert Fireman",
@@ -47,4 +49,10 @@ List screenComponentsSize = [
 
 List colors = [
   {"naviGrey": 0xFFF5F5F5},
+  {"fontGrey": 0xFFBFBFBF},
+  {"black": 0xFF000000},
+  {"white": 0xFFFFFFFF},
+  {"backgroundPurple": 0xFF4065FC},
+  {"iconPurple": 0xFF3B64FA},
+  {"lightPurplegrey": 0xFFE8ECFF}
 ];
