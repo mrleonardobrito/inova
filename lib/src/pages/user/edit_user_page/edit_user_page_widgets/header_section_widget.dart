@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inova/src/pages/user/user_page.dart';
+import 'package:inova/src/pages/user/user_page/user_page.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:whatinif/src/utils/data.dart';
-
+import 'package:inova/src/utils/data.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -113,14 +112,9 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   ],
                 ),
               ),
-<<<<<<< HEAD:lib/src/pages/user/edit_user_page/edit_user_page_widgets/header_section_widget.dart
             ),
           ),
           Positioned(
-=======
-            )),
-        Positioned(
->>>>>>> 42db9d5fe4b1818a419e5a2e21254e5601661fbc:lib/src/pages/user/edit_user_page_widgets/header_section_widget.dart
             right: _width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
             child: Row(
@@ -158,15 +152,10 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   color: Colors.black,
                 ),
               ],
-<<<<<<< HEAD:lib/src/pages/user/edit_user_page/edit_user_page_widgets/header_section_widget.dart
             ),
           ),
         ],
       ),
-=======
-            )),
-      ]),
->>>>>>> 42db9d5fe4b1818a419e5a2e21254e5601661fbc:lib/src/pages/user/edit_user_page_widgets/header_section_widget.dart
     );
   }
 }

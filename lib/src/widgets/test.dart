@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/pages/user/edit_user_page/edit_user_page.dart';
-import 'package:whatinif/src/pages/user/user_page_widgets/user_projects.dart';
-import 'package:whatinif/src/pages/user/user_page_widgets/user_repertory.dart';
-import 'package:whatinif/src/utils/data.dart';
+import 'package:inova/src/utils/data.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
@@ -18,8 +15,7 @@ class _TestPageState extends State<TestPage> {
       backgroundColor: const Color(0xFFFFFFFF),
       body: Center(
         child: TextButton(
-          onPressed: () {
-          },
+          onPressed: () {},
           child: Container(
             height: 30,
             width: 100,

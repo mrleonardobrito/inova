@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inova/src/utils/vaga.dart';
 
 import '../pages/vaga/info_vaga_page.dart';
-import 'package:inova/src/widget/categoria_chip.dart';
+import 'package:inova/src/widgets/categoria_chip.dart';
 
 class VagaCard extends StatefulWidget {
   final Vaga vaga;

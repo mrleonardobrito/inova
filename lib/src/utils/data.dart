@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:whatinif/src/utils/colors.dart';
-import 'package:whatinif/src/utils/icons.dart';
+import 'package:inova/src/utils/colors.dart';
+import 'package:inova/src/utils/icons.dart';
 
 // App content
 
 getColor(String colorName) {
   for (int i = 0; i < colors.length; i++) {
-    if(colors[i]["colorName"] == colorName){
+    if (colors[i]["colorName"] == colorName) {
       return colors[i]["colorValue"];
     }
   }

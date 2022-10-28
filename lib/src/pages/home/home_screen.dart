@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/user/user_page.dart';
+import 'package:inova/src/pages/user/user_page/user_page.dart';
 
 import 'home_page.dart';
 
