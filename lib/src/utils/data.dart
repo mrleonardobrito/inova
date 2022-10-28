@@ -7,11 +7,11 @@ getColor(String colorName) {
   for (int i = 0; i < colors.length; i++) {
     if(colors[i]["colorName"] == colorName){
       return colors[i]["colorValue"];
-    }else{
-      return Colors.red;
     }
   }
 }
+
+//
 
 // UserPage content
 const userData = {
@@ -63,3 +63,4 @@ List userScreenComponentsSize = [
   {"componentName": "navBarItems", "size": 0.42}
 ];
 
+//

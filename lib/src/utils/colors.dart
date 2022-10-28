@@ -31,6 +31,10 @@ const colors = [
   },
   {
     "colorName": "lightPurplegrey",
-    "colorValue": Color(0xFFE8ECFF),
+    "colorValue": Color(0xFFD8DFFC),
+  },
+  {
+    "colorName": "darkGrey",
+    "colorValue": Color(0xFF808080),
   }
 ];

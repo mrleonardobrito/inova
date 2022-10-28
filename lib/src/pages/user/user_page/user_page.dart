@@ -18,7 +18,7 @@ class _UserPageState extends State<UserPage> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
+      backgroundColor: getColor("white"),
       body: Container(
         height: height,
         width: width,
@@ -29,12 +29,12 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[0]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                  decoration: BoxDecoration(color: getColor("white")),
                 ),
                 Container(
                   height: height * userScreenComponentsSize[1]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
+                  decoration: BoxDecoration(color: getColor("backgroundPurple")),
                 ),
                 Container(
                   height: height * userScreenComponentsSize[2]["size"],
@@ -81,7 +81,7 @@ class _UserPageState extends State<UserPage> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14,
-                                                color: Colors.black),
+                                                color: getColor("black")),
                                           ),
                                         ),
                                       ),
@@ -102,7 +102,7 @@ class _UserPageState extends State<UserPage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 100,
-                          color: Color(0xFFF5F5F5),
+                          color: getColor("naviGrey"),
                           child: Padding(
                             padding: EdgeInsets.only(left: 15),
                             child: ListView(
@@ -125,7 +125,7 @@ class _UserPageState extends State<UserPage> {
                                     child: Text(
                                       '${userData["descricaoAcademica"]}',
                                       style: TextStyle(
-                                          color: Color(0xFF808080),
+                                          color: getColor("darkGrey"),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w500),
                                     ),
@@ -136,7 +136,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Text(
                                     '${userData["descricao"]}',
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: getColor("black"),
                                         fontSize: 13,
                                         fontWeight: FontWeight.normal),
                                   ),
@@ -153,13 +153,12 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[3]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
+                  decoration: BoxDecoration(color: getColor("backgroundPurple")),
                   child: Row(
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(
-                            () {
+                          setState(() {
                               showAbas = 1;
                               print(showAbas);
                             },
@@ -168,16 +167,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 1
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? getColor("lightPurplegrey")
+                              : getColor("iconPurple"),
                           child: Center(
                             child: Text(
                               '${carouselItems[0]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 1
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? getColor("iconPurple")
+                                    : getColor("lightPurplegrey"),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -195,16 +194,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 2
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? getColor("lightPurplegrey")
+                              : getColor("iconPurple"),
                           child: Center(
                             child: Text(
                               '${carouselItems[1]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 2
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? getColor("iconPurple")
+                                    : getColor("lightPurplegrey"),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -222,16 +221,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 3
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? getColor("lightPurplegrey")
+                              : getColor("iconPurple"),
                           child: Center(
                             child: Text(
                               '${carouselItems[2]}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 3
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? getColor("iconPurple")
+                                    : getColor("lightPurplegrey"),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -244,7 +243,7 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[4]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                  decoration: BoxDecoration(color: getColor("white")),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2 +
@@ -272,7 +271,7 @@ class _UserPageState extends State<UserPage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.black),
+                      color: getColor("black")),
                   child: Image.asset(
                     "images/xereque.png",
                     height: height * 0.11,
