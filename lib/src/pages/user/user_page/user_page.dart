@@ -30,17 +30,28 @@ class _UserPageState extends State<UserPage> {
                   height: height * userScreenComponentsSize[0]["size"],
                   width: width,
                   decoration: BoxDecoration(color: getColor("white")),
+                  child: TextButton(
+                    onPressed: (){print('ee');},
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 50),
+                          child: Icon(Icons.arrow_back, color: getColor("black"), size: iconHeaderSize,),
+                        ),
+                      ],
+                    ),
+                  )
                 ),
                 Container(
                   height: height * userScreenComponentsSize[1]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: getColor("backgroundPurple")),
+                  decoration:
+                      BoxDecoration(color: getColor("backgroundPurple")),
                 ),
                 Container(
                   height: height * userScreenComponentsSize[2]["size"],
                   width: width,
-                  decoration:
-                      BoxDecoration(color: getColor("naviGrey")),
+                  decoration: BoxDecoration(color: getColor("naviGrey")),
                   child: Center(
                     child: Column(
                       children: [
@@ -153,12 +164,14 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[3]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: getColor("backgroundPurple")),
+                  decoration:
+                      BoxDecoration(color: getColor("backgroundPurple")),
                   child: Row(
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(() {
+                          setState(
+                            () {
                               showAbas = 1;
                               print(showAbas);
                             },

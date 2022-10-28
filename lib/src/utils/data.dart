@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatinif/src/utils/colors.dart';
+import 'package:whatinif/src/utils/icons.dart';
 
 // App content
 
@@ -10,6 +11,8 @@ getColor(String colorName) {
     }
   }
 }
+
+double iconHeaderSize = 30;
 
 //
 

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:whatinif/src/pages/user/user_page/user_page.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:whatinif/src/utils/data.dart';
+
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if(image == null) return;
+    if (image == null) return;
 
     final imageTemporary = File(image.path);
 
@@ -29,7 +31,6 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     double circleHeight = 450;
@@ -37,8 +38,9 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
     print(_width);
     return Container(
       color: Colors.transparent,
-      child: Stack(children: [
-        Positioned(
+      child: Stack(
+        children: [
+          Positioned(
             top: -260,
             right: _width / 2 - ((circleHeight) / 2),
             child: Center(
@@ -49,24 +51,31 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                     color: Color(0xFF3B64FA),
                     borderRadius: BorderRadius.circular(360)),
               ),
-            )),
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-              width: _width,
-              color: Colors.transparent,
-              height: _height * 0.1 / 2,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: EdgeInsets.only(left: 10),
-                  child: Icon(Icons.arrow_back, color: Colors.white),
-                ),
-              )),
-        ),
-        Positioned(
+            ),
+          ),
+          Container(
+            height: _height * userScreenComponentsSize[0]["size"],
+            width: _width,
+            decoration: BoxDecoration(color: Colors.transparent),
+            child: TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: getColor("white"),
+                      size: iconHeaderSize,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
             right: _width / 2 - ((circleHeight * 0.25) / 2),
             top: (circleHeight * 0.54) / 2,
             child: GestureDetector(
@@ -81,11 +90,14 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   children: [
                     ClipRRect(
                       child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.black),
-                        child: _image != null ? Image.file(_image!) : Center(child: Text('Adicione a imagem'),)
-                      ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.black),
+                          child: _image != null
+                              ? Image.file(_image!)
+                              : Center(
+                                  child: Text('Adicione a imagem'),
+                                )),
                       borderRadius: BorderRadius.circular(150),
                     ),
                     Center(
@@ -101,8 +113,9 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   ],
                 ),
               ),
-            )),          
-        Positioned(
+            ),
+          ),
+          Positioned(
             right: _width / 2 - ((circleHeight * 0.45) / 2),
             top: (circleHeight * 1.1) / 2,
             child: Row(
@@ -140,9 +153,10 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                   color: Colors.black,
                 ),
               ],
-            )),
-
-      ]),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
