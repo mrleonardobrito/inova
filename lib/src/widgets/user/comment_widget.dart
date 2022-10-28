@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/user/user_page_widgets/user_comments_page.dart';
+import 'package:inova/src/widgets/user/user_comments_page.dart';
 
 class CommentsWidget extends StatefulWidget {
   const CommentsWidget({Key? key}) : super(key: key);

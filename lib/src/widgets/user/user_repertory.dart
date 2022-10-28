@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/home/home_page.dart';
-import 'package:inova/src/pages/user/user_page_widgets/user_comments_page.dart';
-import 'package:inova/src/pages/user/user_page_widgets/user_page_widgets_of_widgets/comment_widget.dart';
-import 'package:inova/src/widgets/bottom_bar_navigator.dart';
-import 'package:inova/src/pages/user/edit_user_page/edit_user_page.dart';
+import 'package:inova/src/widgets/user/comment_widget.dart';
 
 class Repertorio extends StatefulWidget {
   const Repertorio({Key? key}) : super(key: key);

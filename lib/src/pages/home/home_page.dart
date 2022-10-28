@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inova/src/utils/request_manager.dart';
-import 'package:inova/src/widgets/vaga_card.dart';
+import 'package:inova/src/widgets/home/vaga_card.dart';
 import 'package:inova/src/utils/vaga.dart';
 
 List<Vaga> allVagas = [

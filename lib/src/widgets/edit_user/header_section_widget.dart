@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inova/src/pages/user/user_page/user_page.dart';
+import 'package:inova/src/pages/user/user_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:inova/src/utils/data.dart';
 

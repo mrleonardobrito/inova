@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/widgets/categoria_chip.dart';
+import 'package:inova/src/widgets/global/categoria_chip.dart';
 
 import '../../utils/vaga.dart';
 
