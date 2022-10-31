@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
+import 'package:inova/src/utils/data.dart';
+
+import 'package:bloc/bloc.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -94,7 +97,7 @@ class _UserPageState extends State<UserPage> {
                   height: height * screenComponentsSize[2]["size"],
                   width: width,
                   decoration:
-                      BoxDecoration(color: Color(colors[0]["naviGrey"])),
+                      BoxDecoration(color: getColor("naviGrey")),
                   child: Center(
                     child: Column(
                       children: [
@@ -117,7 +120,7 @@ class _UserPageState extends State<UserPage> {
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(40)),
                                     ),
-                                    child: TextButton(
+                                    child: GestureDetector(
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
@@ -127,7 +130,7 @@ class _UserPageState extends State<UserPage> {
                                                 const Radius.circular(40.0),
                                           ),
                                         ),
-                                        height: height * 0.04,
+                                        height: height * 0.05,
                                         width: width * 0.30,
                                         child: Center(
                                           child: Text(
@@ -139,12 +142,8 @@ class _UserPageState extends State<UserPage> {
                                           ),
                                         ),
                                       ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => EditUser()),
-                                        );
+                                      onTap: () {
+
                                       },
                                     ),
                                   ),
@@ -155,44 +154,53 @@ class _UserPageState extends State<UserPage> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 100,
+                          height: 80,
                           color: Color(0xFFF5F5F5),
                           child: Padding(
                             padding: EdgeInsets.only(left: 15),
-                            child: ListView(
+                            child: Column(
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 10),
-                                  child: Text(
-                                    '${userData["nome"]}',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 3),
-                                  child: Container(
-                                    margin: EdgeInsets.only(bottom: 7),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10),
                                     child: Text(
-                                      '${userData["descricaoAcademica"]}',
+                                      '${userData["nome"]}',
                                       style: TextStyle(
-                                          color: Color(0xFF808080),
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 5),
-                                  child: Text(
-                                    '${userData["descricao"]}',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 3),
+                                    child: Container(
+                                      margin: EdgeInsets.only(bottom:2),
+                                      child: Text(
+                                        '${userData["descricaoAcademica"]}',
+                                        style: TextStyle(
+                                            color: Color(0xFF808080),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(bottom: 5),
+                                    child: Text(
+                                      '${userData["descricao"]}',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.normal),
+                                    ),
                                   ),
                                 )
                               ],
