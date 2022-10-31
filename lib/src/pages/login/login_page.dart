@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:inova/src/pages/home/home_screen.dart';
+import 'package:inova/src/pages/user/user_page.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
 import 'package:inova/src/pages/register/register_page.dart';
@@ -16,7 +18,7 @@ class _LoginState extends State<Login> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
-  String? _email = 'adminINOVA@gmail.com';
+  String? _email = 'admin@inova.com';
   String? _senha = '40028922';
 
   var maskFormatter = new MaskTextInputFormatter(
@@ -88,7 +90,7 @@ class _LoginState extends State<Login> {
                                 padding: EdgeInsets.only(top: 25),
                                 child: TextFormField(
                                   validator: (String? value) {
-                                    if (value != _email)
+                                    if (value == null || value == '')
                                       return "E-mail incorreto";
                                     if (value == _email) {
                                       setState(
@@ -109,8 +111,8 @@ class _LoginState extends State<Login> {
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   validator: (String? value) {
-                                    if (value != _senha) {
-                                      return "Senha incorreta";
+                                    if (value == null || value == '') {
+                                      return "Digite sua senha";
                                     } else if (value == _senha)
                                       setState(
                                         () {
@@ -166,58 +168,6 @@ class _LoginState extends State<Login> {
                       Container(
                         child: Column(
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: _height * 0.33),
-                              child: ElevatedButton(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 7.0),
-                                  child: Container(
-                                    width: _width,
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Container(
-                                            height: 30,
-                                            width: 30,
-                                            decoration: BoxDecoration(
-                                                color: Colors.grey,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(15))),
-                                          ),
-                                        ),
-                                        Center(
-                                          child: Padding(
-                                            padding: EdgeInsets.only(left: 35),
-                                            child: Center(
-                                              child: Text(
-                                                'Entrar com conta Google',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
-                                  onPrimary: Colors.white,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                ),
-                                onPressed: () {
-                                  print('Pressed');
-                                },
-                              ),
-                            ),
                             Container(
                               width: _width,
                               child: Padding(
@@ -248,7 +198,7 @@ class _LoginState extends State<Login> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => HomePage()),
+                                            builder: (context) => HomeScreen()),
                                       );
                                     }
                                   },
