@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:whatinif/src/pages/login_page.dart';
+import 'package:whatinif/src/pages/home_screen.dart';
+
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -9,6 +11,9 @@ class Cadastro extends StatefulWidget {
   @override
   _CadastroState createState() => _CadastroState();
 }
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+ TextEditingController userController = TextEditingController();
+
 
 class _CadastroState extends State<Cadastro> {
   bool _showPassword = false;
@@ -67,19 +72,29 @@ class _CadastroState extends State<Cadastro> {
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
-                          Container(
+                          Form(child: Column(children: [ Container(
+                            key: _formKey,
                               child: Padding(
                             padding: EdgeInsets.only(top: 20),
                             child: TextFormField(
+                              validator : (value) {
+                                if (value!.isEmpty) {
+                                  return"Campo Obrigatório";
+                                }else{
+                                  return null;
+                                }
+                              },
+                              controller: userController,
                               decoration: InputDecoration(
                                 hintText: 'Email...',
                               ),
                             ),
                           )),
+
                           Container(
                               child: Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: TextField(
+                            child: TextFormField(
                               decoration: InputDecoration(
                                 hintText: 'Senha...',
                                 suffixIcon: GestureDetector(
@@ -99,6 +114,7 @@ class _CadastroState extends State<Cadastro> {
                               obscureText: !_showPassword,
                             ),
                           )),
+
                           Container(
                               child: Padding(
                             padding: EdgeInsets.only(top: 10),
@@ -126,14 +142,22 @@ class _CadastroState extends State<Cadastro> {
                           Container(
                               child: Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: TextField(
+                            child: TextFormField(
+                              validator: (value) {
+                                if(value!.isEmpty) {
+                                  return "Campo Obrigatorio";
+                                }else{
+                                  return null;
+                                }
+                              },
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 hintText: 'Telefone...',
                               ),
                               inputFormatters: [maskFormatter],
                             ),
-                          )),
+                          )),]),),
+                         
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -236,10 +260,20 @@ class _CadastroState extends State<Cadastro> {
                                             borderRadius:
                                             BorderRadius.all(Radius.circular(15))),
                                       ),
-                                      onPressed: () {
-                                        print('Pressed');
-                                      },
+
+                                       onPressed: () {},
                                     ),
+                                     void onPressed: () {
+                                        String userDigitado = userController.text;
+                                        String user = 'julia@gmail';
+
+                                       if (_formKey.currentState!.validate()) {
+                                       final snackBar = SnackBar (content: Text ("dados inseridos"));
+                                          
+                                       }
+                                       ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                                      },
+
                                   ),
                                 )
                               ],
