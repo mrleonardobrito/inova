@@ -4,6 +4,8 @@ import 'package:inova/src/utils/icons.dart';
 
 // App content
 
+
+
 getColor(String colorName) {
   for (int i = 0; i < colors.length; i++) {
     if (colors[i]["colorName"] == colorName) {

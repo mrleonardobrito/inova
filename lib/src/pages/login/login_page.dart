@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
 import 'package:inova/src/pages/register/register_page.dart';
+import 'package:inova/src/utils/data.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,6 +16,9 @@ class _LoginState extends State<Login> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
+  String? _email = 'adminINOVA@gmail.com';
+  String? _senha = '40028922';
+
   var maskFormatter = new MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
   );
@@ -25,8 +29,6 @@ class _LoginState extends State<Login> {
     double _height = MediaQuery.of(context).size.height;
 
     final formKey = GlobalKey<FormState>();
-    String? _email = 'adminINOVA@gmail.com';
-    String? _senha = '40028922';
 
     bool validaEmail = false;
     bool validaSenha = false;
