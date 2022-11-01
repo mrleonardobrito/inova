@@ -108,10 +108,9 @@ class _UserPageState extends State<UserPage> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 80,
                           color: Color(0xFFF5F5F5),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15),
+                            padding: EdgeInsets.only(left: 15, right: 15),
                             child: Column(
                               children: [
                                 Align(
@@ -148,13 +147,17 @@ class _UserPageState extends State<UserPage> {
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      '${userData["descricao"]}',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.normal),
-                                    ),
+                                    child: Wrap(
+                                      children:  [Text(
+                                        '${userData["descricao"]}',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.normal),
+                                      ),],
+                                    )
                                   ),
                                 )
                               ],

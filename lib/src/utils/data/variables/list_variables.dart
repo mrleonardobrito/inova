@@ -4,7 +4,7 @@ const userData = {
   "nome": "Emanuel Vilela",
   "descricaoAcademica": "4° ano - 914",
   "descricao":
-  "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+  "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas. Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.AAAAAAAAxxsddfsdssAAAA",
 };
 
 const carouselItems = ["Projetos", "Repertório", "Teste"];
