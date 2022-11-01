@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:inova/src/utils/data/variables/variables.dart';
-import 'package:inova/src/utils/data/variables/list_variables.dart';
-import 'package:inova/src/utils/data/functions/functions.dart';
+import 'package:inova/src/utils/variables/variables.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
+import 'package:inova/src/utils/functions/functions.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);

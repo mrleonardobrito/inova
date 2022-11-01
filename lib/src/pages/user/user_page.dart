@@ -3,9 +3,9 @@ import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
 
-import 'package:inova/src/utils/data/variables/variables.dart';
-import 'package:inova/src/utils/data/variables/list_variables.dart';
-import 'package:inova/src/utils/data/functions/functions.dart';
+import 'package:inova/src/utils/variables/variables.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
+import 'package:inova/src/utils/functions/functions.dart';
 
 
 
