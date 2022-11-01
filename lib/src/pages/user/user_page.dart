@@ -81,7 +81,7 @@ class _UserPageState extends State<UserPage> {
                                             const Radius.circular(40.0),
                                           ),
                                         ),
-                                        height: height * 0.05,
+                                        height: height * 0.04,
                                         width: width * 0.30,
                                         child: Center(
                                           child: Text(
@@ -93,7 +93,12 @@ class _UserPageState extends State<UserPage> {
                                           ),
                                         ),
                                       ),
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => EditUser()),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ),
@@ -277,8 +282,8 @@ class _UserPageState extends State<UserPage> {
               ],
             ),
             Positioned(
-              top: (height * 0.11) * 1.35,
-              left: width * 0.05,
+              top: (height * 0.12) * 1.20,
+              left: width * 0.06,
               child: ClipRRect(
                 child: Container(
                   decoration: BoxDecoration(
@@ -286,8 +291,8 @@ class _UserPageState extends State<UserPage> {
                       color: Colors.black),
                   child: Image.asset(
                     "images/xereque.png",
-                    height: height * 0.11,
-                    width: height * 0.11,
+                    height: height * 0.12,
+                    width: height * 0.12,
                     fit: BoxFit.fitHeight,
                   ),
                 ),
