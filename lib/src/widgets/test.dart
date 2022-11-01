@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/utils/data.dart';
+
+import 'package:inova/src/utils/data/variables/variables.dart';
+import 'package:inova/src/utils/data/variables/list_variables.dart';
+import 'package:inova/src/utils/data/functions/functions.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _TestPageState extends State<TestPage> {
               child: Text(
                 'Press',
                 style: TextStyle(
-                  color: getColor("white"),
+                  color: Colors.white,
                 ),
               ),
             ),

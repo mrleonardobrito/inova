@@ -5,7 +5,10 @@ import 'package:inova/src/pages/user/user_page.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
 import 'package:inova/src/pages/register/register_page.dart';
-import 'package:inova/src/utils/data.dart';
+
+import 'package:inova/src/utils/data/variables/variables.dart';
+import 'package:inova/src/utils/data/functions/functions.dart';
+import 'package:inova/src/utils/data/variables/list_variables.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,8 +18,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _showPassword = false;
-  bool _showConfirmPassword = false;
 
   String? _email = 'admin@inova.com';
   String? _senha = '40028922';
@@ -126,19 +127,19 @@ class _LoginState extends State<Login> {
                                       onTap: () {
                                         setState(
                                           () {
-                                            _showPassword = !_showPassword;
+                                            loginShowPassword = !loginShowPassword;
                                           },
                                         );
                                       },
                                       child: Icon(
-                                        _showPassword
+                                        loginShowPassword
                                             ? Icons.visibility_off
                                             : Icons.visibility,
                                         color: Color(0xFF4065FC),
                                       ),
                                     ),
                                   ),
-                                  obscureText: !_showPassword,
+                                  obscureText: !loginShowPassword,
                                 ),
                               ),
                             ),

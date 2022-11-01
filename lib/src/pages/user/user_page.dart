@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
-import 'package:inova/src/utils/data.dart';
 
-import 'package:bloc/bloc.dart';
+import 'package:inova/src/utils/data/variables/variables.dart';
+import 'package:inova/src/utils/data/variables/list_variables.dart';
+import 'package:inova/src/utils/data/functions/functions.dart';
+
+
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -14,65 +17,12 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  int showAbas = 1;
 
   @override
   Widget build(BuildContext context) {
     // Variáveis globais de estilização
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
-    // Data consts
-    const userData = {
-      "nome": "Emanuel Vilela",
-      "descricaoAcademica": "4° ano - 914",
-      "descricao":
-          "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
-    };
-
-    const carouselItems = ["Projetos", "Repertório", "Teste"];
-
-    const projectData = [
-      {
-        "nome": "DadosJusBrasil",
-        "orientador": "Daniel Lacert Fireman",
-        "descricao":
-            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
-        "dataTermino": "02/03/2017",
-      },
-      {
-        "nome": "Meta",
-        "orientador": "Felipe Alencar",
-        "descricao":
-            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
-        "dataTermino": "02/03/2022",
-      },
-      {
-        "nome": "Facebook",
-        "orientador": "Mark Zuckerberg",
-        "descricao":
-            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
-        "dataTermino": "Em andamento",
-      },
-      {
-        "nome": "uTorrent Mobile",
-        "orientador": "Tarsis Marinho",
-        "descricao": 'Aplicativo para piratear arquivos',
-        "dataTermino": "31/08/2020",
-      },
-    ];
-
-    List screenComponentsSize = [
-      {"componentName": "header", "size": 0.07},
-      {"componentName": "background", "size": 0.13},
-      {"componentName": "userData", "size": 0.21},
-      {"componentName": "navBar", "size": 0.07},
-      {"componentName": "navBarItems", "size": 0.42}
-    ];
-
-    List colors = [
-      {"naviGrey": 0xFFF5F5F5},
-    ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
@@ -84,20 +34,21 @@ class _UserPageState extends State<UserPage> {
             Column(
               children: [
                 Container(
-                  height: height * screenComponentsSize[0]["size"],
+                  height: height * userScreenComponentsSize[0]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                 ),
                 Container(
-                  height: height * screenComponentsSize[1]["size"],
+                  height: height * userScreenComponentsSize[1]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFF4065FC)),
                 ),
                 Container(
-                  height: height * screenComponentsSize[2]["size"],
+                  height: height * userScreenComponentsSize[2]["size"],
                   width: width,
-                  decoration:
-                      BoxDecoration(color: getColor("naviGrey")),
+                  decoration: BoxDecoration(
+                    color: getColor("naviGrey"),
+                  ),
                   child: Center(
                     child: Column(
                       children: [
@@ -116,18 +67,18 @@ class _UserPageState extends State<UserPage> {
                                       border: Border.all(
                                           width: 1,
                                           color: Colors.black //BorderSide
-                                          ), //B
+                                      ), //B
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(40)),
+                                      BorderRadius.all(Radius.circular(40)),
                                     ),
                                     child: GestureDetector(
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                             topLeft:
-                                                const Radius.circular(40.0),
+                                            const Radius.circular(40.0),
                                             topRight:
-                                                const Radius.circular(40.0),
+                                            const Radius.circular(40.0),
                                           ),
                                         ),
                                         height: height * 0.05,
@@ -142,9 +93,7 @@ class _UserPageState extends State<UserPage> {
                                           ),
                                         ),
                                       ),
-                                      onTap: () {
-
-                                      },
+                                      onTap: () {},
                                     ),
                                   ),
                                 ),
@@ -179,7 +128,7 @@ class _UserPageState extends State<UserPage> {
                                   child: Padding(
                                     padding: EdgeInsets.only(top: 3),
                                     child: Container(
-                                      margin: EdgeInsets.only(bottom:2),
+                                      margin: EdgeInsets.only(bottom: 2),
                                       child: Text(
                                         '${userData["descricaoAcademica"]}',
                                         style: TextStyle(
@@ -213,7 +162,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 Spacer(),
                 Container(
-                  height: height * screenComponentsSize[3]["size"],
+                  height: height * userScreenComponentsSize[3]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFF4065FC)),
                   child: Row(
@@ -221,7 +170,7 @@ class _UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                            () {
+                                () {
                               showAbas = 1;
                               print(showAbas);
                             },
@@ -249,7 +198,7 @@ class _UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                            () {
+                                () {
                               showAbas = 2;
                             },
                           );
@@ -276,7 +225,7 @@ class _UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                            () {
+                                () {
                               showAbas = 3;
                             },
                           );
@@ -304,7 +253,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
                 Container(
-                  height: height * screenComponentsSize[4]["size"],
+                  height: height * userScreenComponentsSize[4]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   child: Container(
@@ -317,10 +266,10 @@ class _UserPageState extends State<UserPage> {
                         child: showAbas == 1
                             ? Projetos()
                             : showAbas == 2
-                                ? Repertorio()
-                                : showAbas == 3
-                                    ? Text('eita')
-                                    : Text('Deu errado'),
+                            ? Repertorio()
+                            : showAbas == 3
+                            ? Text('eita')
+                            : Text('Deu errado'),
                       ),
                     ),
                   ),

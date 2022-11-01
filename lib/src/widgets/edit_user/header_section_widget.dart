@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:inova/src/pages/user/user_page.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inova/src/utils/data.dart';
+
+import 'package:inova/src/utils/data/variables/variables.dart';
+import 'package:inova/src/utils/data/variables/list_variables.dart';
+import 'package:inova/src/utils/data/functions/functions.dart';
+
+
+
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
