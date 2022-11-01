@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:whatinif/src/utils/vaga.dart';
+import 'package:inova/src/utils/vaga.dart';
 
 class RequestManager {
   final resultNotifier = ValueNotifier<RequestState>(RequestInicial());
