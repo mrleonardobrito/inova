@@ -1,26 +1,37 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:inova/src/data/db_helpers/interfaces.dart';
 import "package:sqflite/sqflite.dart";
 import "package:path/path.dart";
 
-class DBHelper {
+import 'helpers/role_hp.dart';
+
+class DBHelper extends IDB{
+
+  final List<ITable> tables = [
+    TableRole(),
+    
+  ];
+
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
     String databasePath = join(path, "inova.db");
     Database db =
         await openDatabase(databasePath, version: 1, onCreate: onCreate);
-    print(databasePath);
     return db;
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async {
+    File file = File.fromUri(Uri(path: "./migrations/0001_init.sql"));
+    final queries = (await file.readAsString()).split(RegExp("--- TABLE \\w+"));
+
     List<String> tables = [
       "CREATE TABLE IF NOT EXISTS role( id VARCHAR(36) NOT NULL, name VARCHAR(36) NOT NULL);",
       "CREATE TABLE IF NOT EXISTS auth( id VARCHAR(36) NOT NULL, email VARCHAR(200) NOT NULL, passwd VARCHAR(200) NOT NULL, isautenticated BOOLEAN NOT NULL, id_role VARCHAR(36) NOT NULL);",
-      "CREATE TABLE IF NOT EXISTS orientador( id VARCHAR(36) NOT NULL, id_auth VARCHAR(36) NOT NULL, url_image TEXT, name VARCHAR(50) NOT NULL, descricao VARCHAR(200));",
-      "CREATE TABLE IF NOT EXISTS colaborador( id VARCHAR(36) NOT NULL, id_auth VARCHAR(36) NOT NULL, url_image TEXT, name VARCHAR(50) NOT NULL, turma VARCHAR(50),descricao VARCHAR(200));",
+      "CREATE TABLE IF NOT EXISTS usuario( id VARCHAR(36) NOT NULL, id_auth VARCHAR(36) NOT NULL, url_image TEXT, name VARCHAR(50) NOT NULL, turma VARCHAR(50), descricao VARCHAR(200));",
       "CREATE TABLE IF NOT EXISTS vaga( id INTEGER NOT NULL, id_orientador VARCHAR(36) NOT NULL, name VARCHAR(128) NOT NULL, quant_horas INT NOT NULL, vagas_disp INT NOT NULL, proposta TEXT NOT NULL, o_que_irei_fazer TEXT NOT NULL, avaliacao_user DOUBLE, bolsa_disp DOUBLE);",
-      "CREATE TABLE IF NOT EXISTS contribui_para( id INTEGER NOT NULL, id_colaborador VARCHAR(36) NOT NULL, status_colab VARCHAR(64) NOT NULL);",
+      "CREATE TABLE IF NOT EXISTS inscreve_em( id INTEGER NOT NULL, id_colaborador VARCHAR(36) NOT NULL, status_colab VARCHAR(64) NOT NULL);",
       "CREATE TABLE IF NOT EXISTS categoria( id INTEGER NOT NULL, name VARCHAR(64) NOT NULL);",
       "CREATE TABLE IF NOT EXISTS categorias_por_vaga(id_vaga INTEGER NOT NULL, id_categoria INTEGER NOT NULL);",
       "CREATE TABLE IF NOT EXISTS conhecimentos_necessarios( id INTEGER NOT NULL, id_vaga INTEGER NOT NULL, conhecimento VARCHAR(200) NOT NULL);",
@@ -74,6 +85,17 @@ class DBHelper {
       await db.execute(insert);
     }
   }
+  
+  @override
+  void createTables() {
+    // TODO: implement notifyTables
+  }
+  
+  @override
+  void subscribe(ITable table) {
+    tables.add(table);
+  }
+
 }
 
 // CREATE TABLE IF NOT EXISTS role(
@@ -94,18 +116,7 @@ class DBHelper {
 // ALTER TABLE auth ADD CONSTRAINT pk_auth PRIMARY KEY(id);
 // ALTER TABLE auth ADD CONSTRAINT fk_role FOREIGN KEY(id_role) REFERENCES role(id);
 
-// CREATE TABLE IF NOT EXISTS orientador(
-//   id VARCHAR(36) NOT NULL,
-//   id_auth VARCHAR(36) NOT NULL,
-//   url_image TEXT,
-//   name VARCHAR(50) NOT NULL,
-//   descricao VARCHAR(200)  
-// );
-
-// ALTER TABLE orientador ADD CONSTRAINT pk_orientador PRIMARY KEY(id);
-// ALTER TABLE orientador ADD CONSTRAINT fk_auth FOREIGN KEY(id_auth) REFERENCES auth(id);
-
-// CREATE TABLE IF NOT EXISTS colaborador(
+// CREATE TABLE IF NOT EXISTS usuario(
 //   id VARCHAR(36) NOT NULL,
 //   id_auth VARCHAR(36) NOT NULL,
 //   url_image TEXT,
@@ -114,8 +125,8 @@ class DBHelper {
 //   descricao VARCHAR(200)
 // );
 
-// ALTER TABLE colaborador ADD CONSTRAINT pk_colaborador PRIMARY KEY(id);
-// ALTER TABLE colaborador ADD CONSTRAINT fk_colab_auth FOREIGN KEY(id_auth) REFERENCES auth(id);
+// ALTER TABLE usuario ADD CONSTRAINT pk_colaborador PRIMARY KEY(id);
+// ALTER TABLE usuario ADD CONSTRAINT fk_colab_auth FOREIGN KEY(id_auth) REFERENCES auth(id);
 
 // CREATE TABLE IF NOT EXISTS vaga(
 //   id INTEGER NOT NULL,
@@ -130,9 +141,9 @@ class DBHelper {
 // );
 
 // ALTER TABLE vaga ADD CONSTRAINT pk_vaga PRIMARY KEY(id);
-// ALTER TABLE vaga ADD CONSTRAINT fk_orientador FOREIGN KEY(id_orientador) REFERENCES orientador(id);
+// ALTER TABLE vaga ADD CONSTRAINT fk_orientador FOREIGN KEY(id_orientador) REFERENCES usuario(id);
 
-// CREATE TABLE IF NOT EXISTS contribui_para(
+// CREATE TABLE IF NOT EXISTS inscreve_em(
 //   id INTEGER NOT NULL,
 //   id_colaborador VARCHAR(36) NOT NULL,
 //   status VARCHAR(64) NOT NULL,
@@ -140,8 +151,8 @@ class DBHelper {
 //   updated_at TIMESTAMP NOT NULL
 // );
 
-// ALTER TABLE contribui_para ADD CONSTRAINT pk_contribui_para PRIMARY KEY(id);
-// ALTER TABLE contribui_para ADD CONSTRAINT fk_colaborador_contribui_para FOREIGN KEY(id_colaborador) REFERENCES colaborador(id);
+// ALTER TABLE inscreve_em ADD CONSTRAINT pk_contribui_para PRIMARY KEY(id);
+// ALTER TABLE inscreve_em ADD CONSTRAINT fk_colaborador_contribui_para FOREIGN KEY(id_colaborador) REFERENCES usuario(id);
 
 // CREATE TABLE IF NOT EXISTS categoria(
 //   id INTEGER NOT NULL,
@@ -188,7 +199,7 @@ class DBHelper {
 // ('a8e16013-36c3-42d4-81d0-28d74adfe3d2', 'tarsismarinho@ifal.edu.br', 'cadeaissue', true, 'd085d435-41ec-49d2-866c-6d4ccfe9e5cf'),
 // ('62ac3125-aa36-4f00-8cc5-54e45872da3b', 'lfb3@aluno.ifal.edu.br', 'funcionariodomes', true, 'e073818f-513c-40fa-9e98-b0cda05bf561');
 
-// INSERT INTO orientador(
+// INSERT INTO usuario(
 //   id, id_auth, url_image, name, descricao
 // ) VALUES
 // ('c0cab1eb-9128-4b91-8639-56fdc179a1ec',
@@ -197,19 +208,27 @@ class DBHelper {
 //  'Tarsis Marinho',
 //  'sou bonito sou gostoso jogo bola e danço');
 
-// INSERT INTO colaborador(
-//   id, id_auth, url_image, name, descricao
+// INSERT INTO usuario(
+//   id, id_auth, url_image, name, turma, descricao
 // ) VALUES
 // ('6d6083a7-8e2c-4416-bf09-77f309210517',
 //  '62ac3125-aa36-4f00-8cc5-54e45872da3b',
 //  'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tiktok.com%2Fdiscover%2Fthe-rock-meme-name%3Flang%3Dpt-BR&psig=AOvVaw1Hthv-8KwWSDKyFPUalsFS&ust=1667311937640000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCIilxpDTivsCFQAAAAAdAAAAABAJ',
 //  'Leonardo Brito',
+//  '914',
 //  'garoto de programa integral');
 
 // INSERT INTO vaga(
 //   id, id_orientador, name, quant_horas, vagas_disp, proposta, o_que_irei_fazer, avaliacao_user, bolsa_disp
 // ) VALUES
 // (1, 'c0cab1eb-9128-4b91-8639-56fdc179a1ec', 'Vaga Backend DIT', 42, 4, 'vaga pra backend dit', 'ira programar', 4.6, 600.0);
+
+// INSERT INTO inscreve_em(
+//   id, id_colaborador, status, created_at, updated_at
+// ) VALUES
+// (
+//  1, '6d6083a7-8e2c-4416-bf09-77f309210517', 'em avaliação', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+// );
 
 // INSERT INTO categoria(
 //   id, name

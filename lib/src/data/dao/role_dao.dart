@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:inova/src/data/db_helper.dart';
+import 'package:inova/src/data/db_helpers/db_helper.dart';
 import 'package:inova/src/domain/role.dart';
 import 'package:sqflite/sqlite_api.dart';
 
