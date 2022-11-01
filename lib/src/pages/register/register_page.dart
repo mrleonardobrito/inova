@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:inova/src/pages/home/home_screen.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/login/login_page.dart';
 
@@ -9,8 +10,6 @@ class Cadastro extends StatefulWidget {
   @override
   _CadastroState createState() => _CadastroState();
 }
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
- TextEditingController userController = TextEditingController();
 
 
 class _CadastroState extends State<Cadastro> {
@@ -21,9 +20,18 @@ class _CadastroState extends State<Cadastro> {
 
   var maskFormatter = new MaskTextInputFormatter(
     mask: '+55 (##) 9 ####-####',
+
   );
 
   @override
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String? _email = 'adminINOVA@gmail.com';
+  String? _senha = '40028922';
+
+  bool validaEmail = false;
+  bool validaSenha = false;
+
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
@@ -78,11 +86,18 @@ class _CadastroState extends State<Cadastro> {
                               validator : (value) {
                                 if (value!.isEmpty) {
                                   return"Campo Obrigatório";
-                                }else{
-                                  return null;
+                                }else if (value!= _email){
+                                  return "Email incorreto";
+                                } else if (value == _email) {
+                                  setState(
+                                        () {
+                                      validaEmail = true;
+                                    },
+                                  );
+                                }{
                                 }
                               },
-                              controller: userController,
+
                               decoration: InputDecoration(
                                 hintText: 'Email...',
                               ),
@@ -93,6 +108,19 @@ class _CadastroState extends State<Cadastro> {
                               child: Padding(
                             padding: EdgeInsets.only(top: 10),
                             child: TextFormField(
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Campo obrigatorio";
+                                }else if (value!= _senha){
+                                  return "Senha incorreta";
+                                } else if (value == _senha){
+                                  setState(
+                                        () {
+                                      validaSenha = true;
+                                    },
+                                  );
+                                }
+                              },
                               decoration: InputDecoration(
                                 hintText: 'Senha...',
                                 suffixIcon: GestureDetector(
@@ -264,19 +292,18 @@ class _CadastroState extends State<Cadastro> {
                                                 Radius.circular(15))),
                                       ),
 
-                                       onPressed: () {},
+                                       onPressed: () {
+                                         _formKey.currentState?.validate();
+                                         if (validaSenha == true &&
+                                             validaEmail == true) {
+                                           Navigator.push(
+                                             context,
+                                             MaterialPageRoute(
+                                                 builder: (context) => HomeScreen()),
+                                           );
+                                         }
+                                       },
                                     ),
-                                    // onPressed: () {
-                                    //     String userDigitado = userController.text;
-                                    //     String user = 'julia@gmail';
-
-                                    //    if (_formKey.currentState!.validate()) {
-                                    //    final snackBar = SnackBar (content: Text ("dados inseridos"));
-                                          
-                                    //    }
-                                    //    ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                                    //   },
-
                                   ),
                                 )
                               ],
