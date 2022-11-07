@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
+import 'package:inova/src/pages/home/home_screen.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
 
@@ -37,6 +38,18 @@ class _UserPageState extends State<UserPage> {
                   height: height * userScreenComponentsSize[0]["size"],
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                  child: TextButton(
+                    onPressed: (() {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                    }),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
+                    )
+                  ),
                 ),
                 Container(
                   height: height * userScreenComponentsSize[1]["size"],

@@ -16,7 +16,6 @@ class _ProjetosState extends State<Projetos> {
   @override
   Widget build(BuildContext context) {
     
-    final bloc = BlocProvider.of<UserBloc>(context);
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(

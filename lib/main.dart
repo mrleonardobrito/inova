@@ -8,6 +8,8 @@ import 'package:inova/src/widgets/user/user_projects.dart';
 
 void main() {
   runApp(
-    SSS()
+    const MaterialApp(
+      home: HomeScreen(),
+    ),
   );
 }

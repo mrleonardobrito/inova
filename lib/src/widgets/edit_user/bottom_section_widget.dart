@@ -28,10 +28,7 @@ class _BottomSectionWidgetState extends State<BottomSectionWidget> {
                 borderRadius: BorderRadius.circular(15)),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => UserPage()),
-                );
+                Navigator.pop(context);
               },
               child: Center(
                   child: Text(

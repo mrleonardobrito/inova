@@ -35,9 +35,11 @@ class _TestPageState extends State<TestPage> {
               },
             );
           }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          if(state is UserErrorState){
+            return Center(
+            child: Text(state.message));
+          }
+          return Text('Carregano');     
         },
       ),
     );

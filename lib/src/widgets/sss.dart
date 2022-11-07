@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/utils/variables/list_variables.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:inova/blocs/user/bloc/user_bloc.dart';
