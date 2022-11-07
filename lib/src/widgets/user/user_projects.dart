@@ -21,9 +21,7 @@ class _ProjetosState extends State<Projetos> {
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5),
-        child: BlocProvider<UserBloc>(
-          create: (BuildContext context) => UserBloc(UserLoadingState())..add(UserFetchList()),
-          child: ListView.builder(
+        child: ListView.builder(
             itemCount: projectData.length,
             itemBuilder: (context, index) {
               return Padding(
@@ -87,7 +85,6 @@ class _ProjetosState extends State<Projetos> {
               );
             },),
         )
-      ),
     );
   }
 }

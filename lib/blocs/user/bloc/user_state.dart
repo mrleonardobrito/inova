@@ -1,12 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class UserState extends Equatable{
   @override
   List<Object> get props => [];
 }
 
-class UserLoadingState extends UserState {}
+class UserLoadingState extends UserState {
+
+}
 
 class UserErrorState extends UserState {
   final String message;

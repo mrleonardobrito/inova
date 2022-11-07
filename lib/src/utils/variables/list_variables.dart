@@ -38,6 +38,58 @@ List projectData = [
     "descricao": 'Aplicativo para piratear arquivos',
     "dataTermino": "31/08/2020",
   },
+  {
+    "nome": "Facebook",
+    "orientador": "Mark Zuckerberg",
+    "descricao":
+    'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+    "dataTermino": "Em andamento",
+  },
+  {
+    "nome": "uTorrent Mobile",
+    "orientador": "Tarsis Marinho",
+    "descricao": 'Aplicativo para piratear arquivos',
+    "dataTermino": "31/08/2020",
+  },
+  {
+    "nome": "Facebook",
+    "orientador": "Mark Zuckerberg",
+    "descricao":
+    'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+    "dataTermino": "Em andamento",
+  },
+  {
+    "nome": "uTorrent Mobile",
+    "orientador": "Tarsis Marinho",
+    "descricao": 'Aplicativo para piratear arquivos',
+    "dataTermino": "31/08/2020",
+  },
+  {
+    "nome": "Facebook",
+    "orientador": "Mark Zuckerberg",
+    "descricao":
+    'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+    "dataTermino": "Em andamento",
+  },
+  {
+    "nome": "uTorrent Mobile",
+    "orientador": "Tarsis Marinho",
+    "descricao": 'Aplicativo para piratear arquivos',
+    "dataTermino": "31/08/2020",
+  },
+  {
+    "nome": "Facebook",
+    "orientador": "Mark Zuckerberg",
+    "descricao":
+    'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
+    "dataTermino": "Em andamento",
+  },
+  {
+    "nome": "uTorrent Mobile",
+    "orientador": "Tarsis Marinho",
+    "descricao": 'Aplicativo para piratear arquivos',
+    "dataTermino": "31/08/2020",
+  },
 ];
 
 List userScreenComponentsSize = [

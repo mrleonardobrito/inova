@@ -3,10 +3,36 @@ import 'package:inova/blocs/user/bloc/user_event.dart';
 import 'package:inova/blocs/user/bloc/user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState>{
-  UserBloc(UserState initialState) : super(UserLoadingState());
+  UserBloc(UserState initialState) : super(UserLoadingState()){
+    on<UserFetchList>((event, emit) {
+
+    });
+  }
 
   @override
   Stream<UserState> mapEventToState(UserEvent event) async* {
-    throw UnimplementedError();
+    var state;
+    switch(event.runtimeType){
+      case UserFetchList:
+        state = await _fetchList();
+        break;
+      default:
+    }
+    yield *state;
+  }
+
+  Future<UserState> _fetchList() async {
+    var list = await Future.delayed(Duration(
+      seconds: 1,
+    ), () => <String>[
+      'Item 1',
+      'Item 3',
+      'Item 2',
+      'Item 5',
+      'Item 4',
+    ],
+    );
+
+    return UserLoadedState(list: list);
   }
 }
