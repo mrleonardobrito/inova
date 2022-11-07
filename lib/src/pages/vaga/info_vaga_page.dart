@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/domain/categoria.dart';
+import 'package:inova/src/core/domain/categoria.dart';
 import 'package:inova/src/widgets/global/categoria_chip.dart';
 
-import '../../domain/vaga.dart';
+import '../../core/domain/vaga.dart';
 
 Widget titleVagaWidget(String titulo, String horas, width) {
   return Container(

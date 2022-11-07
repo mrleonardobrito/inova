@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inova/src/data/dao/vaga_dao.dart';
 import 'package:inova/src/utils/request_manager.dart';
 import 'package:inova/src/widgets/home/vaga_card.dart';
-import 'package:inova/src/domain/vaga.dart';
+import 'package:inova/src/core/domain/vaga.dart';
 
 // List<Vaga> allVagas = [
 //   const Vaga(
@@ -137,8 +137,8 @@ class HomePageState extends State<HomePage> {
                       topRight: Radius.circular(10.0)),
                   color: Color(0xFFEFEFEF),
                 ),
-                child: TextField(
-                  decoration: const InputDecoration(
+                child: const TextField(
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search, size: 20),
                     border: InputBorder.none,
                   ),

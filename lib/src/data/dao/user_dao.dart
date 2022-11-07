@@ -1,5 +1,5 @@
 import 'package:inova/src/data/db_helpers/db_helper.dart';
-import 'package:inova/src/domain/usuario.dart';
+import 'package:inova/src/core/domain/usuario.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 

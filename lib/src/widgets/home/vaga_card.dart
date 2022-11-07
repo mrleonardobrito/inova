@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/domain/categoria.dart';
-import 'package:inova/src/domain/vaga.dart';
+import 'package:inova/src/core/domain/categoria.dart';
+import 'package:inova/src/core/domain/vaga.dart';
 
 import '../../pages/vaga/info_vaga_page.dart';
 import 'package:inova/src/widgets/global/categoria_chip.dart';

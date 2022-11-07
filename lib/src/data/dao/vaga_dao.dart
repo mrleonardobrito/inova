@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:inova/src/data/db_helpers/db_helper.dart';
 import 'package:inova/src/data/dao/inscreve_em_dao.dart';
-import 'package:inova/src/domain/categoria.dart';
-import 'package:inova/src/domain/colaborador.dart';
-import 'package:inova/src/domain/conhecimentos.dart';
-import 'package:inova/src/domain/vaga.dart';
+import 'package:inova/src/core/domain/categoria.dart';
+import 'package:inova/src/core/domain/colaborador.dart';
+import 'package:inova/src/core/domain/conhecimentos.dart';
+import 'package:inova/src/core/domain/vaga.dart';
 import 'package:sqflite/sqflite.dart';
 
 class VagaDao {
@@ -48,7 +48,7 @@ class VagaDao {
     Database db = await dbHelper.initDB();
 
     String sql = "SELECT * FROM vaga v WHERE v.id = $vagaId";
-    var result = await db.query(sql);
+    var result = await db.rawQuery(sql);
     var json = result[0];
 
     InscreveEmDao ie = InscreveEmDao();

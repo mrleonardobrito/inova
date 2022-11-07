@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/domain/categoria.dart';
+import 'package:inova/src/core/domain/categoria.dart';
 
 class VagaChip extends StatelessWidget {
   final Categoria categoria;

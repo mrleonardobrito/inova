@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:inova/src/domain/conhecimentos.dart';
+import 'package:inova/src/core/domain/conhecimentos.dart';
 
 import 'categoria.dart';
 import 'colaborador.dart';

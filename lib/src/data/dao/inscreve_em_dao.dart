@@ -1,8 +1,8 @@
 import 'package:inova/src/data/db_helpers/db_helper.dart';
-import 'package:inova/src/domain/vaga.dart';
+import 'package:inova/src/core/domain/vaga.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../domain/colaborador.dart';
+import '../../core/domain/colaborador.dart';
 
 class InscreveEmDao {
   Future<List<Colaborador>> getCoorientadores(int vagaId) async {
