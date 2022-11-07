@@ -1,36 +1,37 @@
 class Colaborador {
-  late final String id;
-  late final String idAuth;
-  late final String urlImage;
-  late final String name;
-  late final String turma;
-  late final String descricao;
+  late final String nome;
+  late final String cargo;
+  static const ORIENTADOR = 'orientador';
+  static const COORIENTADOR = 'coorientador';
+  static const BOLSISTA = 'bolsista';
 
-  Colaborador(
-      {required this.id,
-      required this.idAuth,
-      required this.urlImage,
-      required this.name,
-      required this.turma,
-      required this.descricao});
+  Colaborador({required this.nome, required this.cargo});
 
-  Colaborador.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    idAuth = json['id_auth'];
-    urlImage = json['url_image'];
-    name = json['name'];
-    turma = json['turma'];
-    descricao = json['descricao'];
+  static Colaborador fromJson(Map<String, dynamic> json) {
+    return Colaborador(nome: json['name'], cargo: json['cargo']);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['id_auth'] = this.idAuth;
-    data['url_image'] = this.urlImage;
-    data['name'] = this.name;
-    data['turma'] = this.turma;
-    data['descricao'] = this.descricao;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nome'] = nome;
+    data['cargo'] = cargo;
+    return data;
+  }
+}
+
+class Orientador {
+  late final String nome;
+  late final String cargo;
+  Orientador({required this.nome, required this.cargo});
+
+  static Orientador fromJson(Map<String, dynamic> json) {
+    return Orientador(nome: json['name'], cargo: json['cargo']);
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = nome;
+    data['cargo'] = cargo;
     return data;
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:inova/src/domain/categoria.dart';
 
 class VagaChip extends StatelessWidget {
-  final String label;
+  final Categoria categoria;
 
-  const VagaChip({Key? key, required this.label}) : super(key: key);
+  const VagaChip({Key? key, required this.categoria}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class VagaChip extends StatelessWidget {
         elevation: 5.0,
         backgroundColor: Color(0xFF9AAEFF),
         label: Text(
-          label,
+          categoria.name,
           style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
         ),
       ),

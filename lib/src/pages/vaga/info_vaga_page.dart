@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:inova/src/domain/categoria.dart';
 import 'package:inova/src/widgets/global/categoria_chip.dart';
 
-import '../../utils/vaga.dart';
+import '../../domain/vaga.dart';
 
 Widget titleVagaWidget(String titulo, String horas, width) {
   return Container(
@@ -222,7 +223,10 @@ Widget categoriasWidget() {
       Container(
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Wrap(
-          children: listaItens.map((label) => VagaChip(label: label)).toList(),
+          children: listaItens
+              .map(
+                  (label) => VagaChip(categoria: Categoria(id: 1, name: label)))
+              .toList(),
         ),
       ),
     ],
@@ -377,7 +381,7 @@ class InfoVaga extends StatelessWidget {
           child: ListView(
             shrinkWrap: true,
             children: [
-              titleVagaWidget(vaga.titulo, vaga.horas, width),
+              titleVagaWidget(vaga.nome, vaga.quantHoras.toString(), width),
               professoresWidget(),
               vagaWidget(),
               bolsaWidget(),
