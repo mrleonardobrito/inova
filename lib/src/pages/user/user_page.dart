@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/pages/home/home_screen.dart';
+import 'package:inova/src/widgets/sss.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
 
@@ -289,7 +290,7 @@ class _UserPageState extends State<UserPage> {
                             : showAbas == 2
                             ? Repertorio()
                             : showAbas == 3
-                            ? Text('eita')
+                            ? SSS()
                             : Text('Deu errado'),
                       ),
                     ),

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:inova/blocs/user/bloc/user_bloc.dart';
-import 'package:inova/blocs/user/bloc/user_event.dart';
-import 'package:inova/blocs/user/bloc/user_state.dart';
 import 'package:inova/src/utils/variables/list_variables.dart';
 
 class Projetos extends StatefulWidget {

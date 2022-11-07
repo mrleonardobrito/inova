@@ -1,13 +1,18 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
 
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
-  UserCubit() : super(UserState(i: 13));
+  List<String> list = ['n','ss','ee'];
+  UserCubit(this.list) : super(InitUserState());
   
-  void increment() => emit(UserState(i: state.i + 3));
-
-  void decrement() => emit(UserState(i: state.i - 3));
-
+  Future<void> fetchProjectsList() async{
+    emit(UserLoadingState());
+    try{
+      emit(UserLoadedState(list));
+    }catch (e){
+      emit(UserErrorState('Deu errado papai resolve ai'));
+    }
+  }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:inova/blocs/user/bloc/user_bloc.dart';
-import 'package:inova/blocs/user/bloc/user_event.dart';
-import 'package:inova/blocs/user/bloc/user_state.dart';
+import 'package:inova/blocs/user/cubit/user_cubit.dart';
 import 'package:inova/src/widgets/test.dart';
 
 
@@ -17,12 +15,9 @@ class SSS extends StatefulWidget {
 class _SSSState extends State<SSS> {
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      home: BlocProvider<UserBloc>(
-        create: (BuildContext context) => UserBloc(UserLoadingState())..add(UserFetchList()),
-        child: TestPage(),
-      )
-    );
+    return BlocProvider(
+      create: (context) => UserCubit(<String>[]),
+      child: TestPage(),
+      );
   }
 }

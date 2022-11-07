@@ -18,9 +18,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
   double _commentOpacity = .5;
   bool _showGhostCard = false;
 
-  String commentText =
-      'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo e tals tals tals ';
-
+  String commentText = 'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo e tals tals tals ';
   @override
   Widget build(BuildContext context) {
     return Stack(
