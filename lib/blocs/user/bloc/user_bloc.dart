@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inova/blocs/user/bloc/user_event.dart';
 import 'package:inova/blocs/user/bloc/user_state.dart';
@@ -9,8 +11,7 @@ class UserBloc extends Bloc<UserEvent, UserState>{
     });
   }
 
-  @override
-  Stream<UserState> mapEventToState(UserEvent event) async* {
+  Stream<UserState?> mapEventToState(UserEvent event) async* {
     var state;
     switch(event.runtimeType){
       case UserFetchList:
@@ -23,7 +24,7 @@ class UserBloc extends Bloc<UserEvent, UserState>{
 
   Future<UserState> _fetchList() async {
     var list = await Future.delayed(Duration(
-      seconds: 1,
+      seconds: 3,
     ), () => <String>[
       'Item 1',
       'Item 3',
