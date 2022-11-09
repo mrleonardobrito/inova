@@ -15,3 +15,5 @@ double iconHeaderSize = 30;
 
 bool loginShowPassword = false;
 bool loginShowConfirmPassword = false;
+
+String appUniqueFont = "InterR";

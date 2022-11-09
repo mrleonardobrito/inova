@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:inova/blocs/cubit/user_cubit.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/pages/home/home_screen.dart';
-import 'package:inova/src/widgets/sss.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
 
@@ -19,6 +19,19 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+
+  /*
+  @override
+  void initState(){
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final cubit = context.read<UserCubit>();
+      cubit.fetchList();
+    });
+  }
+  */
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +56,28 @@ class _UserPageState extends State<UserPage> {
                     onPressed: (() {
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => HomeScreen()
+                      ),
                     );
                     }),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 10),
+                          child:
+                            Text("Voltar", style: TextStyle(
+                              fontFamily: "InterM",
+                              fontSize: 18,
+                              color: getColor("black")
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ),
                 ),
@@ -141,6 +170,7 @@ class _UserPageState extends State<UserPage> {
                                     ),
                                   ),
                                 ),
+                                Padding(padding: EdgeInsets.only(bottom: 5)),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
@@ -165,7 +195,7 @@ class _UserPageState extends State<UserPage> {
                                       children:  [Text(
                                         '${userData["descricao"]}',
                                         overflow: TextOverflow.ellipsis,
-                                        maxLines: 3,
+                                        maxLines: 2,
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 13,
@@ -246,8 +276,7 @@ class _UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(
-                                () {
+                          setState(() {
                               showAbas = 3;
                             },
                           );
@@ -290,7 +319,7 @@ class _UserPageState extends State<UserPage> {
                             : showAbas == 2
                             ? Repertorio()
                             : showAbas == 3
-                            ? SSS()
+                            ? Text('oi')
                             : Text('Deu errado'),
                       ),
                     ),

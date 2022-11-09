@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/widgets/user/user_comments_page.dart';
 
 class CommentsWidget extends StatefulWidget {
@@ -91,14 +92,18 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                           style: TextStyle(
                                               fontSize: 13,
                                               fontWeight: FontWeight.bold,
-                                              color: Color(0xFF4065FC)),
+                                              color: Color(0xFF4065FC),
+                                              fontFamily: appUniqueFont
+                                          ),
                                         ),
                                         Text(
                                           'Professor',
                                           style: TextStyle(
                                               color: Color(0xFF8599EA),
                                               fontSize: 11,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: appUniqueFont
+                                          ),
                                         ),
                                         Positioned(
                                           left: 100,
@@ -126,16 +131,17 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                   child: Text(
                                     commentText,
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12),
+                                        fontSize: 12,
+                                        fontFamily: 'InterM'
+                                    ),
                                   ),
                                 ),
                               )
                             ],
                           ),
                         ),
-                      ))),
-            )),
+                      ),),),
+            ),),
         Opacity(
             opacity: !_showGhostCard ? 0 : 1,
             child: Padding(
@@ -146,7 +152,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                     setState(() {
                       _showGhostCard = !_showGhostCard;
                       print(_showGhostCard);
-                    });
+                    },);
                   },
                   onDoubleTap: () {
                     Navigator.push(
@@ -164,11 +170,11 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                       child: Text(
                         'Clique duas vezes',
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white, fontWeight: FontWeight.bold,fontFamily: appUniqueFont),
                       ),
                     ),
                   ),
-                )))
+                ),),),
       ],
     );
   }

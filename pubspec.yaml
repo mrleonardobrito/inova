@@ -67,6 +67,16 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - images/
+
+  fonts:
+    - family: InterR
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+    - family: InterM
+      fonts:
+        - asset: assets/fonts/Inter-SemiBold.ttf
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

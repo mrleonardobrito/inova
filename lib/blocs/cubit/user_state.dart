@@ -1,5 +1,6 @@
-part of 'home_cubit.dart';
+part of 'user_cubit.dart';
 
+@immutable
 abstract class UserState {}
 
 class UserInitialState extends UserState {}
@@ -10,12 +11,12 @@ class UserLoadedListState extends UserState {
   List<ProjectItem> homes;
 
   UserLoadedListState(this.homes);
-  }
+}
 
-  class UserErrorState extends UserState {
+class UserErrorState extends UserState {
   String message;
 
   UserErrorState(this.message);
-
+}
 
 

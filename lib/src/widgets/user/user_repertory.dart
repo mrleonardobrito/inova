@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/widgets/user/comment_widget.dart';
 
 class Repertorio extends StatefulWidget {
@@ -23,7 +24,7 @@ class _RepertorioState extends State<Repertorio> {
               child: Row(children: [
                 Text(
                   "${numberLineArr[numberLine]}",
-                  style: TextStyle(color: Color(0xFF4065FC), fontSize: 15),
+                  style: TextStyle(color: Color(0xFF4065FC), fontSize: 15, fontFamily: appUniqueFont),
                 ),
                 Spacer(),
                 Container(
@@ -46,9 +47,9 @@ class _RepertorioState extends State<Repertorio> {
                                   BorderRadius.all(Radius.circular(60))),
                         ),
                       ],
-                    )))
-              ])))
-    ]);
+                    ),),),
+              ],),),),
+    ],);
   }
 
   @override
@@ -139,6 +140,8 @@ class _RepertorioState extends State<Repertorio> {
     String commentText =
         'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo e tals tals tals ';
 
+    double outputBtnSize = 13;
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.52,
       child: Padding(
@@ -159,17 +162,14 @@ class _RepertorioState extends State<Repertorio> {
                               Container(
                                 height: _height,
                                 width:
-                                    MediaQuery.of(context).size.width / 2.28 -
-                                        10,
+                                    MediaQuery.of(context).size.width / 2.28 - 10,
                                 color: Colors.transparent,
                                 child: ListView(
                                   children: [
                                     Container(
                                       height: _height / 2,
                                       color: Colors.transparent,
-                                      width: MediaQuery.of(context).size.width /
-                                              2 -
-                                          10,
+                                      width: MediaQuery.of(context).size.width / 2-10,
                                       child: Align(
                                         alignment: Alignment.bottomCenter,
                                         child: Text(
@@ -177,15 +177,15 @@ class _RepertorioState extends State<Repertorio> {
                                           style: TextStyle(
                                               color: Color(0xFF4065FC),
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 33),
+                                              fontSize: 33,
+                                              fontFamily: appUniqueFont
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Container(
                                       height: _height / 2,
-                                      width: MediaQuery.of(context).size.width /
-                                              2 -
-                                          10,
+                                      width: MediaQuery.of(context).size.width / 2-10,
                                       color: Colors.transparent,
                                       child: Align(
                                         alignment: Alignment.topCenter,
@@ -198,7 +198,7 @@ class _RepertorioState extends State<Repertorio> {
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 5),
                                                   child: verificaEstrela(),
-                                                ))),
+                                                ),),),
                                       ),
                                     ),
                                   ],
@@ -267,12 +267,13 @@ class _RepertorioState extends State<Repertorio> {
                                         'Baixar curriculo',
                                         style: TextStyle(
                                             color: Color(0xFF4065FC),
-                                            fontSize: 14),
+                                            fontSize: outputBtnSize,
+                                            fontFamily: appUniqueFont                                        ),
                                       )
                                     ],
                                   ),
                                 ),
-                              )),
+                              ),),
                           Spacer(),
                           Container(
                               margin: EdgeInsets.only(top: _marginTopContainer),
@@ -296,17 +297,21 @@ class _RepertorioState extends State<Repertorio> {
                                       Text(
                                         'Baixar diploma',
                                         style:
-                                            TextStyle(color: Color(0xFF4065FC)),
+                                            TextStyle(
+                                                color: Color(0xFF4065FC),
+                                                fontSize: outputBtnSize,
+                                                fontFamily: appUniqueFont
+                                            ),
                                       )
                                     ],
                                   ),
                                 ),
-                              )),
+                              ),),
                         ],
                       ),
                       CommentsWidget()
                     ],
-                  ))),
+                  ),),),
         ),
       ),
     );
