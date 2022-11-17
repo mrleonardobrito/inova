@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inova/src/pages/project/project.dart';
 import 'package:inova/src/utils/variables/list_variables.dart';
 import 'package:inova/src/utils/variables/variables.dart';
 
@@ -42,79 +43,88 @@ class _ProjetosState extends State<Projetos> {
                 itemCount: userList.length,
                 itemBuilder: (context, index) {
                   final home = userList[index];
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                    child: Container(
-                      height: 110, // transcrever para adaptatividade
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: Color(0xFFE8ECFF),
-                      ),
-                      child: Padding(
-                        padding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  home.nome,
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: appUniqueFont),
-                                ),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Center(
-                                      child: Icon(
-                                        Icons.calendar_month,
-                                        size: 18,
-                                        color: Color(0xFFBFBFBF),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: Text(
-                                        home.dataInicio,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 11,
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                          builder: (context) => ProjectsPage()
+                        )
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                      child: Container(
+                        height: 110, // transcrever para adaptatividade
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: Color(0xFFE8ECFF),
+                        ),
+                        child: Padding(
+                          padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    home.nome,
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: appUniqueFont),
+                                  ),
+                                  Spacer(),
+                                  Row(
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                          Icons.calendar_month,
+                                          size: 18,
                                           color: Color(0xFFBFBFBF),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                home.nomeCoordenador,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF878787),
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: appUniqueFont
+                                      Center(
+                                        child: Text(
+                                          home.dataInicio,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 11,
+                                            color: Color(0xFFBFBFBF),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  home.nomeCoordenador,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF878787),
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: appUniqueFont
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 5),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                home.descricao,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: appUniqueFont
-                                ),
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
                               ),
-                            )
-                          ],
-                        ),
-                      ),),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  home.descricao,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: appUniqueFont
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),),
+                    ),
                   );
                 },
               );
