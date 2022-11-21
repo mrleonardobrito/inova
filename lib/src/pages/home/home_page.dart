@@ -143,7 +143,7 @@ class HomePageState extends State<HomePage> {
                   ),
                   onChanged: (query) => searchVaga(query),
                 ),
-              )),
+              ),),
             ),
           ),
           expandedHeight: height * 0.2,
@@ -168,7 +168,7 @@ class HomePageState extends State<HomePage> {
               }
             },
           ),
-        )
+        ),
       ],
     );
   }
