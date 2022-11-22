@@ -8,9 +8,6 @@ import 'package:inova/src/utils/functions/functions.dart';
 import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/utils/variables/list_variables.dart';
 
-
-
-
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
 
@@ -20,7 +17,6 @@ class HeaderSectionWidget extends StatefulWidget {
 
 class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
   File? _image;
-  File? _school;
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -28,9 +24,11 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
     final imageTemporary = File(image.path);
 
-    setState(() {
-      this._image = imageTemporary;
-    });
+    setState(
+      () {
+        _image = imageTemporary;
+      },
+    );
   }
 
   @override
@@ -39,7 +37,6 @@ class _HeaderSectionWidgetState extends State<HeaderSectionWidget> {
     double _height = MediaQuery.of(context).size.height;
     double circleHeight = 450;
 
-    print(_width);
     return Container(
       color: Colors.transparent,
       child: Stack(

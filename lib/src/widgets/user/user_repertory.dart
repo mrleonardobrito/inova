@@ -10,28 +10,34 @@ class Repertorio extends StatefulWidget {
 }
 
 class _RepertorioState extends State<Repertorio> {
-  int showAbas = 1;
-  final _height = 90.0;
+  double showAbas = 1;
+  double _height = 90.0;
   List numberLineArr = [1, 2, 3, 4, 5];
-  List sizeLineArr = [220, 140, 40, 23, 12];
-  final _lineHeight = 17.0;
+  List<double> sizeLineArr = [220.0, 140.0, 40.0, 23.0, 12.0];
+  double _lineHeight = 17.0;
 
   returnLine(numberLine, sizeLine) {
-    return ListView(physics: const NeverScrollableScrollPhysics(), children: [
-      Expanded(
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Expanded(
           child: Container(
-              width: MediaQuery.of(context).size.width / 3 - 10,
-              child: Row(children: [
+            width: MediaQuery.of(context).size.width / 3 - 10,
+            child: Row(
+              children: [
                 Text(
                   "${numberLineArr[numberLine]}",
-                  style: TextStyle(color: Color(0xFF4065FC), fontSize: 15, fontFamily: appUniqueFont),
+                  style: TextStyle(
+                      color: Color(0xFF4065FC),
+                      fontSize: 15,
+                      fontFamily: appUniqueFont),
                 ),
                 Spacer(),
                 Container(
-                    width: MediaQuery.of(context).size.width / 2.15 - 10,
-                    height: 9,
-                    child: Expanded(
-                        child: Stack(
+                  width: MediaQuery.of(context).size.width / 2.15 - 10,
+                  height: 9,
+                  child: Expanded(
+                    child: Stack(
                       children: [
                         Container(
                           decoration: BoxDecoration(
@@ -47,9 +53,15 @@ class _RepertorioState extends State<Repertorio> {
                                   BorderRadius.all(Radius.circular(60))),
                         ),
                       ],
-                    ),),),
-              ],),),),
-    ],);
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   @override
@@ -148,170 +160,170 @@ class _RepertorioState extends State<Repertorio> {
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Expanded(
           child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(9))),
-              child: Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: ListView(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(9))),
+            child: Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: ListView(
+                children: [
+                  Row(
                     children: [
-                      Row(
+                      Column(
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                height: _height,
-                                width:
-                                    MediaQuery.of(context).size.width / 2.28 - 10,
-                                color: Colors.transparent,
-                                child: ListView(
-                                  children: [
-                                    Container(
-                                      height: _height / 2,
-                                      color: Colors.transparent,
-                                      width: MediaQuery.of(context).size.width / 2-10,
-                                      child: Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Text(
-                                          '${stars}',
-                                          style: TextStyle(
-                                              color: Color(0xFF4065FC),
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 33,
-                                              fontFamily: appUniqueFont
-                                          ),
-                                        ),
-                                      ),
+                          Container(
+                            height: _height,
+                            width:
+                                MediaQuery.of(context).size.width / 2.28 - 10,
+                            color: Colors.transparent,
+                            child: ListView(
+                              children: [
+                                Container(
+                                  height: _height / 2,
+                                  color: Colors.transparent,
+                                  width: MediaQuery.of(context).size.width / 2 -
+                                      10,
+                                  child: Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Text(
+                                      '${stars}',
+                                      style: TextStyle(
+                                          color: Color(0xFF4065FC),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 33,
+                                          fontFamily: appUniqueFont),
                                     ),
-                                    Container(
-                                      height: _height / 2,
-                                      width: MediaQuery.of(context).size.width / 2-10,
+                                  ),
+                                ),
+                                Container(
+                                  height: _height / 2,
+                                  width: MediaQuery.of(context).size.width / 2 -
+                                      10,
+                                  color: Colors.transparent,
+                                  child: Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Container(
+                                      width: 140,
                                       color: Colors.transparent,
                                       child: Align(
                                         alignment: Alignment.topCenter,
-                                        child: Container(
-                                            width: 140,
-                                            color: Colors.transparent,
-                                            child: Align(
-                                                alignment: Alignment.topCenter,
-                                                child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 5),
-                                                  child: verificaEstrela(),
-                                                ),),),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: verificaEstrela(),
+                                        ),
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                  height: _lineHeight,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
-                                  color: colorLineBackground,
-                                  child: returnLine(4, 0)),
-                              Container(
-                                  height: _lineHeight,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
-                                  color: colorLineBackground,
-                                  child: returnLine(3, 1)),
-                              Container(
-                                  height: _lineHeight,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
-                                  color: colorLineBackground,
-                                  child: returnLine(2, 2)),
-                              Container(
-                                  height: _lineHeight,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
-                                  color: colorLineBackground,
-                                  child: returnLine(1, 3)),
-                              Container(
-                                  height: _lineHeight,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
-                                  color: colorLineBackground,
-                                  child: returnLine(0, 4)),
-                            ],
-                          ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                      Row(
+                      Column(
                         children: [
                           Container(
-                              margin: EdgeInsets.only(top: _marginTopContainer),
-                              height: _heightContainer,
+                              height: _lineHeight,
                               width: MediaQuery.of(context).size.width / 2 - 10,
-                              color: Colors.transparent,
-                              child: GestureDetector(
-                                onTap: () {
-                                  print('Curriculo');
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 26),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.picture_as_pdf,
-                                        size: 30,
-                                        color: Color(0xFF4065FC),
-                                      ),
-                                      Spacer(),
-                                      Text(
-                                        'Baixar curriculo',
-                                        style: TextStyle(
-                                            color: Color(0xFF4065FC),
-                                            fontSize: outputBtnSize,
-                                            fontFamily: appUniqueFont                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),),
-                          Spacer(),
+                              color: colorLineBackground,
+                              child: returnLine(4, 0)),
                           Container(
-                              margin: EdgeInsets.only(top: _marginTopContainer),
-                              height: _heightContainer,
+                              height: _lineHeight,
                               width: MediaQuery.of(context).size.width / 2 - 10,
-                              color: Colors.transparent,
-                              child: GestureDetector(
-                                onTap: () {
-                                  print('Escola');
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 26),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.school,
-                                        size: 30,
-                                        color: Color(0xFF4065FC),
-                                      ),
-                                      Spacer(),
-                                      Text(
-                                        'Baixar diploma',
-                                        style:
-                                            TextStyle(
-                                                color: Color(0xFF4065FC),
-                                                fontSize: outputBtnSize,
-                                                fontFamily: appUniqueFont
-                                            ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),),
+                              color: colorLineBackground,
+                              child: returnLine(3, 1)),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(2, 2)),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(1, 3)),
+                          Container(
+                              height: _lineHeight,
+                              width: MediaQuery.of(context).size.width / 2 - 10,
+                              color: colorLineBackground,
+                              child: returnLine(0, 4)),
                         ],
                       ),
-                      CommentsWidget()
                     ],
-                  ),),),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: _marginTopContainer),
+                        height: _heightContainer,
+                        width: MediaQuery.of(context).size.width / 2 - 10,
+                        color: Colors.transparent,
+                        child: GestureDetector(
+                          onTap: () {
+                            print('Curriculo');
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 26),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.picture_as_pdf,
+                                  size: 30,
+                                  color: Color(0xFF4065FC),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Baixar curriculo',
+                                  style: TextStyle(
+                                      color: Color(0xFF4065FC),
+                                      fontSize: outputBtnSize,
+                                      fontFamily: appUniqueFont),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        margin: EdgeInsets.only(top: _marginTopContainer),
+                        height: _heightContainer,
+                        width: MediaQuery.of(context).size.width / 2 - 10,
+                        color: Colors.transparent,
+                        child: GestureDetector(
+                          onTap: () {
+                            print('Escola');
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 26),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.school,
+                                  size: 30,
+                                  color: Color(0xFF4065FC),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Baixar diploma',
+                                  style: TextStyle(
+                                      color: Color(0xFF4065FC),
+                                      fontSize: outputBtnSize,
+                                      fontFamily: appUniqueFont),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  CommentsWidget()
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

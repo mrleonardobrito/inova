@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
         create: (context) => UserCubit(UserListRepository()),
-        child: Cadastro(),
+        child: HomeScreen(),
       ),
     );
   }
