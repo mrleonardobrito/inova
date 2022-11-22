@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/login/login_page.dart';
 
 class Cadastro extends StatefulWidget {
@@ -16,9 +14,10 @@ class _CadastroState extends State<Cadastro> {
 
   int showAbas = 1;
 
-  var maskFormatter = new MaskTextInputFormatter(
-    mask: '+55 (##) 9 ####-####',
-  );
+  final _formkey = GlobalKey<FormState>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,74 +66,82 @@ class _CadastroState extends State<Cadastro> {
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 20),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Email...',
-                              ),
-                            ),
-                          )),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Senha...',
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _showPassword = !_showPassword;
-                                    });
-                                  },
-                                  child: Icon(
-                                    _showPassword
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                    color: Color(0xFF4065FC),
+                          Form(
+                            child: Column(
+                              children: [
+                                Container(
+                                    child: Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                  child: TextFormField(
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Email...',
+                                    ),
                                   ),
-                                ),
-                              ),
-                              obscureText: !_showPassword,
-                            ),
-                          )),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Confirmar senha...',
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _showConfirmPassword =
-                                          !_showConfirmPassword;
-                                    });
-                                  },
-                                  child: Icon(
-                                    _showConfirmPassword
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                    color: Color(0xFF4065FC),
+                                )),
+                                Container(
+                                    child: Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: TextField(
+                                    controller: senhaController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Senha...',
+                                      suffixIcon: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _showPassword = !_showPassword;
+                                          });
+                                        },
+                                        child: Icon(
+                                          _showPassword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Color(0xFF4065FC),
+                                        ),
+                                      ),
+                                    ),
+                                    obscureText: !_showPassword,
                                   ),
-                                ),
-                              ),
-                              obscureText:
-                                  _showConfirmPassword == false ? true : false,
+                                )),
+                                Container(
+                                    child: Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Confirmar senha...',
+                                      suffixIcon: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _showConfirmPassword =
+                                                !_showConfirmPassword;
+                                          });
+                                        },
+                                        child: Icon(
+                                          _showConfirmPassword
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Color(0xFF4065FC),
+                                        ),
+                                      ),
+                                    ),
+                                    obscureText: _showConfirmPassword == false
+                                        ? true
+                                        : false,
+                                  ),
+                                )),
+                                Container(
+                                    child: Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: TextField(
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      hintText: 'Nome...',
+                                    ),
+                                  ),
+                                )),
+                              ],
                             ),
-                          )),
-                          Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                hintText: 'Telefone...',
-                              ),
-                              inputFormatters: [maskFormatter],
-                            ),
-                          )),
+                          ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -161,8 +168,9 @@ class _CadastroState extends State<Cadastro> {
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 100),
+                                  padding: const EdgeInsets.only(top: 100),
                                   child: ElevatedButton(
+                                    onPressed: () {},
                                     child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 6.0),
@@ -207,9 +215,6 @@ class _CadastroState extends State<Cadastro> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
                                     ),
-                                    onPressed: () {
-                                      print('Pressed');
-                                    },
                                   ),
                                 ),
                                 Container(
@@ -223,7 +228,15 @@ class _CadastroState extends State<Cadastro> {
                                           print(showAbas);
                                         });
                                       },
-                                      child: Padding(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFF3A64FA),
+                                        onPrimary: Colors.white,
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15))),
+                                      ),
+                                      onPressed: onPressed,
+                                      child: const Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 12.0),
                                         child: Text(
@@ -234,16 +247,6 @@ class _CadastroState extends State<Cadastro> {
                                               fontSize: 16),
                                         ),
                                       ),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFF3A64FA),
-                                        onPrimary: Colors.white,
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(15))),
-                                      ),
-                                      onPressed: () {
-                                        print('Pressed');
-                                      },
                                     ),
                                   ),
                                 )
@@ -257,5 +260,38 @@ class _CadastroState extends State<Cadastro> {
             ],
           )),
     );
+  }
+
+  Future<void> onPressed() async {
+    if (_formkey.currentState!.validate()) {
+      String user = emailController.text;
+      String pwd = senhaController.text;
+
+      bool resultado = await UserDao().autenticar(user: user, password: pwd);
+
+      if (resultado) {
+        SharedPrefsHelper().login();
+
+        // Ir p/ home page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomePage();
+            },
+          ),
+        );
+      } else {
+        final msg = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            ("Usuario/Senha incorretos"),
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(msg);
+      }
+    } else {
+      print("Formulário invalido");
+    }
   }
 }
