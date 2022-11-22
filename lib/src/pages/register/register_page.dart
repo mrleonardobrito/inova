@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:inova/src/pages/home/home_page.dart';
-import 'package:inova/src/pages/register/register_page.dart';
+import 'package:inova/src/data/dao/auth_dao.dart';
+import 'package:inova/src/pages/login/login_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -15,24 +13,19 @@ class _CadastroState extends State<Cadastro> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
-  var maskFormatter = new MaskTextInputFormatter(
-    mask: '+55 (##) ####-####',
-  );
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+  TextEditingController nomeController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
-    final formKey = GlobalKey<FormState>();
-
-    String? _email = 'adminINOVA@gmail.com';
-    String? _senha = '40028922';
-
     bool validaEmail = false;
     bool validaSenha = false;
-
-    bool senhaIsEmpty = true;
 
     return Scaffold(
       body: Container(
@@ -79,19 +72,20 @@ class _CadastroState extends State<Cadastro> {
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       Form(
-                        key: formKey,
+                        key: _formKey,
                         child: Column(
                           children: [
                             Container(
                               child: Padding(
                                 padding: EdgeInsets.only(top: 25),
                                 child: TextFormField(
+                                  controller: emailController,
                                   validator: (String? value) {
-                                    if (value != _email)
+                                    if (value != emailController.text)
                                       return "E-mail incorreto";
-                                    if (value == _email) {
+                                    if (value == emailController.text) {
                                       setState(
-                                            () {
+                                        () {
                                           validaEmail = true;
                                         },
                                       );
@@ -107,12 +101,13 @@ class _CadastroState extends State<Cadastro> {
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
+                                  controller: senhaController,
                                   validator: (String? value) {
-                                    if (value != _senha) {
+                                    if (value != senhaController.text) {
                                       return "Senha incorreta";
-                                    } else if (value == _senha)
+                                    } else if (value == senhaController.text)
                                       setState(
-                                            () {
+                                        () {
                                           validaSenha = true;
                                         },
                                       );
@@ -122,7 +117,7 @@ class _CadastroState extends State<Cadastro> {
                                     suffixIcon: GestureDetector(
                                       onTap: () {
                                         setState(
-                                              () {
+                                          () {
                                             _showPassword = !_showPassword;
                                           },
                                         );
@@ -144,11 +139,11 @@ class _CadastroState extends State<Cadastro> {
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   validator: (String? value) {
-                                    if (value != _senha) {
+                                    if (value != senhaController.text) {
                                       return "Senha incorreta";
-                                    } else if (value == _senha)
+                                    } else if (value == senhaController.text)
                                       setState(
-                                            () {
+                                        () {
                                           validaSenha = true;
                                         },
                                       );
@@ -159,7 +154,7 @@ class _CadastroState extends State<Cadastro> {
                                       onTap: () {
                                         setState(() {
                                           _showConfirmPassword =
-                                          !_showConfirmPassword;
+                                              !_showConfirmPassword;
                                         });
                                       },
                                       child: Icon(
@@ -170,28 +165,30 @@ class _CadastroState extends State<Cadastro> {
                                       ),
                                     ),
                                   ),
-                                  obscureText:
-                                  _showConfirmPassword == false ? true : false,
+                                  obscureText: _showConfirmPassword == false
+                                      ? true
+                                      : false,
                                 ),
-                              ),),
+                              ),
+                            ),
                             Container(
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   validator: (value) {
-                                    if(value!.isEmpty) {
+                                    if (value!.isEmpty) {
                                       return "Campo Obrigatorio";
-                                    }else{
+                                    } else {
                                       return null;
                                     }
                                   },
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
-                                    hintText: 'Telefone...',
+                                    hintText: 'Nome...',
                                   ),
-                                  inputFormatters: [maskFormatter],
                                 ),
-                              ),),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -199,14 +196,14 @@ class _CadastroState extends State<Cadastro> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Cadastro()),
+                            MaterialPageRoute(builder: (context) => Login()),
                           );
                         },
                         child: Container(
                           margin: EdgeInsets.only(top: 13),
                           child: Center(
                             child: Text(
-                              'Ainda não é cadastrado? cadastre-se aqui!',
+                              'Já é cadastrado? Faça Login!',
                               style: TextStyle(
                                   color: Color(0xFF4065FC),
                                   fontSize: 10,
@@ -223,7 +220,7 @@ class _CadastroState extends State<Cadastro> {
                               child: ElevatedButton(
                                 child: Padding(
                                   padding:
-                                  const EdgeInsets.symmetric(vertical: 7.0),
+                                      const EdgeInsets.symmetric(vertical: 7.0),
                                   child: Container(
                                     width: _width,
                                     child: Row(
@@ -249,7 +246,7 @@ class _CadastroState extends State<Cadastro> {
                                                     color: Colors.black,
                                                     fontSize: 14,
                                                     fontWeight:
-                                                    FontWeight.w500),
+                                                        FontWeight.w500),
                                               ),
                                             ),
                                           ),
@@ -291,19 +288,11 @@ class _CadastroState extends State<Cadastro> {
                                     onPrimary: Colors.white,
                                     shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(15),),),
+                                        Radius.circular(15),
+                                      ),
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    formKey.currentState?.validate();
-                                    if (validaSenha == true &&
-                                        validaEmail == true) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()),
-                                      );
-                                    }
-                                  },
+                                  onPressed: handlePressed,
                                 ),
                               ),
                             )
@@ -319,5 +308,17 @@ class _CadastroState extends State<Cadastro> {
         ),
       ),
     );
+  }
+
+  Future<void> handlePressed() async {
+    if (_formKey.currentState!.validate()) {
+      var email = emailController.text;
+      var senha = senhaController.text;
+      var nome = nomeController.text;
+
+      await AuthDao().cadastrar(nome, email, senha);
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+    }
   }
 }
