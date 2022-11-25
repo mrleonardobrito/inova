@@ -5,10 +5,10 @@ class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
 
   @override
-  _TestPageState createState() => _TestPageState();
+  TestPageState createState() => TestPageState();
 }
 
-class _TestPageState extends State<TestPage> {
+class TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _TestPageState extends State<TestPage> {
           child: Container(
             height: 30,
             width: 100,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.lightBlue,
             ),
             child: Center(

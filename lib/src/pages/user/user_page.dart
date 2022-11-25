@@ -7,10 +7,10 @@ class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
 
   @override
-  _UserPageState createState() => _UserPageState();
+  UserPageState createState() => UserPageState();
 }
 
-class _UserPageState extends State<UserPage> {
+class UserPageState extends State<UserPage> {
   int showAbas = 1;
 
   @override
@@ -73,7 +73,7 @@ class _UserPageState extends State<UserPage> {
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-      body: Container(
+      body: SizedBox(
         height: height,
         width: width,
         child: Stack(
@@ -83,12 +83,12 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * screenComponentsSize[0]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
                 ),
                 Container(
                   height: height * screenComponentsSize[1]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
+                  decoration: const BoxDecoration(color: Color(0xFF4065FC)),
                 ),
                 Container(
                   height: height * screenComponentsSize[2]["size"],
@@ -104,7 +104,7 @@ class _UserPageState extends State<UserPage> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width,
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 10.0),
                                 child: Align(
                                   alignment: Alignment.topRight,
@@ -114,22 +114,20 @@ class _UserPageState extends State<UserPage> {
                                           width: 1,
                                           color: Colors.black //BorderSide
                                           ), //B
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(40)),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(40)),
                                     ),
                                     child: TextButton(
                                       child: Container(
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                            topLeft:
-                                                const Radius.circular(40.0),
-                                            topRight:
-                                                const Radius.circular(40.0),
+                                            topLeft: Radius.circular(40.0),
+                                            topRight: Radius.circular(40.0),
                                           ),
                                         ),
                                         height: height * 0.04,
                                         width: width * 0.30,
-                                        child: Center(
+                                        child: const Center(
                                           child: Text(
                                             'Editar perfil',
                                             style: TextStyle(
@@ -157,16 +155,16 @@ class _UserPageState extends State<UserPage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 100,
-                          color: Color(0xFFF5F5F5),
+                          color: const Color(0xFFF5F5F5),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15),
+                            padding: const EdgeInsets.only(left: 15),
                             child: ListView(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 10),
                                   child: Text(
                                     '${userData["nome"]}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
@@ -174,12 +172,12 @@ class _UserPageState extends State<UserPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 3),
+                                  padding: const EdgeInsets.only(top: 3),
                                   child: Container(
-                                    margin: EdgeInsets.only(bottom: 7),
+                                    margin: const EdgeInsets.only(bottom: 7),
                                     child: Text(
                                       '${userData["descricaoAcademica"]}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Color(0xFF808080),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w500),
@@ -187,10 +185,10 @@ class _UserPageState extends State<UserPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 5),
+                                  padding: const EdgeInsets.only(bottom: 5),
                                   child: Text(
                                     '${userData["descricao"]}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 13,
                                         fontWeight: FontWeight.normal),
@@ -204,11 +202,11 @@ class _UserPageState extends State<UserPage> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   height: height * screenComponentsSize[3]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFF4065FC)),
+                  decoration: const BoxDecoration(color: Color(0xFF4065FC)),
                   child: Row(
                     children: [
                       GestureDetector(
@@ -216,23 +214,22 @@ class _UserPageState extends State<UserPage> {
                           setState(
                             () {
                               showAbas = 1;
-                              print(showAbas);
                             },
                           );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 1
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? const Color(0xFFD8DFFC)
+                              : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              '${carouselItems[0]}',
+                              carouselItems[0],
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 1
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? const Color(0xFF3B64FA)
+                                    : const Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -250,16 +247,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 2
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? const Color(0xFFD8DFFC)
+                              : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              '${carouselItems[1]}',
+                              carouselItems[1],
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 2
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? const Color(0xFF3B64FA)
+                                    : const Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -277,16 +274,16 @@ class _UserPageState extends State<UserPage> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3,
                           color: showAbas == 3
-                              ? Color(0xFFD8DFFC)
-                              : Color(0xFF3B64FA),
+                              ? const Color(0xFFD8DFFC)
+                              : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              '${carouselItems[2]}',
+                              carouselItems[2],
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 3
-                                    ? Color(0xFF3B64FA)
-                                    : Color(0xFFD8DFFC),
+                                    ? const Color(0xFF3B64FA)
+                                    : const Color(0xFFD8DFFC),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -299,21 +296,21 @@ class _UserPageState extends State<UserPage> {
                 Container(
                   height: height * screenComponentsSize[4]["size"],
                   width: width,
-                  decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
-                  child: Container(
+                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2 +
                         (0.06 * MediaQuery.of(context).size.height / 2),
                     child: Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: showAbas == 1
-                            ? Projetos()
+                            ? const Projetos()
                             : showAbas == 2
-                                ? Repertorio()
+                                ? const Repertorio()
                                 : showAbas == 3
-                                    ? Text('eita')
-                                    : Text('Deu errado'),
+                                    ? const Text('eita')
+                                    : const Text('Deu errado'),
                       ),
                     ),
                   ),
@@ -324,6 +321,7 @@ class _UserPageState extends State<UserPage> {
               top: (height * 0.11) * 1.35,
               left: width * 0.05,
               child: ClipRRect(
+                borderRadius: BorderRadius.circular(150),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
@@ -335,7 +333,6 @@ class _UserPageState extends State<UserPage> {
                     fit: BoxFit.fitHeight,
                   ),
                 ),
-                borderRadius: BorderRadius.circular(150),
               ),
             ),
           ],
