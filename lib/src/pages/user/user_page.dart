@@ -141,8 +141,8 @@ class UserPageState extends State<UserPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const EditUser()),
+                                            builder: (context) => EditUser(),
+                                          ),
                                         );
                                       },
                                     ),
