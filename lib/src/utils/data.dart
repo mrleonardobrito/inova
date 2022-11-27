@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:inova/src/utils/colors.dart';
-import 'package:inova/src/utils/icons.dart';
 
 // App content
 

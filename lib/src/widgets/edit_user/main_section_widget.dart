@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -6,32 +5,23 @@ class MainSectionWidget extends StatefulWidget {
   const MainSectionWidget({Key? key}) : super(key: key);
 
   @override
-  _MainSectionWidgetState createState() => _MainSectionWidgetState();
+  MainSectionWidgetState createState() => MainSectionWidgetState();
 }
 
-class _MainSectionWidgetState extends State<MainSectionWidget> {
+class MainSectionWidgetState extends State<MainSectionWidget> {
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     double textFieldRadius = 10;
-    double _circleHeight = 40;
+    double circleHeight = 40;
 
-    print(_width);
-
-    String? _fileSchool;
-
-    final listViewMargin = EdgeInsets.only(right: 13);
-
-    Future getSchool() async {
-      final result = await FilePicker.platform.pickFiles();
-      if(result == null) return;
-    }
+    const listViewMargin = EdgeInsets.only(right: 13);
 
     Future getForm() async {
       final result = await FilePicker.platform.pickFiles();
-      if(result == null) return;
+      if (result == null) return;
     }
 
     const projectData = [
@@ -72,107 +62,114 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
     final formKey = GlobalKey<FormState>();
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 35),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       child: Column(
         children: [
           Container(
             height: 1,
-            margin: EdgeInsets.only(bottom: 20),
-            width: _width - 35,
-            color: Color(0xFF9D9D9D),
+            margin: const EdgeInsets.only(bottom: 20),
+            width: width - 35,
+            color: const Color(0xFF9D9D9D),
           ),
-          Container(
-            width: _width,
+          SizedBox(
+            width: width,
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 7, bottom: 10),
-                  child: Align(
+                  margin: const EdgeInsets.only(left: 7, bottom: 10),
+                  child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Descrição do usuário',
                       style: TextStyle(
-                          color: Color(0xFF3B64FA),
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                        color: Color(0xFF3B64FA),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Form(
+                  key: formKey,
+                  child: TextFormField(
+                    minLines: 5,
+                    maxLines: 5,
+                    keyboardType: TextInputType.multiline,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty)
+                        return "Email necessário";
+                    },
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(textFieldRadius),
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(textFieldRadius),
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      disabledBorder: InputBorder.none,
+                      filled: true,
+                      fillColor: const Color(0xFFE8ECFF),
+                      hintText: "Digite aqui...",
+                      hintStyle: const TextStyle(fontSize: 14),
                     ),
                   ),
                 ),
                 Container(
-                  child: Form(
-                    key: formKey,
-                    child: TextFormField(
-                      minLines: 5,
-                      maxLines: 5,
-                      keyboardType: TextInputType.multiline,
-                      validator: (String? value){
-                        if(value == null || value.isEmpty) return "Email necessário";
-                      },
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(textFieldRadius),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(textFieldRadius),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                          ),
-                          disabledBorder: InputBorder.none,
-                          filled: true,
-                          fillColor: Color(0xFFE8ECFF),
-                          hintText: "Digite aqui...",
-                          hintStyle: TextStyle(fontSize: 14)),
-                    ),
-                  )
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 20),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [
                         TextButton(
-                          onPressed: () {getForm();},
+                          onPressed: () {
+                            getForm();
+                          },
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.picture_as_pdf_rounded,
                                 size: 31,
                                 color: Color(0xFF4065FC),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 5),
-                                child: Text(
+                                margin: const EdgeInsets.only(left: 5),
+                                child: const Text(
                                   'Inserir currículo',
                                   style: TextStyle(
-                                      color: Color(0xFF4065FC), fontSize: 13),
+                                    color: Color(0xFF4065FC),
+                                    fontSize: 13,
+                                  ),
                                 ),
                               )
                             ],
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         TextButton(
                           onPressed: () {
                             formKey.currentState?.validate();
                           },
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.school,
                                 size: 31,
                                 color: Color(0xFF4065FC),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 5),
-                                child: Text(
+                                margin: const EdgeInsets.only(left: 5),
+                                child: const Text(
                                   'Inserir diploma',
                                   style: TextStyle(
-                                      color: Color(0xFF4065FC), fontSize: 13),
+                                    color: Color(0xFF4065FC),
+                                    fontSize: 13,
+                                  ),
                                 ),
                               )
                             ],
@@ -185,25 +182,26 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    margin: EdgeInsets.only(top: 20, left: 0),
+                    margin: const EdgeInsets.only(top: 20, left: 0),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.only(bottom: 10, left: 15),
-                          child: Align(
+                          margin: const EdgeInsets.only(bottom: 10, left: 15),
+                          child: const Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Projetos do usuário',
                               style: TextStyle(
-                                  color: Color(0xFF4065FC),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
+                                color: Color(0xFF4065FC),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 130,
-                          width: _width,
+                          width: width,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: projectData.length,
@@ -212,145 +210,142 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                                 margin: listViewMargin,
                                 width: 150.0,
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFE8ECFF),
-                                    borderRadius: BorderRadius.circular(10)),
+                                  color: const Color(0xFFE8ECFF),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   child: Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Container(
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(bottom: 3),
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                '${projectData[index]["nome"]}',
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Color(0xFF4065FC),
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(bottom: 3),
+                                          child: Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              '${projectData[index]["nome"]}',
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: Color(0xFF4065FC),
+                                                fontWeight: FontWeight.w600,
                                               ),
                                             ),
                                           ),
-                                          Container(
-                                            margin: EdgeInsets.only(top: 1),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: _circleHeight,
-                                                width: _circleHeight,
-                                                margin:
-                                                    EdgeInsets.only(right: 5),
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            180)),
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(top: 1),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              height: circleHeight,
+                                              width: circleHeight,
+                                              margin: const EdgeInsets.only(
+                                                  right: 5),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(180),
                                               ),
-                                              Container(
-                                                child: Column(
-                                                  children: [
-                                                    Container(
-                                                      width: 80,
-                                                      child: Align(
-                                                        alignment: Alignment
-                                                            .centerLeft,
-                                                        child: Text(
-                                                          '${projectData[index]["orientador"]}',
-                                                          style: TextStyle(
-                                                              fontSize: 10,
-                                                              color: Color(
-                                                                  0xFF4065FC),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  width: 80,
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      '${projectData[index]["orientador"]}',
+                                                      style: const TextStyle(
+                                                        fontSize: 10,
+                                                        color:
+                                                            Color(0xFF4065FC),
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
                                                     ),
-                                                    Container(
-                                                      width: 80,
-                                                      child: Align(
-                                                        alignment: Alignment
-                                                            .centerLeft,
-                                                        child: Text(
-                                                          "Orientador",
-                                                          style: TextStyle(
-                                                              fontSize: 8,
-                                                              color: Color(
-                                                                  0xFF8599EA),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          Spacer(),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: _circleHeight,
-                                                width: _circleHeight,
-                                                margin:
-                                                    EdgeInsets.only(right: 5),
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            180)),
-                                              ),
-                                              Container(
-                                                color: Colors.transparent,
-                                                width: 80,
-                                                child: Column(
-                                                  children: [
-                                                    Container(
-                                                      child: Align(
-                                                        alignment:
-                                                            Alignment.topLeft,
-                                                        child: Text(
-                                                          '${projectData[index]["colaborador"]}',
-                                                          style: TextStyle(
-                                                              fontSize: 10,
-                                                              color: Color(
-                                                                  0xFF4065FC),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
+                                                const SizedBox(
+                                                  width: 80,
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      "Orientador",
+                                                      style: TextStyle(
+                                                        fontSize: 8,
+                                                        color:
+                                                            Color(0xFF8599EA),
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
                                                     ),
-                                                    Container(
-                                                      child: Align(
-                                                        alignment:
-                                                            Alignment.topLeft,
-                                                        child: Text(
-                                                          "Colaborador",
-                                                          style: TextStyle(
-                                                              fontSize: 8,
-                                                              color: Color(
-                                                                  0xFF8599EA),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              height: circleHeight,
+                                              width: circleHeight,
+                                              margin: const EdgeInsets.only(
+                                                  right: 5),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  180,
                                                 ),
                                               ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                                            ),
+                                            Container(
+                                              color: Colors.transparent,
+                                              width: 80,
+                                              child: Column(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Text(
+                                                      '${projectData[index]["colaborador"]}',
+                                                      style: TextStyle(
+                                                        fontSize: 10,
+                                                        color:
+                                                            Color(0xFF4065FC),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Text(
+                                                      "Colaborador",
+                                                      style: TextStyle(
+                                                        fontSize: 8,
+                                                        color: Color(
+                                                          0xFF8599EA,
+                                                        ),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
