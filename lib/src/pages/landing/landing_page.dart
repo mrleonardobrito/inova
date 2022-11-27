@@ -41,6 +41,7 @@ class LandingPageState extends State<LandingPage> {
                         child: TextButton(
                           onPressed: () {},
                           onLongPress: () {
+                            print('mim de asa papai');
                           },
                           child: const Text(
                             'Entrar no aplicativo',
@@ -55,12 +56,13 @@ class LandingPageState extends State<LandingPage> {
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: GestureDetector(
                           onTap: () {
+                            print('Teste');
                           },
                           child: const Text(
                             'Ainda não é cadastrado? Clique aqui.',
                             style: TextStyle(
-                                fontSize: 10,
-                                color: Color(0xFF3A64FA),
+                              fontSize: 10,
+                              color: Color(0xFF3A64FA),
                                 decoration: TextDecoration.none),
                           ),
                         ),

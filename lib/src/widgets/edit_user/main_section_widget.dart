@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:file_picker/file_picker.dart'; 
+import 'package:file_picker/file_picker.dart';
 
 class MainSectionWidget extends StatefulWidget {
   const MainSectionWidget({Key? key}) : super(key: key);
@@ -19,10 +19,10 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
 
     const listViewMargin = EdgeInsets.only(right: 13);
 
-    /* Future getForm() async {
+    Future getForm() async {
       final result = await FilePicker.platform.pickFiles();
       if (result == null) return;
-    } */
+    }
 
     const projectData = [
       {
@@ -128,7 +128,7 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            //getForm();
+                            getForm();
                           },
                           child: Row(
                             children: [
