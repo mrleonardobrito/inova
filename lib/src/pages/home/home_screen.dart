@@ -7,13 +7,13 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> screens = [HomePage(), UserPage()];
+  final List<Widget> screens = const [HomePage(), UserPage()];
 
   double bottomBarIconSize = 32;
 
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: SizedBox(
         height: height * 0.10,
         child: BottomNavigationBar(
-          unselectedLabelStyle: TextStyle(fontSize: 12),
+          unselectedLabelStyle: const TextStyle(fontSize: 12),
           currentIndex: _currentIndex,
           onTap: onTabTapped,
           items: [

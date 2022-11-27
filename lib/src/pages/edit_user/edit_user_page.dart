@@ -7,34 +7,33 @@ class EditUser extends StatefulWidget {
   const EditUser({Key? key}) : super(key: key);
 
   @override
-  _EditUserState createState() => _EditUserState();
+  EditUserState createState() => EditUserState();
 }
 
-class _EditUserState extends State<EditUser> {
+class EditUserState extends State<EditUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: ListView(
+        body: ListView(
       children: [
-        Container(
+        SizedBox(
           height: MediaQuery.of(context).size.height * 0.36,
           width: MediaQuery.of(context).size.width,
-          child: HeaderSectionWidget(),
+          child: const HeaderSectionWidget(),
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.52,
           width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
-          child: MainSectionWidget(),
+          child: const MainSectionWidget(),
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.12,
           width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
-          child: BottomSectionWidget(),
+          child: const BottomSectionWidget(),
         ),
       ],
-    )));
+    ),);
   }
 }
