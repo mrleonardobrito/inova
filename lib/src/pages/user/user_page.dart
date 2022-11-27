@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:inova/blocs/cubit/user_cubit.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
+import 'package:inova/src/pages/home/home_screen.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
 import 'package:inova/src/widgets/user/user_repertory.dart';
+
+import 'package:inova/src/utils/variables/variables.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
+import 'package:inova/src/utils/functions/functions.dart';
+
+
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -11,35 +19,25 @@ class UserPage extends StatefulWidget {
 }
 
 class UserPageState extends State<UserPage> {
-  int showAbas = 1;
+
+  /*
+  @override
+  void initState(){
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final cubit = context.read<UserCubit>();
+      cubit.fetchList();
+    });
+  }
+  */
+
+
 
   @override
   Widget build(BuildContext context) {
     // Variáveis globais de estilização
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
-    // Data const's
-    const userData = {
-      "nome": "Emanuel Vilela",
-      "descricaoAcademica": "4° ano - 914",
-      "descricao":
-          "Godsto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
-    };
-
-    const carouselItems = ["Projetos", "Repertório", "Teste"];
-
-    List screenComponentsSize = [
-      {"componentName": "header", "size": 0.07},
-      {"componentName": "background", "size": 0.13},
-      {"componentName": "userData", "size": 0.21},
-      {"componentName": "navBar", "size": 0.07},
-      {"componentName": "navBarItems", "size": 0.42}
-    ];
-
-    List colors = [
-      {"naviGrey": 0xFFF5F5F5},
-    ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
@@ -51,20 +49,49 @@ class UserPageState extends State<UserPage> {
             Column(
               children: [
                 Container(
-                  height: height * screenComponentsSize[0]["size"],
+                  height: height * userScreenComponentsSize[0]["size"],
                   width: width,
-                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
+                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF),),
+                  child: TextButton(
+                    onPressed: (() {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()
+                      ),
+                    );
+                    }),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          child:
+                            Text("Voltar", style: TextStyle(
+                              fontFamily: "InterM",
+                              fontSize: 18,
+                              color: getColor("black")
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ),
                 ),
                 Container(
-                  height: height * screenComponentsSize[1]["size"],
+                  height: height * userScreenComponentsSize[1]["size"],
                   width: width,
                   decoration: const BoxDecoration(color: Color(0xFF4065FC)),
                 ),
                 Container(
-                  height: height * screenComponentsSize[2]["size"],
+                  height: height * userScreenComponentsSize[2]["size"],
                   width: width,
-                  decoration:
-                      BoxDecoration(color: Color(colors[0]["naviGrey"])),
+                  decoration: BoxDecoration(
+                    color: getColor("naviGrey"),
+                  ),
                   child: Center(
                     child: Column(
                       children: [
@@ -83,16 +110,18 @@ class UserPageState extends State<UserPage> {
                                       border: Border.all(
                                           width: 1,
                                           color: Colors.black //BorderSide
-                                          ), //B
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(40)),
+                                      ), //B
+                                      borderRadius:
+                                      const BorderRadius.all(Radius.circular(40),),
                                     ),
-                                    child: TextButton(
+                                    child: GestureDetector(
                                       child: Container(
                                         decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(40.0),
-                                            topRight: Radius.circular(40.0),
+                                            topLeft:
+                                            Radius.circular(40.0),
+                                            topRight:
+                                            Radius.circular(40.0),
                                           ),
                                         ),
                                         height: height * 0.04,
@@ -107,12 +136,10 @@ class UserPageState extends State<UserPage> {
                                           ),
                                         ),
                                       ),
-                                      onPressed: () {
+                                      onTap: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                            builder: (context) => const EditUser(),
-                                          ),
+                                          MaterialPageRoute(builder: (context) => const EditUser()),
                                         );
                                       },
                                     ),
@@ -124,44 +151,57 @@ class UserPageState extends State<UserPage> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 100,
                           color: const Color(0xFFF5F5F5),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: ListView(
+                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: Column(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Text(
-                                    '${userData["nome"]}',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: Container(
-                                    margin: const EdgeInsets.only(bottom: 7),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 10),
                                     child: Text(
-                                      '${userData["descricaoAcademica"]}',
+                                      '${userData["nome"]}',
                                       style: const TextStyle(
-                                          color: Color(0xFF808080),
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 5),
-                                  child: Text(
-                                    '${userData["descricao"]}',
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
+                                const Padding(padding: EdgeInsets.only(bottom: 5),),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 3),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(bottom: 2),
+                                      child: Text(
+                                        '${userData["descricaoAcademica"]}',
+                                        style: const TextStyle(
+                                            color: Color(0xFF808080),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500,),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 5),
+                                    child: Wrap(
+                                      children:  [Text(
+                                        '${userData["descricao"]}',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.normal,),
+                                      ),],
+                                    )
                                   ),
                                 )
                               ],
@@ -174,7 +214,7 @@ class UserPageState extends State<UserPage> {
                 ),
                 const Spacer(),
                 Container(
-                  height: height * screenComponentsSize[3]["size"],
+                  height: height * userScreenComponentsSize[3]["size"],
                   width: width,
                   decoration: const BoxDecoration(color: Color(0xFF4065FC)),
                   child: Row(
@@ -182,7 +222,7 @@ class UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                            () {
+                                () {
                               showAbas = 1;
                             },
                           );
@@ -209,7 +249,7 @@ class UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                            () {
+                                () {
                               showAbas = 2;
                             },
                           );
@@ -235,8 +275,7 @@ class UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(
-                            () {
+                          setState(() {
                               showAbas = 3;
                             },
                           );
@@ -264,7 +303,7 @@ class UserPageState extends State<UserPage> {
                   ),
                 ),
                 Container(
-                  height: height * screenComponentsSize[4]["size"],
+                  height: height * userScreenComponentsSize[4]["size"],
                   width: width,
                   decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
                   child: SizedBox(
@@ -288,8 +327,8 @@ class UserPageState extends State<UserPage> {
               ],
             ),
             Positioned(
-              top: (height * 0.11) * 1.35,
-              left: width * 0.05,
+              top: (height * 0.12) * 1.20,
+              left: width * 0.06,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(150),
                 child: Container(
@@ -298,8 +337,8 @@ class UserPageState extends State<UserPage> {
                       color: Colors.black),
                   child: Image.asset(
                     "images/xereque.png",
-                    height: height * 0.11,
-                    width: height * 0.11,
+                    height: height * 0.12,
+                    width: height * 0.12,
                     fit: BoxFit.fitHeight,
                   ),
                 ),

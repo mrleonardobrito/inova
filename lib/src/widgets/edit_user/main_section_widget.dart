@@ -316,7 +316,7 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                                                         Alignment.topLeft,
                                                     child: Text(
                                                       '${projectData[index]["colaborador"]}',
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontSize: 10,
                                                         color:
                                                             Color(0xFF4065FC),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/widgets/user/comment_widget.dart';
 
 class Repertorio extends StatefulWidget {
@@ -12,7 +13,7 @@ class RepertorioState extends State<Repertorio> {
   int showAbas = 1;
   final _height = 90.0;
   List numberLineArr = [1, 2, 3, 4, 5];
-  List sizeLineArr = [220, 140, 40, 23, 12];
+  List<double> sizeLineArr = [220.0, 140.0, 40.0, 23.0, 12.0];
   final _lineHeight = 17.0;
 
   returnLine(numberLine, sizeLine) {
@@ -26,8 +27,10 @@ class RepertorioState extends State<Repertorio> {
               children: [
                 Text(
                   "${numberLineArr[numberLine]}",
-                  style:
-                      const TextStyle(color: Color(0xFF4065FC), fontSize: 15),
+                  style: TextStyle(
+                      color: const Color(0xFF4065FC),
+                      fontSize: 15,
+                      fontFamily: appUniqueFont),
                 ),
                 const Spacer(),
                 SizedBox(
@@ -56,11 +59,11 @@ class RepertorioState extends State<Repertorio> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -265,7 +268,7 @@ class RepertorioState extends State<Repertorio> {
                                   'Baixar curriculo',
                                   style: TextStyle(
                                     color: Color(0xFF4065FC),
-                                    fontSize: 14,
+                                    fontSize: 13,
                                   ),
                                 )
                               ],
@@ -295,6 +298,7 @@ class RepertorioState extends State<Repertorio> {
                                   'Baixar diploma',
                                   style: TextStyle(
                                     color: Color(0xFF4065FC),
+                                    fontSize: 13,
                                   ),
                                 )
                               ],

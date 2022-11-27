@@ -12,45 +12,49 @@ class _CommentsPageState extends State<CommentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF4065FC),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BottomBar()),
-                    );
-                  },
-                  child: const Text(
-                    'Salvar',
-                    style: TextStyle(color: Color(0xff4065FC),),
-                  ),),
-            )
-          ],
-          leading: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const BottomBar()),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: const Color(0xFF4065FC),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BottomBar()),
+                );
+              },
+              child: const Text(
+                'Salvar',
+                style: TextStyle(
+                  color: Color(0xff4065FC),
+                ),
+              ),
             ),
-            child: const Icon(
-              Icons.close,
-              color: Colors.black,
-              size: 25,
-            ),
+          )
+        ],
+        leading: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BottomBar()),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
           ),
-          backgroundColor: Colors.white,
+          child: const Icon(
+            Icons.close,
+            color: Colors.black,
+            size: 25,
+          ),
         ),
-        body: const Text('Comentários'),);
+        backgroundColor: Colors.white,
+      ),
+      body: const Text('Comentários'),
+    );
   }
 }

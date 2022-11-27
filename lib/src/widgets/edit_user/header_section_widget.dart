@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inova/src/utils/data.dart';
+import 'package:inova/src/pages/user/user_page.dart';
+import 'package:inova/src/utils/functions/functions.dart';
+import 'package:inova/src/utils/variables/variables.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);
@@ -12,7 +15,6 @@ class HeaderSectionWidget extends StatefulWidget {
 
 class HeaderSectionWidgetState extends State<HeaderSectionWidget> {
   File? _image;
-  File? school;
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -20,9 +22,11 @@ class HeaderSectionWidgetState extends State<HeaderSectionWidget> {
 
     final imageTemporary = File(image.path);
 
-    setState(() {
-      _image = imageTemporary;
-    });
+    setState(
+      () {
+        _image = imageTemporary;
+      },
+    );
   }
 
   @override

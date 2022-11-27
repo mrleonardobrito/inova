@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inova/src/pages/project/project.dart';
+import 'package:inova/src/utils/variables/list_variables.dart';
+import 'package:inova/src/utils/variables/variables.dart';
+
+import '../../../blocs/cubit/user_cubit.dart';
 
 class Projetos extends StatefulWidget {
   const Projetos({Key? key}) : super(key: key);
@@ -8,134 +14,127 @@ class Projetos extends StatefulWidget {
 }
 
 class ProjetosState extends State<Projetos> {
-  int showAbas = 1;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        final cubit = context.read<UserCubit>();
+        cubit.fetchList();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    const projectData = [
-      {
-        "nome": "DadosJusBrasil",
-        "orientador": "Daniel Lacert Fireman",
-        "descricao":
-            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
-        "dataTermino": "02/03/2017",
-      },
-      {
-        "nome": "Meta",
-        "orientador": "Felipe Alencar",
-        "descricao":
-            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
-        "dataTermino": "02/03/2022",
-      },
-      {
-        "nome": "Facebook",
-        "orientador": "Mark Zuckerberg",
-        "descricao":
-            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
-        "dataTermino": "Em andamento",
-      },
-      {
-        "nome": "uTorrent Mobile",
-        "orientador": "Tarsis Marinho",
-        "descricao": 'Aplicativo para piratear arquivos',
-        "dataTermino": "31/08/2020",
-      },
-      {
-        "nome": "DadosJusBrasil",
-        "orientador": "Daniel Lacert Fireman",
-        "descricao":
-            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
-        "dataTermino": "02/03/2017",
-      },
-      {
-        "nome": "Meta",
-        "orientador": "Felipe Alencar",
-        "descricao":
-            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
-        "dataTermino": "02/03/2022",
-      },
-      {
-        "nome": "Facebook",
-        "orientador": "Mark Zuckerberg",
-        "descricao":
-            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
-        "dataTermino": "Em andamento",
-      },
-      {
-        "nome": "uTorrent Mobile",
-        "orientador": "Tarsis Marinho",
-        "descricao": 'Aplicativo para piratear arquivos',
-        "dataTermino": "31/08/2020",
-      },
-    ];
-
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        child: ListView.builder(
-          itemCount: projectData.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Container(
-                height: 107,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  color: const Color(0xFFE8ECFF),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: ListView(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '${projectData[index]["nome"]}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+        padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
+        child: BlocBuilder<UserCubit, UserState>(
+          builder: (context, state) {
+            if (state is UserInitialState || state is UserLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is UserLoadedListState) {
+              final userList = state.homes;
+              return ListView.builder(
+                itemCount: userList.length,
+                itemBuilder: (context, index) {
+                  final home = userList[index];
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 0,
+                      ),
+                      child: Container(
+                        height: 110, // transcrever para adaptatividade
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: const Color(0xFFE8ECFF),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 15,
                           ),
-                          const Spacer(),
-                          Row(
+                          child: Column(
                             children: [
-                              const Icon(
-                                Icons.calendar_month,
-                                size: 18,
-                                color: Color(0xFFBFBFBF),
+                              Row(
+                                children: [
+                                  Text(
+                                    home.nome,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      fontFamily: appUniqueFont,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      const Center(
+                                        child: Icon(
+                                          Icons.calendar_month,
+                                          size: 18,
+                                          color: Color(0xFFBFBFBF),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          home.dataInicio,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 11,
+                                            color: Color(0xFFBFBFBF),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              Text(
-                                '${projectData[index]["dataTermino"]}',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 11,
-                                  color: Color(0xFFBFBFBF),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  home.nomeCoordenador,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: const Color(0xFF878787),
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: appUniqueFont),
                                 ),
                               ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 5),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  home.descricao,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.normal,
+                                    fontFamily: appUniqueFont,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
-                        ],
-                      ),
-                      Text(
-                        '${projectData[index]["orientador"]}',
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF878787),
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Text(
-                        '${projectData[index]["descricao"]}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
+              );
+            }
+            return Center(
+              child: Text(
+                state.toString(),
               ),
             );
           },

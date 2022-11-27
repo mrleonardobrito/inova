@@ -1,4 +1,4 @@
-import 'package:inova/src/utils/colors.dart';
+import 'package:inova/src/utils/colors/colors.dart';
 
 // App content
 
