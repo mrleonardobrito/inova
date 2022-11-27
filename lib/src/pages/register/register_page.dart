@@ -212,7 +212,7 @@ class CadastroState extends State<Cadastro> {
                       Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 10),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shape: const RoundedRectangleBorder(
