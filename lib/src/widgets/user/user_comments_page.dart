@@ -15,36 +15,35 @@ class _CommentsPageState extends State<CommentsPage> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Color(0xFF4065FC),
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF4065FC),
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => BottomBar()),
+                      MaterialPageRoute(builder: (context) => const BottomBar()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'Salvar',
-                    style: TextStyle(color: Color(0xff4065FC)),
-                  )),
+                    style: TextStyle(color: Color(0xff4065FC),),
+                  ),),
             )
           ],
           leading: TextButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => BottomBar()),
+                MaterialPageRoute(builder: (context) => const BottomBar()),
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.white,
+              backgroundColor: Colors.white,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.close,
               color: Colors.black,
               size: 25,
@@ -52,6 +51,6 @@ class _CommentsPageState extends State<CommentsPage> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Text('Comentários'));
+        body: const Text('Comentários'),);
   }
 }
