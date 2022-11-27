@@ -25,7 +25,7 @@ class HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: SizedBox(
         height: height * 0.10,
         child: BottomNavigationBar(
-          unselectedLabelStyle: TextStyle(fontSize: 12),
+          unselectedLabelStyle: const TextStyle(fontSize: 12),
           currentIndex: _currentIndex,
           onTap: onTabTapped,
           items: [
