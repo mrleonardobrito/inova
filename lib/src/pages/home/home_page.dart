@@ -125,7 +125,8 @@ class HomePageState extends State<HomePage> {
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0)),
+                    topRight: Radius.circular(10.0),
+                    ),
                 color: Color(0xFFEFEFEF),
               ),
               child: Center(
@@ -133,7 +134,8 @@ class HomePageState extends State<HomePage> {
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0)),
+                      topRight: Radius.circular(10.0),
+                      ),
                   color: Color(0xFFEFEFEF),
                 ),
                 child: TextField(
@@ -143,7 +145,8 @@ class HomePageState extends State<HomePage> {
                   ),
                   onChanged: (query) => searchVaga(query),
                 ),
-              )),
+              ),
+              ),
             ),
           ),
           expandedHeight: height * 0.2,
