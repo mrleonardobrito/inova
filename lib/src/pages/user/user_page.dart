@@ -19,45 +19,15 @@ class UserPageState extends State<UserPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    // Data consts
+    // Data const's
     const userData = {
       "nome": "Emanuel Vilela",
       "descricaoAcademica": "4° ano - 914",
       "descricao":
-          "Gosto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
+          "Godsto de programar e fazer aplicativos. Estou cursando o ensino médio no Instituto Federal de Alagoas.",
     };
 
     const carouselItems = ["Projetos", "Repertório", "Teste"];
-
-    const projectData = [
-      {
-        "nome": "DadosJusBrasil",
-        "orientador": "Daniel Lacert Fireman",
-        "descricao":
-            'Aplicativo para pipipipopopo pipipipopopo pipipipopopo pipipipopopo',
-        "dataTermino": "02/03/2017",
-      },
-      {
-        "nome": "Meta",
-        "orientador": "Felipe Alencar",
-        "descricao":
-            'Estágio em parceria com o Mark Zuckerberg para a produção do Whatsapp 2',
-        "dataTermino": "02/03/2022",
-      },
-      {
-        "nome": "Facebook",
-        "orientador": "Mark Zuckerberg",
-        "descricao":
-            'Estágio feito para mudar a foto de perfil do Marquinhos, em que ele não sabia mudar',
-        "dataTermino": "Em andamento",
-      },
-      {
-        "nome": "uTorrent Mobile",
-        "orientador": "Tarsis Marinho",
-        "descricao": 'Aplicativo para piratear arquivos',
-        "dataTermino": "31/08/2020",
-      },
-    ];
 
     List screenComponentsSize = [
       {"componentName": "header", "size": 0.07},

@@ -7,7 +7,7 @@ class VagaLista {
     if (json['vagas'] != null) {
       vagas = <Vaga>[];
       json['vagas'].forEach((vaga) {
-        print(vagas);
+        //print(vagas);
         vagas.add(Vaga.fromJson(vaga));
       });
     }

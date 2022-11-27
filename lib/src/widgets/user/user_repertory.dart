@@ -136,9 +136,6 @@ class RepertorioState extends State<Repertorio> {
       } else if (stars < 0) {}
     }
 
-    String commentText =
-        'Trabalho sensacional feito pelo aluno. Esse mlk merece 5k de salário pq ele é foda. O melhor aluno da minha vida. Foram 5 meses desenvolvendo o aplicativo e pipipipopopo e tals tals tals ';
-
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.52,
       child: Padding(
