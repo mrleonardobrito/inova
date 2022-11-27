@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
-import 'package:inova/src/pages/register/register_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
 
   @override
-  _CadastroState createState() => _CadastroState();
+  CadastroState createState() => CadastroState();
 }
 
-class _CadastroState extends State<Cadastro> {
+class CadastroState extends State<Cadastro> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
-  var maskFormatter = new MaskTextInputFormatter(
+  var maskFormatter = MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
   );
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     final formKey = GlobalKey<FormState>();
 
-    String? _email = 'adminINOVA@gmail.com';
-    String? _senha = '40028922';
+    String? email = 'adminINOVA@gmail.com';
+    String? senha = '40028922';
 
     bool validaEmail = false;
     bool validaSenha = false;
 
-    bool senhaIsEmpty = true;
-
     return Scaffold(
       body: Container(
-        height: _height,
-        width: _width,
-        color: Color(0xFF4065FC),
+        height: height,
+        width: width,
+        color: const Color(0xFF4065FC),
         child: Column(
           children: [
-            Container(
-              height: _height * 0.25,
-              width: _width * 0.75,
-              child: Padding(
+            SizedBox(
+              height: height * 0.25,
+              width: width * 0.75,
+              child: const Padding(
                 padding: EdgeInsets.only(left: 0, bottom: 30),
                 child: Align(
                   alignment: Alignment.bottomLeft,
@@ -57,11 +54,11 @@ class _CadastroState extends State<Cadastro> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               child: Container(
-                height: _height * 0.75,
-                width: _width,
-                decoration: BoxDecoration(
+                height: height * 0.75,
+                width: width,
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -69,10 +66,11 @@ class _CadastroState extends State<Cadastro> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 35),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 35),
                   child: ListView(
                     children: [
-                      Text(
+                      const Text(
                         'Cadastro',
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
@@ -81,117 +79,108 @@ class _CadastroState extends State<Cadastro> {
                         key: formKey,
                         child: Column(
                           children: [
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 25),
-                                child: TextFormField(
-                                  validator: (String? value) {
-                                    if (value != _email)
-                                      return "E-mail incorreto";
-                                    if (value == _email) {
-                                      setState(
-                                        () {
-                                          validaEmail = true;
-                                        },
-                                      );
-                                    }
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: 'Email...',
-                                  ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: TextFormField(
+                                validator: (String? value) {
+                                  if (value != email) return "E-mail incorreto";
+                                  if (value == email) {
+                                    setState(
+                                      () {
+                                        validaEmail = true;
+                                      },
+                                    );
+                                  }
+                                },
+                                decoration: const InputDecoration(
+                                  hintText: 'Email...',
                                 ),
                               ),
                             ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: TextFormField(
-                                  validator: (String? value) {
-                                    if (value != _senha) {
-                                      return "Senha incorreta";
-                                    } else if (value == _senha)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: TextFormField(
+                                validator: (String? value) {
+                                  if (value != senha) {
+                                    return "Senha incorreta";
+                                  } else if (value == senha)
+                                    setState(
+                                      () {
+                                        validaSenha = true;
+                                      },
+                                    );
+                                },
+                                decoration: InputDecoration(
+                                  hintText: 'Senha...',
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
                                       setState(
                                         () {
-                                          validaSenha = true;
+                                          _showPassword = !_showPassword;
                                         },
                                       );
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: 'Senha...',
-                                    suffixIcon: GestureDetector(
-                                      onTap: () {
-                                        setState(
-                                          () {
-                                            _showPassword = !_showPassword;
-                                          },
-                                        );
-                                      },
-                                      child: Icon(
-                                        _showPassword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility,
-                                        color: Color(0xFF4065FC),
-                                      ),
+                                    },
+                                    child: Icon(
+                                      _showPassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: const Color(0xFF4065FC),
                                     ),
                                   ),
-                                  obscureText: !_showPassword,
                                 ),
+                                obscureText: !_showPassword,
                               ),
                             ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: TextFormField(
-                                  validator: (String? value) {
-                                    if (value != _senha) {
-                                      return "Senha incorreta";
-                                    } else if (value == _senha)
-                                      setState(
-                                        () {
-                                          validaSenha = true;
-                                        },
-                                      );
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: 'Confirmar senha...',
-                                    suffixIcon: GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _showConfirmPassword =
-                                              !_showConfirmPassword;
-                                        });
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: TextFormField(
+                                validator: (String? value) {
+                                  if (value != senha) {
+                                    return "Senha incorreta";
+                                  } else if (value == senha)
+                                    setState(
+                                      () {
+                                        validaSenha = true;
                                       },
-                                      child: Icon(
-                                        _showConfirmPassword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility,
-                                        color: Color(0xFF4065FC),
-                                      ),
+                                    );
+                                },
+                                decoration: InputDecoration(
+                                  hintText: 'Confirmar senha...',
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _showConfirmPassword =
+                                            !_showConfirmPassword;
+                                      });
+                                    },
+                                    child: Icon(
+                                      _showConfirmPassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: const Color(0xFF4065FC),
                                     ),
                                   ),
-                                  obscureText: _showConfirmPassword == false
-                                      ? true
-                                      : false,
                                 ),
+                                obscureText: _showConfirmPassword == false
+                                    ? true
+                                    : false,
                               ),
                             ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Campo Obrigatorio";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    hintText: 'Telefone...',
-                                  ),
-                                  inputFormatters: [maskFormatter],
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Campo Obrigatorio";
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                keyboardType: TextInputType.number,
+                                decoration: const InputDecoration(
+                                  hintText: 'Telefone...',
                                 ),
+                                inputFormatters: [maskFormatter],
                               ),
                             ),
                           ],
@@ -201,119 +190,115 @@ class _CadastroState extends State<Cadastro> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Cadastro()),
+                            MaterialPageRoute(
+                              builder: (context) => const Cadastro(),
+                            ),
                           );
                         },
                         child: Container(
-                          margin: EdgeInsets.only(top: 13),
-                          child: Center(
+                          margin: const EdgeInsets.only(top: 13),
+                          child: const Center(
                             child: Text(
                               'Ainda não é cadastrado? cadastre-se aqui!',
                               style: TextStyle(
-                                  color: Color(0xFF4065FC),
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600),
+                                color: Color(0xFF4065FC),
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      Container(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 10),
-                              child: ElevatedButton(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 7.0),
-                                  child: Container(
-                                    width: _width,
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Container(
-                                            height: 30,
-                                            width: 30,
-                                            decoration: BoxDecoration(
-                                                color: Colors.grey,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(15))),
-                                          ),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                              ),
+                              onPressed: () {
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 7.0),
+                                child: SizedBox(
+                                  width: width,
+                                  child: Row(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          height: 30,
+                                          width: 30,
+                                          decoration: const BoxDecoration(
+                                              color: Colors.grey,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(15))),
                                         ),
-                                        Center(
-                                          child: Padding(
-                                            padding: EdgeInsets.only(left: 35),
-                                            child: Center(
-                                              child: Text(
-                                                'Entrar com conta Google',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
+                                      ),
+                                      const Center(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 35),
+                                          child: Center(
+                                            child: Text(
+                                              'Entrar com conta Google',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ),
-                                        )
-                                      ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              
+                            ),
+                          ),
+                          SizedBox(
+                            width: width,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
                                     ),
                                   ),
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
-                                  onPrimary: Colors.white,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 12.0),
+                                  child: Text(
+                                    'Entrar',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 16),
+                                  ),
                                 ),
                                 onPressed: () {
-                                  print('Pressed');
+                                  formKey.currentState?.validate();
+                                  if (validaSenha == true &&
+                                      validaEmail == true) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const HomePage(),
+                                      ),
+                                    );
+                                  }
                                 },
                               ),
                             ),
-                            Container(
-                              width: _width,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child: ElevatedButton(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 12.0),
-                                    child: Text(
-                                      'Entrar',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 16),
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFF3A64FA),
-                                    onPrimary: Colors.white,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    formKey.currentState?.validate();
-                                    if (validaSenha == true &&
-                                        validaEmail == true) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
