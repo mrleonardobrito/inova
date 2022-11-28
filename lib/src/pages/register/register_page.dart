@@ -91,6 +91,7 @@ class CadastroState extends State<Cadastro> {
                                       },
                                     );
                                   }
+                                  return null;
                                 },
                                 decoration: const InputDecoration(
                                   hintText: 'Email...',
@@ -103,12 +104,14 @@ class CadastroState extends State<Cadastro> {
                                 validator: (String? value) {
                                   if (value != senha) {
                                     return "Senha incorreta";
-                                  } else if (value == senha)
+                                  } else if (value == senha) {
                                     setState(
                                       () {
                                         validaSenha = true;
                                       },
                                     );
+                                  }
+                                  return null;
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Senha...',
@@ -137,12 +140,14 @@ class CadastroState extends State<Cadastro> {
                                 validator: (String? value) {
                                   if (value != senha) {
                                     return "Senha incorreta";
-                                  } else if (value == senha)
+                                  } else if (value == senha) {
                                     setState(
                                       () {
                                         validaSenha = true;
                                       },
                                     );
+                                  }
+                                  return null;
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Confirmar senha...',
@@ -219,8 +224,7 @@ class CadastroState extends State<Cadastro> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15))),
                               ),
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 7.0),
@@ -257,7 +261,6 @@ class CadastroState extends State<Cadastro> {
                                   ),
                                 ),
                               ),
-                              
                             ),
                           ),
                           SizedBox(

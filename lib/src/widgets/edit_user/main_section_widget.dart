@@ -12,7 +12,6 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     double textFieldRadius = 10;
     double circleHeight = 40;
@@ -96,8 +95,10 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                     maxLines: 5,
                     keyboardType: TextInputType.multiline,
                     validator: (String? value) {
-                      if (value == null || value.isEmpty)
+                      if (value == null || value.isEmpty) {
                         return "Email necessário";
+                      }
+                      return null;
                     },
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(

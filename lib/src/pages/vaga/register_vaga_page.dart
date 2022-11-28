@@ -249,7 +249,6 @@ class RegisterVagaState extends State<RegisterVaga> {
                           onTap: () {
                             setState(() {
                               isChecked = !isChecked;
-                              print(isChecked);
                             });
                           },
                           child: Container(
@@ -284,7 +283,6 @@ class RegisterVagaState extends State<RegisterVaga> {
                           onTap: () {
                             setState(() {
                               check = !check;
-                              print(check);
                             });
                           },
                           child: Container(

@@ -62,7 +62,7 @@ class _VagaCardState extends State<VagaCard> {
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(bottom: 5.0),
                     child: Text(
-                      'Professores: ' + widget.vaga.professores.join(','),
+                      'Professores: ${widget.vaga.professores.join(',')}',
                       style: const TextStyle(
                         fontSize: 11,
                         color: Color(0xFF808080),

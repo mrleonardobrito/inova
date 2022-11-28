@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/home/home_screen.dart';
-import 'package:inova/src/pages/user/user_page.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
 import 'package:inova/src/pages/register/register_page.dart';
-
-import 'package:inova/src/utils/variables/variables.dart';
-import 'package:inova/src/utils/functions/functions.dart';
-import 'package:inova/src/utils/variables/list_variables.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -99,6 +93,7 @@ class LoginState extends State<Login> {
                                     },
                                   );
                                 }
+                                return null;
                               },
                               decoration: const InputDecoration(
                                 hintText: 'Email...',
@@ -111,12 +106,13 @@ class LoginState extends State<Login> {
                               validator: (String? value) {
                                 if (value != senha) {
                                   return "Senha incorreta";
-                                } else if (value == senha)
+                                } else if (value == senha) {
                                   setState(
                                     () {
                                       validaSenha = true;
                                     },
                                   );
+                                }
                                 return '';
                               },
                               decoration: InputDecoration(
