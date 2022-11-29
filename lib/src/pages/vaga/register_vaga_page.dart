@@ -13,7 +13,6 @@ class _RegisterVagaState extends State<RegisterVaga> {
   bool isChecked = true;
   bool check = true;
 
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -86,7 +85,8 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                       ),
                                     ),
                                     Container(
-                                      width: MediaQuery.of(context).size.width / 3.7,
+                                      width: MediaQuery.of(context).size.width /
+                                          3.7,
                                       height: 28,
                                       child: Column(
                                         children: [
@@ -237,13 +237,12 @@ class _RegisterVagaState extends State<RegisterVaga> {
                             hintStyle: TextStyle(fontSize: 14)),
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(left: 55, right: 40, top: 10),
                       child: Row(
                         children: [
                           GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   isChecked = !isChecked;
                                   print(isChecked);
@@ -255,24 +254,27 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   width: checkBoxSize,
                                   decoration: BoxDecoration(
                                       color: Color(0xFFE8ECFF),
-                                      borderRadius: BorderRadius.circular(60)
-                                  ),
-                                  child: isChecked == true ? Container(
-                                    height: checkBoxSize,
-                                    width: checkBoxSize,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xFFE8ECFF),
-                                        borderRadius: BorderRadius.circular(60)
-                                    ),
-                                  ) : Center(
-                                    child: Icon(Icons.check_circle_rounded, color: Color(0xFF3B64FA), size: 24,),
-                                  )
-                              )
-                          ),
+                                      borderRadius: BorderRadius.circular(60)),
+                                  child: isChecked == true
+                                      ? Container(
+                                          height: checkBoxSize,
+                                          width: checkBoxSize,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFFE8ECFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(60)),
+                                        )
+                                      : Center(
+                                          child: Icon(
+                                            Icons.check_circle_rounded,
+                                            color: Color(0xFF3B64FA),
+                                            size: 24,
+                                          ),
+                                        ))),
                           Text("Maior de Idade?"),
                           Spacer(),
                           GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   check = !check;
                                   print(check);
@@ -284,20 +286,23 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   width: checkBoxSize,
                                   decoration: BoxDecoration(
                                       color: Color(0xFFE8ECFF),
-                                      borderRadius: BorderRadius.circular(60)
-                                  ),
-                                  child: check == true ? Container(
-                                    height: checkBoxSize,
-                                    width: checkBoxSize,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xFFE8ECFF),
-                                        borderRadius: BorderRadius.circular(60)
-                                    ),
-                                  ) : Center(
-                                    child: Icon(Icons.check_circle_rounded, color: Color(0xFF3B64FA), size: 24,),
-                                  )
-                              )
-                          ),
+                                      borderRadius: BorderRadius.circular(60)),
+                                  child: check == true
+                                      ? Container(
+                                          height: checkBoxSize,
+                                          width: checkBoxSize,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFFE8ECFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(60)),
+                                        )
+                                      : Center(
+                                          child: Icon(
+                                            Icons.check_circle_rounded,
+                                            color: Color(0xFF3B64FA),
+                                            size: 24,
+                                          ),
+                                        ))),
                           Text("Curso superior?"),
                         ],
                       ),
@@ -319,7 +324,8 @@ class _RegisterVagaState extends State<RegisterVaga> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(left: 10),
-                                    child: const Text('Concordo com os termos de whatinif'),
+                                    child: const Text(
+                                        'Concordo com os termos de whatinif'),
                                   )
                                 ],
                               ),
@@ -340,9 +346,9 @@ class _RegisterVagaState extends State<RegisterVaga> {
                         onTap: () {},
                         child: Center(
                             child: Text(
-                              'Concluir',
-                              style: TextStyle(color: Colors.white, fontSize: 17),
-                            )),
+                          'Concluir',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        )),
                       ),
                     )
                   ],
