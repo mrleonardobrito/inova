@@ -15,35 +15,36 @@ class _CommentsPageState extends State<CommentsPage> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF4065FC),
+                    primary: Colors.white,
+                    onPrimary: Color(0xFF4065FC),
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BottomBar()),
+                      MaterialPageRoute(builder: (context) => BottomBar()),
                     );
                   },
-                  child: const Text(
+                  child: Text(
                     'Salvar',
-                    style: TextStyle(color: Color(0xff4065FC),),
-                  ),),
+                    style: TextStyle(color: Color(0xff4065FC)),
+                  )),
             )
           ],
           leading: TextButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const BottomBar()),
+                MaterialPageRoute(builder: (context) => BottomBar()),
               );
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              primary: Colors.white,
+              onPrimary: Colors.white,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.close,
               color: Colors.black,
               size: 25,
@@ -51,6 +52,6 @@ class _CommentsPageState extends State<CommentsPage> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: const Text('Comentários'),);
+        body: Text('Comentários'));
   }
 }

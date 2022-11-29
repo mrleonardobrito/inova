@@ -124,29 +124,26 @@ class HomePageState extends State<HomePage> {
               width: double.maxFinite,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
-                ),
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0)),
                 color: Color(0xFFEFEFEF),
               ),
               child: Center(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                  child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
-                    ),
-                    color: Color(0xFFEFEFEF),
-                  ),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search, size: 20),
-                      border: InputBorder.none,
-                    ),
-                    onChanged: (query) => searchVaga(query),
-                  ),
+                      topRight: Radius.circular(10.0)),
+                  color: Color(0xFFEFEFEF),
                 ),
-              ),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search, size: 20),
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (query) => searchVaga(query),
+                ),
+              )),
             ),
           ),
           expandedHeight: height * 0.2,
@@ -157,7 +154,7 @@ class HomePageState extends State<HomePage> {
             valueListenable: stateManager.resultNotifier,
             builder: (context, notifier, child) {
               if (notifier is RequestLoadInProgress) {
-                return const Center(child: CircularProgressIndicator());
+                return Center(child: CircularProgressIndicator());
               } else {
                 this.vagas = notifier is RequestLoadSuccess
                     ? notifier.vagalista.vagas
