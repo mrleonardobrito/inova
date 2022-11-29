@@ -6,7 +6,7 @@ import 'package:inova/src/pages/register/register_page.dart';
 void main() {
   runApp(
     const MaterialApp(
-      home: Cadastro(),
+      home: Login(),
     ),
   );
 }

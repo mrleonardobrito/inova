@@ -26,12 +26,12 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
 
     Future getSchool() async {
       final result = await FilePicker.platform.pickFiles();
-      if(result == null) return;
+      if (result == null) return;
     }
 
     Future getForm() async {
       final result = await FilePicker.platform.pickFiles();
-      if(result == null) return;
+      if (result == null) return;
     }
 
     const projectData = [
@@ -99,36 +99,36 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                   ),
                 ),
                 Container(
-                  child: Form(
-                    key: formKey,
-                    child: TextFormField(
-                      minLines: 5,
-                      maxLines: 5,
-                      keyboardType: TextInputType.multiline,
-                      validator: (String? value){
-                        if(value == null || value.isEmpty) return "Email necessário";
-                      },
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(textFieldRadius),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
+                    child: Form(
+                  key: formKey,
+                  child: TextFormField(
+                    minLines: 5,
+                    maxLines: 5,
+                    keyboardType: TextInputType.multiline,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty)
+                        return "Email necessário";
+                    },
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(textFieldRadius),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
                           ),
-                          disabledBorder: InputBorder.none,
-                          filled: true,
-                          fillColor: Color(0xFFE8ECFF),
-                          hintText: "Digite aqui...",
-                          hintStyle: TextStyle(fontSize: 14)),
-                    ),
-                  )
-                ),
+                        ),
+                        disabledBorder: InputBorder.none,
+                        filled: true,
+                        fillColor: Color(0xFFE8ECFF),
+                        hintText: "Digite aqui...",
+                        hintStyle: TextStyle(fontSize: 14)),
+                  ),
+                )),
                 Container(
                   margin: EdgeInsets.only(top: 20),
                   child: Padding(
@@ -136,7 +136,9 @@ class _MainSectionWidgetState extends State<MainSectionWidget> {
                     child: Row(
                       children: [
                         TextButton(
-                          onPressed: () {getForm();},
+                          onPressed: () {
+                            getForm();
+                          },
                           child: Row(
                             children: [
                               Icon(
