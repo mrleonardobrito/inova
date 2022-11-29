@@ -14,19 +14,20 @@ class BottomSectionWidgetState extends State<BottomSectionWidget> {
 
     return Center(
       child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Container(
-            width: width,
-            height: 50,
-            decoration: BoxDecoration(
-                color: const Color(0xFF3B64FA),
-                borderRadius: BorderRadius.circular(15),),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Center(
-                  child: Text(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Container(
+          width: width,
+          height: 50,
+          decoration: BoxDecoration(
+            color: const Color(0xFF3B64FA),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Center(
+              child: Text(
                 'Salvar alterações',
                 style: TextStyle(
                   color: Colors.white,

@@ -14,26 +14,27 @@ class EditUserState extends State<EditUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-      children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.36,
-          width: MediaQuery.of(context).size.width,
-          child: const HeaderSectionWidget(),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.52,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.transparent,
-          child: const MainSectionWidget(),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.12,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.transparent,
-          child: const BottomSectionWidget(),
-        ),
-      ],
-    ),);
+      body: ListView(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.36,
+            width: MediaQuery.of(context).size.width,
+            child: const HeaderSectionWidget(),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.52,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.transparent,
+            child: const MainSectionWidget(),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.12,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.transparent,
+            child: const BottomSectionWidget(),
+          ),
+        ],
+      ),
+    );
   }
 }

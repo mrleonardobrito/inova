@@ -6,32 +6,35 @@ import '../../utils/vaga.dart';
 Widget titleVagaWidget(String titulo, String horas, width) {
   return Container(
     padding: const EdgeInsets.only(left: 10),
-    child: Wrap(crossAxisAlignment: WrapCrossAlignment.start, children: [
-      Container(
-        width: width * 0.8,
-        padding: const EdgeInsets.only(bottom: 5),
-        child: Text(
-          titulo,
-          style: const TextStyle(
-            fontSize: 22,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+    child: Wrap(
+      crossAxisAlignment: WrapCrossAlignment.start,
+      children: [
+        Container(
+          width: width * 0.8,
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Text(
+            titulo,
+            style: const TextStyle(
+              fontSize: 22,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
-      const Spacer(),
-      Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: Text(
-          horas,
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+        const Spacer(),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Text(
+            horas,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-      ),
-    ]),
+        )
+      ],
+    ),
   );
 }
 
@@ -257,21 +260,20 @@ Widget aoFinalDoTrabalhoWidget() {
     '- Prática em metodologias ágeis de trabalho'
   ];
 
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Padding(
-        padding: EdgeInsets.only(left: 10, top: 15),
-        child: Text(
-          'Ao final da prática o aluno haverá',
-          style: TextStyle(
-            fontSize: 15,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+  return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    const Padding(
+      padding: EdgeInsets.only(left: 10, top: 15),
+      child: Text(
+        'Ao final da prática o aluno haverá',
+        style: TextStyle(
+          fontSize: 15,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
       ),
-      ListView.builder(
+    ),
+    SizedBox(
+      child: ListView.builder(
         shrinkWrap: true,
         itemCount: listaAoFinal.length,
         itemBuilder: (context, index) => Container(
@@ -284,9 +286,9 @@ Widget aoFinalDoTrabalhoWidget() {
             ),
           ),
         ),
-      )
-    ],
-  );
+      ),
+    )
+  ]);
 }
 
 Widget interessaNaVagaButton(width) {
@@ -298,6 +300,10 @@ Widget interessaNaVagaButton(width) {
       borderRadius: BorderRadius.circular(10),
     ),
     child: TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.white,
+      ),
+      onPressed: () {},
       child: const Text(
         'Tenho interesse na vaga!!!',
         style: TextStyle(
@@ -305,7 +311,6 @@ Widget interessaNaVagaButton(width) {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onPressed: () {},
     ),
   );
 }

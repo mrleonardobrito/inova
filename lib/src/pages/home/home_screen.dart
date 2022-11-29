@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> screens = const [HomePage(), UserPage()];
+  final List<Widget> screens = [const HomePage(), const UserPage()];
 
   double bottomBarIconSize = 32;
 

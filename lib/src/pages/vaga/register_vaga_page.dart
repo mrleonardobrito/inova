@@ -249,7 +249,6 @@ class RegisterVagaState extends State<RegisterVaga> {
                           onTap: () {
                             setState(() {
                               isChecked = !isChecked;
-                              print(isChecked);
                             });
                           },
                           child: Container(
@@ -284,7 +283,6 @@ class RegisterVagaState extends State<RegisterVaga> {
                           onTap: () {
                             setState(() {
                               check = !check;
-                              print(check);
                             });
                           },
                           child: Container(
@@ -335,7 +333,8 @@ class RegisterVagaState extends State<RegisterVaga> {
                                 Container(
                                   margin: const EdgeInsets.only(left: 10),
                                   child: const Text(
-                                      'Concordo com os termos de whatinif'),
+                                    'Concordo com os termos de whatinif',
+                                  ),
                                 )
                               ],
                             ),
@@ -358,7 +357,10 @@ class RegisterVagaState extends State<RegisterVaga> {
                       child: const Center(
                         child: Text(
                           'Concluir',
-                          style: TextStyle(color: Colors.white, fontSize: 17),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
                     ),

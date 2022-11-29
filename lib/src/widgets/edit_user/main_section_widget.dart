@@ -12,7 +12,6 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     double textFieldRadius = 10;
     double circleHeight = 40;
@@ -89,34 +88,38 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                     ),
                   ),
                 ),
-                Form(
-                  key: formKey,
-                  child: TextFormField(
-                    minLines: 5,
-                    maxLines: 5,
-                    keyboardType: TextInputType.multiline,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty)
-                        return "Email necessário";
-                    },
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(textFieldRadius),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
+                SizedBox(
+                  child: Form(
+                    key: formKey,
+                    child: TextFormField(
+                      minLines: 5,
+                      maxLines: 5,
+                      keyboardType: TextInputType.multiline,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Email necessário";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          ),
                         ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(textFieldRadius),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                          ),
                         ),
+                        disabledBorder: InputBorder.none,
+                        filled: true,
+                        fillColor: const Color(0xFFE8ECFF),
+                        hintText: "Digite aqui...",
+                        hintStyle: const TextStyle(fontSize: 14),
                       ),
-                      disabledBorder: InputBorder.none,
-                      filled: true,
-                      fillColor: const Color(0xFFE8ECFF),
-                      hintText: "Digite aqui...",
-                      hintStyle: const TextStyle(fontSize: 14),
                     ),
                   ),
                 ),
@@ -171,7 +174,7 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                                     fontSize: 13,
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -297,7 +300,8 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                                               height: circleHeight,
                                               width: circleHeight,
                                               margin: const EdgeInsets.only(
-                                                  right: 5),
+                                                right: 5,
+                                              ),
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
@@ -335,11 +339,81 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                                                         color: Color(
                                                           0xFF8599EA,
                                                         ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 80,
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        "Orientador",
+                                                        style: TextStyle(
+                                                          fontSize: 8,
+                                                          color:
+                                                              Color(0xFF8599EA),
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              height: circleHeight,
+                                              width: circleHeight,
+                                              margin: const EdgeInsets.only(
+                                                right: 5,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(180),
+                                              ),
+                                            ),
+                                            Container(
+                                              color: Colors.transparent,
+                                              width: 80,
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Text(
+                                                        '${projectData[index]["colaborador"]}',
+                                                        style: const TextStyle(
+                                                          fontSize: 10,
+                                                          color:
+                                                              Color(0xFF4065FC),
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Text(
+                                                      "Colaborador",
+                                                      style: TextStyle(
+                                                        fontSize: 8,
+                                                        color:
+                                                            Color(0xFF8599EA),
                                                         fontWeight:
                                                             FontWeight.w600,
                                                       ),
                                                     ),
-                                                  ),
+                                                  )
                                                 ],
                                               ),
                                             ),
@@ -356,10 +430,10 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

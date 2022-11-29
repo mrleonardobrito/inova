@@ -1,10 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inova/src/pages/user/user_page.dart';
-import 'package:inova/src/utils/functions/functions.dart';
-import 'package:inova/src/utils/variables/variables.dart';
-import 'package:inova/src/utils/variables/list_variables.dart';
+
+import 'package:inova/src/utils/data.dart';
 
 class HeaderSectionWidget extends StatefulWidget {
   const HeaderSectionWidget({Key? key}) : super(key: key);

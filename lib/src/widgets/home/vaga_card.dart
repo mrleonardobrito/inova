@@ -50,9 +50,10 @@ class _VagaCardState extends State<VagaCard> {
               child: Wrap(
                 children: [
                   Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
-                      child: Text(widget.vaga.titulo, style: titleStyle)),
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
+                    child: Text(widget.vaga.titulo, style: titleStyle),
+                  ),
                   Container(
                     width: 37,
                     padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
@@ -62,7 +63,7 @@ class _VagaCardState extends State<VagaCard> {
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(bottom: 5.0),
                     child: Text(
-                      'Professores: ' + widget.vaga.professores.join(','),
+                      'Professores: ${widget.vaga.professores.join(',')}',
                       style: const TextStyle(
                         fontSize: 11,
                         color: Color(0xFF808080),
@@ -93,7 +94,9 @@ class _VagaCardState extends State<VagaCard> {
                         if (index > 2) {
                           return const VagaChip(label: "+");
                         } else {
-                          return VagaChip(label: widget.vaga.categorias[index]);
+                          return VagaChip(
+                            label: widget.vaga.categorias[index],
+                          );
                         }
                       },
                     ),

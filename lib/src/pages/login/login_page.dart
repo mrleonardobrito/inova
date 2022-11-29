@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inova/src/pages/home/home_screen.dart';
-import 'package:inova/src/pages/user/user_page.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
 import 'package:inova/src/pages/register/register_page.dart';
-
-import 'package:inova/src/utils/variables/variables.dart';
-import 'package:inova/src/utils/functions/functions.dart';
-import 'package:inova/src/utils/variables/list_variables.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,7 +11,7 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
-  bool _showPassword = false;
+  bool showPassword = false;
 
   var maskFormatter = MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
@@ -99,6 +93,7 @@ class LoginState extends State<Login> {
                                     },
                                   );
                                 }
+                                return null;
                               },
                               decoration: const InputDecoration(
                                 hintText: 'Email...',
@@ -111,13 +106,14 @@ class LoginState extends State<Login> {
                               validator: (String? value) {
                                 if (value != senha) {
                                   return "Senha incorreta";
-                                } else if (value == senha)
+                                } else if (value == senha) {
                                   setState(
                                     () {
                                       validaSenha = true;
                                     },
                                   );
-                                return '';
+                                }
+                                return null;
                               },
                               decoration: InputDecoration(
                                 hintText: 'Senha...',
@@ -125,19 +121,19 @@ class LoginState extends State<Login> {
                                   onTap: () {
                                     setState(
                                       () {
-                                        _showPassword = !_showPassword;
+                                        showPassword = !showPassword;
                                       },
                                     );
                                   },
                                   child: Icon(
-                                    _showPassword
+                                    showPassword
                                         ? Icons.visibility_off
                                         : Icons.visibility,
                                     color: const Color(0xFF4065FC),
                                   ),
                                 ),
                               ),
-                              obscureText: !_showPassword,
+                              obscureText: !showPassword,
                             ),
                           ),
                         ],
@@ -158,108 +154,118 @@ class LoginState extends State<Login> {
                           child: Text(
                             'Ainda não é cadastrado? cadastre-se aqui!',
                             style: TextStyle(
-                                color: Color(0xFF4065FC),
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600),
+                              color: Color(0xFF4065FC),
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: height * 0.33),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15))),
-                            ),
-                            onPressed: () {},
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 7.0),
-                              child: SizedBox(
-                                width: width,
-                                child: Row(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Container(
-                                        height: 30,
-                                        width: 30,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.grey,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(15),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 35),
-                                        child: Center(
-                                          child: Text(
-                                            'Entrar com conta Google',
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: width,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                    SizedBox(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.33),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.white,
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(15),
                                   ),
                                 ),
                               ),
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 12.0),
-                                child: Text(
-                                  'Entrar',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 16),
+                              onPressed: () {},
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 7.0),
+                                child: SizedBox(
+                                  width: width,
+                                  child: Row(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          height: 30,
+                                          width: 30,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(15),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const Center(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 35),
+                                          child: Center(
+                                            child: Text(
+                                              'Entrar com conta Google',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                              onPressed: () {
-                                formKey.currentState?.validate();
-                                if (validaSenha == true &&
-                                    validaEmail == true) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const HomePage(),
-                                    ),
-                                  );
-                                }
-                              },
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                          SizedBox(
+                            width: width,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF3A64FA),
+                                  foregroundColor: Colors.white,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 12.0),
+                                  child: Text(
+                                    'Entrar',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  formKey.currentState?.validate();
+                                  if (validaSenha == true &&
+                                      validaEmail == true) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const HomePage(),
+                                      ),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

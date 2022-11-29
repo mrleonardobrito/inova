@@ -9,6 +9,9 @@ class RegisterLoginWidget extends StatefulWidget {
 }
 
 class RegisterLoginWidgetState extends State<RegisterLoginWidget> {
+  bool showPassword = false;
+  bool showConfirmPassword = false;
+
   var maskFormatter = MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
   );
@@ -25,24 +28,24 @@ class RegisterLoginWidgetState extends State<RegisterLoginWidget> {
       child: Column(
         children: [
           Container(
-              height: height * 0.25,
-              width: width,
-              color: Colors.transparent,
-              child: Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
-                child: const Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    'Whatinif?',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 23,
-                      decoration: TextDecoration.none,
-                    ),
+            height: height * 0.25,
+            width: width,
+            color: Colors.transparent,
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+              child: const Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Whatinif?',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 23,
+                    decoration: TextDecoration.none,
                   ),
                 ),
-              )),
+              ),
+            ),
+          ),
           Container(
             height: height * 0.75,
             width: width,

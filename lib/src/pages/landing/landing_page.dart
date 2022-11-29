@@ -24,7 +24,9 @@ class LandingPageState extends State<LandingPage> {
               height: height * 0.23,
               width: width - width * 0.15,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
@@ -40,30 +42,28 @@ class LandingPageState extends State<LandingPage> {
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          onLongPress: () {
-                            print('mim de asa papai');
-                          },
+                          onLongPress: () {},
                           child: const Text(
                             'Entrar no aplicativo',
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
+                              fontFamily: 'Inter',
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: GestureDetector(
-                          onTap: () {
-                            print('Teste');
-                          },
+                          onTap: () {},
                           child: const Text(
                             'Ainda não é cadastrado? Clique aqui.',
                             style: TextStyle(
                               fontSize: 10,
                               color: Color(0xFF3A64FA),
-                                decoration: TextDecoration.none),
+                              decoration: TextDecoration.none,
+                            ),
                           ),
                         ),
                       ),
@@ -72,7 +72,7 @@ class LandingPageState extends State<LandingPage> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

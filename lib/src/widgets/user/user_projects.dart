@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:inova/src/pages/project/project.dart';
-import 'package:inova/src/utils/variables/list_variables.dart';
 import 'package:inova/src/utils/variables/variables.dart';
 
 import '../../../blocs/cubit/user_cubit.dart';

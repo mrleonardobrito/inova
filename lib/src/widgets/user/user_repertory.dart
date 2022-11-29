@@ -28,9 +28,10 @@ class RepertorioState extends State<Repertorio> {
                 Text(
                   "${numberLineArr[numberLine]}",
                   style: TextStyle(
-                      color: const Color(0xFF4065FC),
-                      fontSize: 15,
-                      fontFamily: appUniqueFont),
+                    color: const Color(0xFF4065FC),
+                    fontSize: 15,
+                    fontFamily: appUniqueFont,
+                  ),
                 ),
                 const Spacer(),
                 SizedBox(
@@ -89,8 +90,8 @@ class RepertorioState extends State<Repertorio> {
     );
 
     const colorLineBackground = Colors.transparent;
-    const marginTopContainer = 25.0;
-    const heightContainer = 40.0;
+    double marginTopContainer = 25.0;
+    double heightContainer = 40.0;
 
     verificaEstrela() {
       if (stars < 1 && stars > 0) {
@@ -146,11 +147,8 @@ class RepertorioState extends State<Repertorio> {
         child: Expanded(
           child: Container(
             decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(9),
-              ),
-            ),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(9))),
             child: Padding(
               padding: const EdgeInsets.only(top: 15),
               child: ListView(
@@ -185,8 +183,8 @@ class RepertorioState extends State<Repertorio> {
                                 ),
                                 Container(
                                   height: _height / 2,
-                                  width: MediaQuery.of(context).size.width / 2 -
-                                      10,
+                                  width: MediaQuery.of(context).size.width /
+                                      (2 - 10),
                                   color: Colors.transparent,
                                   child: Align(
                                     alignment: Alignment.topCenter,
@@ -197,7 +195,8 @@ class RepertorioState extends State<Repertorio> {
                                         alignment: Alignment.topCenter,
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 5),
+                                            horizontal: 5,
+                                          ),
                                           child: verificaEstrela(),
                                         ),
                                       ),
@@ -206,7 +205,7 @@ class RepertorioState extends State<Repertorio> {
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Column(
@@ -248,7 +247,7 @@ class RepertorioState extends State<Repertorio> {
                   Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: marginTopContainer),
+                        margin: EdgeInsets.only(top: marginTopContainer),
                         height: heightContainer,
                         width: MediaQuery.of(context).size.width / 2 - 10,
                         color: Colors.transparent,
@@ -278,7 +277,7 @@ class RepertorioState extends State<Repertorio> {
                       ),
                       const Spacer(),
                       Container(
-                        margin: const EdgeInsets.only(top: marginTopContainer),
+                        margin: EdgeInsets.only(top: marginTopContainer),
                         height: heightContainer,
                         width: MediaQuery.of(context).size.width / 2 - 10,
                         color: Colors.transparent,

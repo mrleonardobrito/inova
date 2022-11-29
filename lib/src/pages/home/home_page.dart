@@ -159,14 +159,13 @@ class HomePageState extends State<HomePage> {
               if (notifier is RequestLoadInProgress) {
                 return const Center(child: CircularProgressIndicator());
               } else {
-                this.vagas = notifier is RequestLoadSuccess
+                vagas = notifier is RequestLoadSuccess
                     ? notifier.vagalista.vagas
                     : allVagas;
                 return ListView.builder(
-                  itemCount: this.vagas.length,
+                  itemCount: vagas.length,
                   shrinkWrap: true,
-                  itemBuilder: (context, index) =>
-                      VagaCard(vaga: this.vagas[index]),
+                  itemBuilder: (context, index) => VagaCard(vaga: vagas[index]),
                 );
               }
             },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inova/blocs/cubit/user_cubit.dart';
 import 'package:inova/src/pages/edit_user/edit_user_page.dart';
 import 'package:inova/src/pages/home/home_screen.dart';
 import 'package:inova/src/widgets/user/user_projects.dart';
@@ -9,8 +8,6 @@ import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/utils/variables/list_variables.dart';
 import 'package:inova/src/utils/functions/functions.dart';
 
-
-
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
 
@@ -19,7 +16,6 @@ class UserPage extends StatefulWidget {
 }
 
 class UserPageState extends State<UserPage> {
-
   /*
   @override
   void initState(){
@@ -30,8 +26,6 @@ class UserPageState extends State<UserPage> {
     });
   }
   */
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,34 +45,40 @@ class UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[0]["size"],
                   width: width,
-                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF),),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                  ),
                   child: TextButton(
                     onPressed: (() {
                       Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()
-                      ),
-                    );
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
                     }),
                     child: Row(
                       children: [
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
+                          child: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                            color: getColor('black'),
+                          ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 10),
-                          child:
-                            Text("Voltar", style: TextStyle(
-                              fontFamily: "InterM",
-                              fontSize: 18,
-                              color: getColor("black")
-                            ),
+                          child: Text(
+                            "Voltar",
+                            style: TextStyle(
+                                fontFamily: "InterM",
+                                fontSize: 18,
+                                color: getColor("black")),
                           ),
                         )
                       ],
-                    )
+                    ),
                   ),
                 ),
                 Container(
@@ -102,26 +102,25 @@ class UserPageState extends State<UserPage> {
                               Container(
                                 width: MediaQuery.of(context).size.width,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
+                                  vertical: 10.0,
+                                  horizontal: 10.0,
+                                ),
                                 child: Align(
                                   alignment: Alignment.topRight,
                                   child: Container(
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          width: 1,
-                                          color: Colors.black //BorderSide
-                                      ), //B
-                                      borderRadius:
-                                      const BorderRadius.all(Radius.circular(40),),
+                                          width: 1, color: Colors.black), //B
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(40),
+                                      ),
                                     ),
                                     child: GestureDetector(
                                       child: Container(
                                         decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                            topLeft:
-                                            Radius.circular(40.0),
-                                            topRight:
-                                            Radius.circular(40.0),
+                                            topLeft: Radius.circular(40.0),
+                                            topRight: Radius.circular(40.0),
                                           ),
                                         ),
                                         height: height * 0.04,
@@ -130,16 +129,20 @@ class UserPageState extends State<UserPage> {
                                           child: Text(
                                             'Editar perfil',
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14,
-                                                color: Colors.black),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                              color: Colors.black,
+                                            ),
                                           ),
                                         ),
                                       ),
                                       onTap: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const EditUser()),
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EditUser(),
+                                          ),
                                         );
                                       },
                                     ),
@@ -170,7 +173,9 @@ class UserPageState extends State<UserPage> {
                                     ),
                                   ),
                                 ),
-                                const Padding(padding: EdgeInsets.only(bottom: 5),),
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 5),
+                                ),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
@@ -180,9 +185,10 @@ class UserPageState extends State<UserPage> {
                                       child: Text(
                                         '${userData["descricaoAcademica"]}',
                                         style: const TextStyle(
-                                            color: Color(0xFF808080),
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,),
+                                          color: Color(0xFF808080),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -190,19 +196,21 @@ class UserPageState extends State<UserPage> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(bottom: 5),
-                                    child: Wrap(
-                                      children:  [Text(
-                                        '${userData["descricao"]}',
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.normal,),
-                                      ),],
-                                    )
-                                  ),
+                                      padding: const EdgeInsets.only(bottom: 5),
+                                      child: Wrap(
+                                        children: [
+                                          Text(
+                                            '${userData["descricao"]}',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                          ),
+                                        ],
+                                      )),
                                 )
                               ],
                             ),
@@ -222,7 +230,7 @@ class UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                                () {
+                            () {
                               showAbas = 1;
                             },
                           );
@@ -234,7 +242,7 @@ class UserPageState extends State<UserPage> {
                               : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              carouselItems[0],
+                              carouselItems[0].toString(),
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 1
@@ -249,7 +257,7 @@ class UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                                () {
+                            () {
                               showAbas = 2;
                             },
                           );
@@ -261,7 +269,7 @@ class UserPageState extends State<UserPage> {
                               : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              carouselItems[1],
+                              carouselItems[1].toString(),
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 2
@@ -275,7 +283,8 @@ class UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
+                          setState(
+                            () {
                               showAbas = 3;
                             },
                           );
@@ -287,7 +296,7 @@ class UserPageState extends State<UserPage> {
                               : const Color(0xFF3B64FA),
                           child: Center(
                             child: Text(
-                              carouselItems[2],
+                              carouselItems[2].toString(),
                               style: TextStyle(
                                 fontSize: 14,
                                 color: showAbas == 3
@@ -305,7 +314,9 @@ class UserPageState extends State<UserPage> {
                 Container(
                   height: height * userScreenComponentsSize[4]["size"],
                   width: width,
-                  decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                  ),
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2 +
@@ -333,8 +344,9 @@ class UserPageState extends State<UserPage> {
                 borderRadius: BorderRadius.circular(150),
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.black),
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.black,
+                  ),
                   child: Image.asset(
                     "images/xereque.png",
                     height: height * 0.12,

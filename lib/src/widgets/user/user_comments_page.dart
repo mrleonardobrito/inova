@@ -5,10 +5,10 @@ class CommentsPage extends StatefulWidget {
   const CommentsPage({Key? key}) : super(key: key);
 
   @override
-  State<CommentsPage> createState() => _CommentsPageState();
+  State<CommentsPage> createState() => CommentsPageState();
 }
 
-class _CommentsPageState extends State<CommentsPage> {
+class CommentsPageState extends State<CommentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

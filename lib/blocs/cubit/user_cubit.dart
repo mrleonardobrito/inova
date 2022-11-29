@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:inova/repository/user/user_repository.dart';
 
 import 'package:inova/models/user/user_list.dart';
@@ -22,5 +21,3 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 }
-
-
