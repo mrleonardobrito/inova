@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inova/src/utils/colors/colors.dart';
-
 // App
 
 getColor(String colorName) {
