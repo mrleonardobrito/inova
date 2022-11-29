@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:inova/src/pages/home/home_page.dart';
-import 'package:inova/src/pages/register/register_page.dart';
+import 'package:inova/src/data/dao/auth_dao.dart';
+import 'package:inova/src/pages/login/login_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -14,24 +13,19 @@ class _CadastroState extends State<Cadastro> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
-  var maskFormatter = new MaskTextInputFormatter(
-    mask: '+55 (##) ####-####',
-  );
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+  TextEditingController nomeController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
-    final formKey = GlobalKey<FormState>();
-
-    String? _email = 'adminINOVA@gmail.com';
-    String? _senha = '40028922';
-
     bool validaEmail = false;
     bool validaSenha = false;
-
-    bool senhaIsEmpty = true;
 
     return Scaffold(
       body: Container(
@@ -78,17 +72,18 @@ class _CadastroState extends State<Cadastro> {
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       Form(
-                        key: formKey,
+                        key: _formKey,
                         child: Column(
                           children: [
                             Container(
                               child: Padding(
                                 padding: EdgeInsets.only(top: 25),
                                 child: TextFormField(
+                                  controller: emailController,
                                   validator: (String? value) {
-                                    if (value != _email)
+                                    if (value != emailController.text)
                                       return "E-mail incorreto";
-                                    if (value == _email) {
+                                    if (value == emailController.text) {
                                       setState(
                                         () {
                                           validaEmail = true;
@@ -106,10 +101,11 @@ class _CadastroState extends State<Cadastro> {
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
+                                  controller: senhaController,
                                   validator: (String? value) {
-                                    if (value != _senha) {
+                                    if (value != senhaController.text) {
                                       return "Senha incorreta";
-                                    } else if (value == _senha)
+                                    } else if (value == senhaController.text)
                                       setState(
                                         () {
                                           validaSenha = true;
@@ -143,9 +139,9 @@ class _CadastroState extends State<Cadastro> {
                                 padding: EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   validator: (String? value) {
-                                    if (value != _senha) {
+                                    if (value != senhaController.text) {
                                       return "Senha incorreta";
-                                    } else if (value == _senha)
+                                    } else if (value == senhaController.text)
                                       setState(
                                         () {
                                           validaSenha = true;
@@ -186,11 +182,10 @@ class _CadastroState extends State<Cadastro> {
                                       return null;
                                     }
                                   },
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
-                                    hintText: 'Telefone...',
+                                    hintText: 'Nome...',
                                   ),
-                                  inputFormatters: [maskFormatter],
                                 ),
                               ),
                             ),
@@ -201,14 +196,14 @@ class _CadastroState extends State<Cadastro> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Cadastro()),
+                            MaterialPageRoute(builder: (context) => Login()),
                           );
                         },
                         child: Container(
                           margin: EdgeInsets.only(top: 13),
                           child: Center(
                             child: Text(
-                              'Ainda não é cadastrado? cadastre-se aqui!',
+                              'Já é cadastrado? Faça Login!',
                               style: TextStyle(
                                   color: Color(0xFF4065FC),
                                   fontSize: 10,
@@ -297,17 +292,7 @@ class _CadastroState extends State<Cadastro> {
                                       ),
                                     ),
                                   ),
-                                  onPressed: () {
-                                    formKey.currentState?.validate();
-                                    if (validaSenha == true &&
-                                        validaEmail == true) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()),
-                                      );
-                                    }
-                                  },
+                                  onPressed: handlePressed,
                                 ),
                               ),
                             )
@@ -323,5 +308,17 @@ class _CadastroState extends State<Cadastro> {
         ),
       ),
     );
+  }
+
+  Future<void> handlePressed() async {
+    if (_formKey.currentState!.validate()) {
+      var email = emailController.text;
+      var senha = senhaController.text;
+      var nome = nomeController.text;
+
+      await AuthDao().cadastrar(nome, email, senha);
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+    }
   }
 }
