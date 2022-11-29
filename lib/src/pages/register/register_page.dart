@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
+import 'package:inova/src/data/dao/auth_dao.dart';
+import 'package:inova/src/pages/login/login_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -16,6 +18,12 @@ class CadastroState extends State<Cadastro> {
   var maskFormatter = MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
   );
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+  TextEditingController nomeController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +88,7 @@ class CadastroState extends State<Cadastro> {
                       ),
                     ),
                     Form(
-                      key: formKey,
+                      key: _formKey,
                       child: Column(
                         children: [
                           Padding(
@@ -141,6 +149,8 @@ class CadastroState extends State<Cadastro> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: TextFormField(
+                              obscureText:
+                                  showConfirmPassword == false ? true : false,
                               validator: (String? value) {
                                 if (value != senha) {
                                   return "Senha incorreta";
@@ -170,8 +180,6 @@ class CadastroState extends State<Cadastro> {
                                   ),
                                 ),
                               ),
-                              obscureText:
-                                  showConfirmPassword == false ? true : false,
                             ),
                           ),
                           Padding(
@@ -184,11 +192,10 @@ class CadastroState extends State<Cadastro> {
                                   return null;
                                 }
                               },
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                hintText: 'Telefone...',
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                hintText: 'Nome...',
                               ),
-                              inputFormatters: [maskFormatter],
                             ),
                           ),
                         ],
@@ -270,7 +277,7 @@ class CadastroState extends State<Cadastro> {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: handlePressed,
                           ),
                         ),
                         SizedBox(
@@ -325,5 +332,17 @@ class CadastroState extends State<Cadastro> {
         ),
       ),
     );
+  }
+
+  Future<void> handlePressed() async {
+    if (_formKey.currentState!.validate()) {
+      var email = emailController.text;
+      var senha = senhaController.text;
+      var nome = nomeController.text;
+
+      await AuthDao().cadastrar(nome, email, senha);
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+    }
   }
 }
