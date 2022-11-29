@@ -1,46 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/src/pages/home/home_page.dart';
+import 'package:inova/src/pages/register/register_page.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
 
   @override
-  CadastroState createState() => CadastroState();
+  _CadastroState createState() => _CadastroState();
 }
 
-class CadastroState extends State<Cadastro> {
+class _CadastroState extends State<Cadastro> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
-  var maskFormatter = MaskTextInputFormatter(
+  var maskFormatter = new MaskTextInputFormatter(
     mask: '+55 (##) ####-####',
   );
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
 
     final formKey = GlobalKey<FormState>();
 
-    String? email = 'adminINOVA@gmail.com';
-    String? senha = '40028922';
+    String? _email = 'adminINOVA@gmail.com';
+    String? _senha = '40028922';
 
     bool validaEmail = false;
     bool validaSenha = false;
 
+    bool senhaIsEmpty = true;
+
     return Scaffold(
       body: Container(
-        height: height,
-        width: width,
-        color: const Color(0xFF4065FC),
+        height: _height,
+        width: _width,
+        color: Color(0xFF4065FC),
         child: Column(
           children: [
-            SizedBox(
-              height: height * 0.25,
-              width: width * 0.75,
-              child: const Padding(
+            Container(
+              height: _height * 0.25,
+              width: _width * 0.75,
+              child: Padding(
                 padding: EdgeInsets.only(left: 0, bottom: 30),
                 child: Align(
                   alignment: Alignment.bottomLeft,
@@ -54,11 +57,11 @@ class CadastroState extends State<Cadastro> {
                 ),
               ),
             ),
-            SizedBox(
+            Container(
               child: Container(
-                height: height * 0.75,
-                width: width,
-                decoration: const BoxDecoration(
+                height: _height * 0.75,
+                width: _width,
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -66,11 +69,10 @@ class CadastroState extends State<Cadastro> {
                   ),
                 ),
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 30, horizontal: 35),
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 35),
                   child: ListView(
                     children: [
-                      const Text(
+                      Text(
                         'Cadastro',
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
@@ -79,108 +81,117 @@ class CadastroState extends State<Cadastro> {
                         key: formKey,
                         child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 25),
-                              child: TextFormField(
-                                validator: (String? value) {
-                                  if (value != email) return "E-mail incorreto";
-                                  if (value == email) {
-                                    setState(
-                                      () {
-                                        validaEmail = true;
-                                      },
-                                    );
-                                  }
-                                },
-                                decoration: const InputDecoration(
-                                  hintText: 'Email...',
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: TextFormField(
-                                validator: (String? value) {
-                                  if (value != senha) {
-                                    return "Senha incorreta";
-                                  } else if (value == senha)
-                                    setState(
-                                      () {
-                                        validaSenha = true;
-                                      },
-                                    );
-                                },
-                                decoration: InputDecoration(
-                                  hintText: 'Senha...',
-                                  suffixIcon: GestureDetector(
-                                    onTap: () {
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 25),
+                                child: TextFormField(
+                                  validator: (String? value) {
+                                    if (value != _email)
+                                      return "E-mail incorreto";
+                                    if (value == _email) {
                                       setState(
                                         () {
-                                          _showPassword = !_showPassword;
+                                          validaEmail = true;
                                         },
                                       );
-                                    },
-                                    child: Icon(
-                                      _showPassword
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      color: const Color(0xFF4065FC),
-                                    ),
+                                    }
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Email...',
                                   ),
                                 ),
-                                obscureText: !_showPassword,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: TextFormField(
-                                validator: (String? value) {
-                                  if (value != senha) {
-                                    return "Senha incorreta";
-                                  } else if (value == senha)
-                                    setState(
-                                      () {
-                                        validaSenha = true;
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: TextFormField(
+                                  validator: (String? value) {
+                                    if (value != _senha) {
+                                      return "Senha incorreta";
+                                    } else if (value == _senha)
+                                      setState(
+                                        () {
+                                          validaSenha = true;
+                                        },
+                                      );
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Senha...',
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(
+                                          () {
+                                            _showPassword = !_showPassword;
+                                          },
+                                        );
                                       },
-                                    );
-                                },
-                                decoration: InputDecoration(
-                                  hintText: 'Confirmar senha...',
-                                  suffixIcon: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        _showConfirmPassword =
-                                            !_showConfirmPassword;
-                                      });
-                                    },
-                                    child: Icon(
-                                      _showConfirmPassword
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      color: const Color(0xFF4065FC),
+                                      child: Icon(
+                                        _showPassword
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        color: Color(0xFF4065FC),
+                                      ),
                                     ),
                                   ),
+                                  obscureText: !_showPassword,
                                 ),
-                                obscureText: _showConfirmPassword == false
-                                    ? true
-                                    : false,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Campo Obrigatorio";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(
-                                  hintText: 'Telefone...',
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: TextFormField(
+                                  validator: (String? value) {
+                                    if (value != _senha) {
+                                      return "Senha incorreta";
+                                    } else if (value == _senha)
+                                      setState(
+                                        () {
+                                          validaSenha = true;
+                                        },
+                                      );
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Confirmar senha...',
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          _showConfirmPassword =
+                                              !_showConfirmPassword;
+                                        });
+                                      },
+                                      child: Icon(
+                                        _showConfirmPassword
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        color: Color(0xFF4065FC),
+                                      ),
+                                    ),
+                                  ),
+                                  obscureText: _showConfirmPassword == false
+                                      ? true
+                                      : false,
                                 ),
-                                inputFormatters: [maskFormatter],
+                              ),
+                            ),
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Campo Obrigatorio";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    hintText: 'Telefone...',
+                                  ),
+                                  inputFormatters: [maskFormatter],
+                                ),
                               ),
                             ),
                           ],
@@ -190,115 +201,119 @@ class CadastroState extends State<Cadastro> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const Cadastro(),
-                            ),
+                            MaterialPageRoute(builder: (context) => Cadastro()),
                           );
                         },
                         child: Container(
-                          margin: const EdgeInsets.only(top: 13),
-                          child: const Center(
+                          margin: EdgeInsets.only(top: 13),
+                          child: Center(
                             child: Text(
                               'Ainda não é cadastrado? cadastre-se aqui!',
                               style: TextStyle(
-                                color: Color(0xFF4065FC),
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                              ),
+                                  color: Color(0xFF4065FC),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
                       ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15))),
-                              ),
-                              onPressed: () {
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 7.0),
-                                child: SizedBox(
-                                  width: width,
-                                  child: Row(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: const BoxDecoration(
-                                              color: Colors.grey,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(15))),
-                                        ),
-                                      ),
-                                      const Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: 35),
-                                          child: Center(
-                                            child: Text(
-                                              'Entrar com conta Google',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: ElevatedButton(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 7.0),
+                                  child: Container(
+                                    width: _width,
+                                    child: Row(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Container(
+                                            height: 30,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                                color: Colors.grey,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(15))),
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              
-                            ),
-                          ),
-                          SizedBox(
-                            width: width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(15),
+                                        Center(
+                                          child: Padding(
+                                            padding: EdgeInsets.only(left: 35),
+                                            child: Center(
+                                              child: Text(
+                                                'Entrar com conta Google',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 12.0),
-                                  child: Text(
-                                    'Entrar',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 16),
-                                  ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                  onPrimary: Colors.white,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
                                 ),
                                 onPressed: () {
-                                  formKey.currentState?.validate();
-                                  if (validaSenha == true &&
-                                      validaEmail == true) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const HomePage(),
-                                      ),
-                                    );
-                                  }
+                                  print('Pressed');
                                 },
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                            Container(
+                              width: _width,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: ElevatedButton(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0),
+                                    child: Text(
+                                      'Entrar',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFF3A64FA),
+                                    onPrimary: Colors.white,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(15),
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    formKey.currentState?.validate();
+                                    if (validaSenha == true &&
+                                        validaEmail == true) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()),
+                                      );
+                                    }
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),

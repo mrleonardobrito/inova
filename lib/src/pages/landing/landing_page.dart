@@ -4,46 +4,45 @@ class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
   @override
-  LandingPageState createState() => LandingPageState();
+  _LandingPageState createState() => _LandingPageState();
 }
 
-class LandingPageState extends State<LandingPage> {
+class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
 
     return Container(
-      height: height,
-      width: width,
-      color: const Color(0xFFB2B8D2),
+      height: _height,
+      width: _width,
+      color: Color(0xFFB2B8D2),
       child: Stack(
         children: [
           Center(
             child: Container(
-              height: height * 0.23,
-              width: width - width * 0.15,
+              height: _height * 0.23,
+              width: _width - _width * 0.15,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  height: (height * 0.23) / 2.5,
+                child: Container(
+                  height: (_height * 0.23) / 2.5,
                   child: Column(
                     children: [
                       Container(
-                        height: height * 0.05,
-                        width: width / 1.35,
+                        height: _height * 0.05,
+                        width: _width / 1.35,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF4065FC),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                            color: Color(0xFF4065FC),
+                            borderRadius: BorderRadius.circular(5)),
                         child: TextButton(
                           onPressed: () {},
                           onLongPress: () {
                             print('mim de asa papai');
                           },
-                          child: const Text(
+                          child: Text(
                             'Entrar no aplicativo',
                             style: TextStyle(
                                 fontFamily: 'Inter',
@@ -53,16 +52,16 @@ class LandingPageState extends State<LandingPage> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        margin: EdgeInsets.symmetric(vertical: 10),
                         child: GestureDetector(
                           onTap: () {
                             print('Teste');
                           },
-                          child: const Text(
+                          child: Text(
                             'Ainda não é cadastrado? Clique aqui.',
                             style: TextStyle(
-                              fontSize: 10,
-                              color: Color(0xFF3A64FA),
+                                fontSize: 10,
+                                color: Color(0xFF3A64FA),
                                 decoration: TextDecoration.none),
                           ),
                         ),
