@@ -22,7 +22,7 @@ class RepertorioState extends State<Repertorio> {
       children: [
         Expanded(
           child: SizedBox(
-            width: MediaQuery.of(context).size.width / 3 - 10,
+            width: MediaQuery.of(context).size.width / 3,
             child: Row(
               children: [
                 Text(
@@ -35,7 +35,7 @@ class RepertorioState extends State<Repertorio> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.15 - 10,
+                  width: MediaQuery.of(context).size.width / 2.15,
                   height: 9,
                   child: Expanded(
                     child: Stack(
@@ -159,8 +159,7 @@ class RepertorioState extends State<Repertorio> {
                         children: [
                           Container(
                             height: _height,
-                            width:
-                                MediaQuery.of(context).size.width / 2.28 - 10,
+                            width: MediaQuery.of(context).size.width / 2.28,
                             color: Colors.transparent,
                             child: ListView(
                               children: [
@@ -183,8 +182,8 @@ class RepertorioState extends State<Repertorio> {
                                 ),
                                 Container(
                                   height: _height / 2,
-                                  width: MediaQuery.of(context).size.width /
-                                      (2 - 10),
+                                  width:
+                                      MediaQuery.of(context).size.width / (2),
                                   color: Colors.transparent,
                                   child: Align(
                                     alignment: Alignment.topCenter,
@@ -212,31 +211,31 @@ class RepertorioState extends State<Repertorio> {
                         children: [
                           Container(
                             height: _lineHeight,
-                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            width: MediaQuery.of(context).size.width / 2,
                             color: colorLineBackground,
                             child: returnLine(4, 0),
                           ),
                           Container(
                             height: _lineHeight,
-                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            width: MediaQuery.of(context).size.width / 2,
                             color: colorLineBackground,
                             child: returnLine(3, 1),
                           ),
                           Container(
                             height: _lineHeight,
-                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            width: MediaQuery.of(context).size.width / 2,
                             color: colorLineBackground,
                             child: returnLine(2, 2),
                           ),
                           Container(
                             height: _lineHeight,
-                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            width: MediaQuery.of(context).size.width / 2,
                             color: colorLineBackground,
                             child: returnLine(1, 3),
                           ),
                           Container(
                             height: _lineHeight,
-                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            width: MediaQuery.of(context).size.width / 2,
                             color: colorLineBackground,
                             child: returnLine(0, 4),
                           ),
@@ -249,7 +248,7 @@ class RepertorioState extends State<Repertorio> {
                       Container(
                         margin: EdgeInsets.only(top: marginTopContainer),
                         height: heightContainer,
-                        width: MediaQuery.of(context).size.width / 2 - 10,
+                        width: MediaQuery.of(context).size.width / 2,
                         color: Colors.transparent,
                         child: GestureDetector(
                           onTap: () {},
@@ -279,7 +278,7 @@ class RepertorioState extends State<Repertorio> {
                       Container(
                         margin: EdgeInsets.only(top: marginTopContainer),
                         height: heightContainer,
-                        width: MediaQuery.of(context).size.width / 2 - 10,
+                        width: MediaQuery.of(context).size.width / 2,
                         color: Colors.transparent,
                         child: GestureDetector(
                           onTap: () {},
