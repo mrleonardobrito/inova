@@ -9,8 +9,6 @@ import 'package:inova/src/utils/variables/variables.dart';
 import 'package:inova/src/utils/variables/list_variables.dart';
 import 'package:inova/src/utils/functions/functions.dart';
 
-
-
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
 
@@ -19,7 +17,6 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-
   /*
   @override
   void initState(){
@@ -30,8 +27,6 @@ class _UserPageState extends State<UserPage> {
     });
   }
   */
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -53,33 +48,34 @@ class _UserPageState extends State<UserPage> {
                   width: width,
                   decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
                   child: TextButton(
-                    onPressed: (() {
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HomeScreen()
-                      ),
-                    );
-                    }),
-                    child: Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Icon(Icons.arrow_back, size: 30, color: getColor('black'),),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 10),
-                          child:
-                            Text("Voltar", style: TextStyle(
-                              fontFamily: "InterM",
-                              fontSize: 18,
-                              color: getColor("black")
+                      onPressed: (() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      }),
+                      child: Row(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Icon(
+                              Icons.arrow_back,
+                              size: 30,
+                              color: getColor('black'),
                             ),
                           ),
-                        )
-                      ],
-                    )
-                  ),
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            child: Text(
+                              "Voltar",
+                              style: TextStyle(
+                                  fontFamily: "InterM",
+                                  fontSize: 18,
+                                  color: getColor("black")),
+                            ),
+                          )
+                        ],
+                      )),
                 ),
                 Container(
                   height: height * userScreenComponentsSize[1]["size"],
@@ -110,18 +106,18 @@ class _UserPageState extends State<UserPage> {
                                       border: Border.all(
                                           width: 1,
                                           color: Colors.black //BorderSide
-                                      ), //B
+                                          ), //B
                                       borderRadius:
-                                      BorderRadius.all(Radius.circular(40)),
+                                          BorderRadius.all(Radius.circular(40)),
                                     ),
                                     child: GestureDetector(
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                             topLeft:
-                                            const Radius.circular(40.0),
+                                                const Radius.circular(40.0),
                                             topRight:
-                                            const Radius.circular(40.0),
+                                                const Radius.circular(40.0),
                                           ),
                                         ),
                                         height: height * 0.04,
@@ -139,7 +135,9 @@ class _UserPageState extends State<UserPage> {
                                       onTap: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => EditUser()),
+                                          MaterialPageRoute(
+                                            builder: (context) => EditUser(),
+                                          ),
                                         );
                                       },
                                     ),
@@ -190,19 +188,20 @@ class _UserPageState extends State<UserPage> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
-                                    padding: EdgeInsets.only(bottom: 5),
-                                    child: Wrap(
-                                      children:  [Text(
-                                        '${userData["descricao"]}',
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.normal),
-                                      ),],
-                                    )
-                                  ),
+                                      padding: EdgeInsets.only(bottom: 5),
+                                      child: Wrap(
+                                        children: [
+                                          Text(
+                                            '${userData["descricao"]}',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ],
+                                      )),
                                 )
                               ],
                             ),
@@ -222,7 +221,7 @@ class _UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                                () {
+                            () {
                               showAbas = 1;
                               print(showAbas);
                             },
@@ -250,7 +249,7 @@ class _UserPageState extends State<UserPage> {
                       GestureDetector(
                         onTap: () {
                           setState(
-                                () {
+                            () {
                               showAbas = 2;
                             },
                           );
@@ -276,7 +275,8 @@ class _UserPageState extends State<UserPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
+                          setState(
+                            () {
                               showAbas = 3;
                             },
                           );
@@ -317,10 +317,10 @@ class _UserPageState extends State<UserPage> {
                         child: showAbas == 1
                             ? Projetos()
                             : showAbas == 2
-                            ? Repertorio()
-                            : showAbas == 3
-                            ? Text('oi')
-                            : Text('Deu errado'),
+                                ? Repertorio()
+                                : showAbas == 3
+                                    ? Text('oi')
+                                    : Text('Deu errado'),
                       ),
                     ),
                   ),

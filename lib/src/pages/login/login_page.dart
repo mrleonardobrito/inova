@@ -18,7 +18,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   String? _email = 'admin@inova.com';
   String? _senha = '40028922';
 
@@ -127,7 +126,8 @@ class _LoginState extends State<Login> {
                                       onTap: () {
                                         setState(
                                           () {
-                                            loginShowPassword = !loginShowPassword;
+                                            loginShowPassword =
+                                                !loginShowPassword;
                                           },
                                         );
                                       },

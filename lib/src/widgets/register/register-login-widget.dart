@@ -29,20 +29,22 @@ class _RegisterLoginWidgetState extends State<RegisterLoginWidget> {
       child: Column(
         children: [
           Container(
-            height: _height * 0.25,
-            width: _width,
-            color: Colors.transparent,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 25, vertical: 40),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  'Whatinif?',
-                  style: TextStyle(color: Colors.black, fontSize: 23,decoration: TextDecoration.none),
+              height: _height * 0.25,
+              width: _width,
+              color: Colors.transparent,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Whatinif?',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        decoration: TextDecoration.none),
+                  ),
                 ),
-              ),
-            )
-          ),
+              )),
           Container(
             height: _height * 0.75,
             width: _width,
