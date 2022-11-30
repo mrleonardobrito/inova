@@ -1,9 +1,8 @@
-import 'dart:convert';
+//import 'dart:convert';
 
 import 'package:inova/src/data/db_helpers/db_helper.dart';
 import 'package:inova/src/data/dao/inscreve_em_dao.dart';
 import 'package:inova/src/core/domain/categoria.dart';
-import 'package:inova/src/core/domain/colaborador.dart';
 import 'package:inova/src/core/domain/conhecimentos.dart';
 import 'package:inova/src/core/domain/vaga.dart';
 import 'package:sqflite/sqflite.dart';

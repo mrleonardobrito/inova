@@ -1,5 +1,4 @@
 import 'package:inova/src/data/db_helpers/db_helper.dart';
-import 'package:inova/src/core/domain/vaga.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../core/domain/colaborador.dart';
@@ -42,7 +41,7 @@ class InscreveEmDao {
 
     var result = await db.rawQuery(sql);
     var json = result[0];
-    print(json);
+    //print(json);
     Orientador orientador = Orientador.fromJson(json);
 
     return orientador;

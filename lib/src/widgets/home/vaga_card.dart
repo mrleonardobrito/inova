@@ -46,39 +46,45 @@ class _VagaCardState extends State<VagaCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  width: MediaQuery.of(context).size.width - 20,
-                  padding: EdgeInsets.all(10.0),
-                  child: Wrap(children: [
+                width: MediaQuery.of(context).size.width - 20,
+                padding: const EdgeInsets.all(10.0),
+                child: Wrap(
+                  children: [
                     Container(
                         width: MediaQuery.of(context).size.width * 0.75,
-                        padding: EdgeInsets.only(top: 10.0, bottom: 5.0),
+                        padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
                         child: Text(widget.vaga.nome, style: titleStyle)),
                     Container(
                       width: 37,
-                      padding: EdgeInsets.only(top: 10.0, bottom: 5.0),
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
                       child: Text(widget.vaga.quantHoras.toString(),
                           style: titleStyle),
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(bottom: 5.0),
-                        child: Text(
-                            'Professores: ' +
-                                widget.vaga.coorientadores!
-                                    .map((e) => e.nome)
-                                    .toList()
-                                    .join(','),
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFF808080)))),
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        'Professores: + ${widget.vaga.coorientadores!.map((e) => e.nome).toList().join(',')}',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFF808080),
+                        ),
+                      ),
+                    ),
                     Container(
-                        padding: EdgeInsets.only(bottom: 10.0),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: Text(widget.vaga.proposta,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xFF808080)))),
-                    Container(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Text(
+                        widget.vaga.proposta,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF808080),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
                       height: 40,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
@@ -88,15 +94,19 @@ class _VagaCardState extends State<VagaCard> {
                         itemBuilder: (context, index) {
                           if (index > 2) {
                             return VagaChip(
-                                categoria: Categoria(id: index, name: "+"));
+                              categoria: Categoria(id: index, name: "+"),
+                            );
                           } else {
                             return VagaChip(
-                                categoria: widget.vaga.categorias[index]);
+                              categoria: widget.vaga.categorias[index],
+                            );
                           }
                         },
                       ),
                     ),
-                  ])),
+                  ],
+                ),
+              ),
               Container(
                 padding: const EdgeInsets.only(bottom: 10.0),
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -123,10 +133,10 @@ class _VagaCardState extends State<VagaCard> {
                     return VagaChip(categoria: widget.vaga.categorias[index]);
                   },
                 ),
-              )
+              ),
             ],
           ),
-        ));
+        ),);
   }
 }
 

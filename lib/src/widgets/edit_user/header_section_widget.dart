@@ -75,7 +75,7 @@ class HeaderSectionWidgetState extends State<HeaderSectionWidget> {
             ),
           ),
           Positioned(
-            right: width / 2 - ((circleHeight * 0.25) / 2),
+            right: width / 2 - ((circleHeight * 0.30) / 2),
             top: (circleHeight * 0.54) / 2,
             child: GestureDetector(
               onTap: getImage,
@@ -125,7 +125,7 @@ class HeaderSectionWidgetState extends State<HeaderSectionWidget> {
                 SizedBox(
                   height: 50,
                   width: circleHeight * 0.35,
-                  child: ListView(
+                  child: Column(
                     children: const [
                       Center(
                         child: Text(

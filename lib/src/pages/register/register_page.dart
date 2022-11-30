@@ -193,7 +193,7 @@ class CadastroState extends State<Cadastro> {
                                 }
                               },
                               keyboardType: TextInputType.name,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: 'Nome...',
                               ),
                             ),
@@ -229,6 +229,7 @@ class CadastroState extends State<Cadastro> {
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: ElevatedButton(
+                            onPressed: handlePressed,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.white,
@@ -277,7 +278,6 @@ class CadastroState extends State<Cadastro> {
                                 ),
                               ),
                             ),
-                            onPressed: handlePressed,
                           ),
                         ),
                         SizedBox(
@@ -342,7 +342,7 @@ class CadastroState extends State<Cadastro> {
 
       await AuthDao().cadastrar(nome, email, senha);
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
     }
   }
 }

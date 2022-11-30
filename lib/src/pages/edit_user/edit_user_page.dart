@@ -16,9 +16,10 @@ class EditUserState extends State<EditUser> {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(
+          Container(
             height: MediaQuery.of(context).size.height * 0.36,
             width: MediaQuery.of(context).size.width,
+            color: Colors.transparent,
             child: const HeaderSectionWidget(),
           ),
           Container(

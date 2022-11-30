@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:uuid/uuid.dart';
 
 class Usuario {

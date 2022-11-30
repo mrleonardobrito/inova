@@ -3,20 +3,19 @@ import 'dart:io' show Directory, File;
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import "package:sqflite/sqflite.dart";
-import "package:path/path.dart";
 
 class DBHelper {
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
     String databasePath = join(path, "inovadb.db");
-    print(databasePath);
+    //print(databasePath);
     Database db =
         await openDatabase(databasePath, version: 1, onCreate: onCreate);
     return db;
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async {
-    print('creating database');
+    //print('creating database');
 
     String sqlFile =
         (await rootBundle.loadString('assets/migrations/0001_init.sql'));

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inova/blocs/cubit/user_cubit.dart';
 
 class MainSectionWidget extends StatefulWidget {
   const MainSectionWidget({Key? key}) : super(key: key);
@@ -205,223 +207,257 @@ class MainSectionWidgetState extends State<MainSectionWidget> {
                         SizedBox(
                           height: 130,
                           width: width,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: projectData.length,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                margin: listViewMargin,
-                                width: 150.0,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFE8ECFF),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          margin:
-                                              const EdgeInsets.only(bottom: 3),
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              '${projectData[index]["nome"]}',
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Color(0xFF4065FC),
-                                                fontWeight: FontWeight.w600,
+                          child: BlocBuilder<UserCubit, UserState>(
+                            builder: (context, state) {
+                              if (state is UserInitialState ||
+                                  state is UserLoadingState) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              } else if (state is UserLoadedListState) {
+                                final projectList = state.homes;
+                                return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: projectData.length,
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      margin: listViewMargin,
+                                      width: 150.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFFE8ECFF),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 3),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    '${projectData[index]["nome"]}',
+                                                    style: const TextStyle(
+                                                      fontSize: 15,
+                                                      color: Color(0xFF4065FC),
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 1),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: circleHeight,
+                                                    width: circleHeight,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            right: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              180),
+                                                    ),
+                                                  ),
+                                                  Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 80,
+                                                        child: Align(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: Text(
+                                                            '${projectData[index]["orientador"]}',
+                                                            style:
+                                                                const TextStyle(
+                                                              fontSize: 10,
+                                                              color: Color(
+                                                                  0xFF4065FC),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 80,
+                                                        child: Align(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: Text(
+                                                            "Orientador",
+                                                            style: TextStyle(
+                                                              fontSize: 8,
+                                                              color: Color(
+                                                                  0xFF8599EA),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              const Spacer(),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: circleHeight,
+                                                    width: circleHeight,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                      right: 5,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        180,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    color: Colors.transparent,
+                                                    width: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              Alignment.topLeft,
+                                                          child: Text(
+                                                            '${projectData[index]["colaborador"]}',
+                                                            style:
+                                                                const TextStyle(
+                                                              fontSize: 10,
+                                                              color: Color(
+                                                                  0xFF4065FC),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Align(
+                                                          alignment:
+                                                              Alignment.topLeft,
+                                                          child: Text(
+                                                            "Colaborador",
+                                                            style: TextStyle(
+                                                              fontSize: 8,
+                                                              color: Color(
+                                                                0xFF8599EA,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 80,
+                                                          child: Align(
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                            child: Text(
+                                                              "Orientador",
+                                                              style: TextStyle(
+                                                                fontSize: 8,
+                                                                color: Color(
+                                                                    0xFF8599EA),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              const Spacer(),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: circleHeight,
+                                                    width: circleHeight,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                      right: 5,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              180),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    color: Colors.transparent,
+                                                    width: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          child: Align(
+                                                            alignment: Alignment
+                                                                .topLeft,
+                                                            child: Text(
+                                                              '${projectData[index]["colaborador"]}',
+                                                              style:
+                                                                  const TextStyle(
+                                                                fontSize: 10,
+                                                                color: Color(
+                                                                    0xFF4065FC),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Align(
+                                                          alignment:
+                                                              Alignment.topLeft,
+                                                          child: Text(
+                                                            "Colaborador",
+                                                            style: TextStyle(
+                                                              fontSize: 8,
+                                                              color: Color(
+                                                                  0xFF8599EA),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
                                           ),
                                         ),
-                                        Container(
-                                          margin: const EdgeInsets.only(top: 1),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              height: circleHeight,
-                                              width: circleHeight,
-                                              margin: const EdgeInsets.only(
-                                                  right: 5),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(180),
-                                              ),
-                                            ),
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 80,
-                                                  child: Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      '${projectData[index]["orientador"]}',
-                                                      style: const TextStyle(
-                                                        fontSize: 10,
-                                                        color:
-                                                            Color(0xFF4065FC),
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  width: 80,
-                                                  child: Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      "Orientador",
-                                                      style: TextStyle(
-                                                        fontSize: 8,
-                                                        color:
-                                                            Color(0xFF8599EA),
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        const Spacer(),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              height: circleHeight,
-                                              width: circleHeight,
-                                              margin: const EdgeInsets.only(
-                                                right: 5,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  180,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.transparent,
-                                              width: 80,
-                                              child: Column(
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.topLeft,
-                                                    child: Text(
-                                                      '${projectData[index]["colaborador"]}',
-                                                      style: const TextStyle(
-                                                        fontSize: 10,
-                                                        color:
-                                                            Color(0xFF4065FC),
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const Align(
-                                                    alignment:
-                                                        Alignment.topLeft,
-                                                    child: Text(
-                                                      "Colaborador",
-                                                      style: TextStyle(
-                                                        fontSize: 8,
-                                                        color: Color(
-                                                          0xFF8599EA,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 80,
-                                                    child: Align(
-                                                      alignment:
-                                                          Alignment.centerLeft,
-                                                      child: Text(
-                                                        "Orientador",
-                                                        style: TextStyle(
-                                                          fontSize: 8,
-                                                          color:
-                                                              Color(0xFF8599EA),
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const Spacer(),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              height: circleHeight,
-                                              width: circleHeight,
-                                              margin: const EdgeInsets.only(
-                                                right: 5,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(180),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.transparent,
-                                              width: 80,
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    child: Align(
-                                                      alignment:
-                                                          Alignment.topLeft,
-                                                      child: Text(
-                                                        '${projectData[index]["colaborador"]}',
-                                                        style: const TextStyle(
-                                                          fontSize: 10,
-                                                          color:
-                                                              Color(0xFF4065FC),
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const Align(
-                                                    alignment:
-                                                        Alignment.topLeft,
-                                                    child: Text(
-                                                      "Colaborador",
-                                                      style: TextStyle(
-                                                        fontSize: 8,
-                                                        color:
-                                                            Color(0xFF8599EA),
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              }
+                              return Center(
+                                child: Text(
+                                  state.toString(),
                                 ),
                               );
                             },

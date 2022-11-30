@@ -13,7 +13,7 @@ class VagaChip extends StatelessWidget {
       child: Material(
         child: Chip(
           elevation: 5.0,
-          backgroundColor: Color(0xFF9AAEFF),
+          backgroundColor: const Color(0xFF9AAEFF),
           label: Text(
             categoria.name,
             style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
