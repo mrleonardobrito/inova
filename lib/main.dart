@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inova/presentation/pages/home/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inova/presentation/router.dart';
+
+import 'bussiness_logic/cubit/navigation/navigation_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
+    return BlocProvider<NavigationCubit>(
+        create: (context) => NavigationCubit(),
+        child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: AppRouter(),
+        ));
   }
 }
