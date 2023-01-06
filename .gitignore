@@ -42,3 +42,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Environment directories
+/macos
+/windows
+/.vscode
+/web
+/.dart_tool
+/.idea
+/d

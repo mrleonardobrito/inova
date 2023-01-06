@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:inova/blocs/cubit/user_cubit.dart';
-import 'package:inova/repository/user/user_repository.dart';
-import 'package:inova/src/pages/home/home_screen.dart';
+import 'package:inova/data/repository/user_repository.dart';
+import 'package:inova/presentation/pages/home/home_page.dart';
+import 'package:inova/presentation/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => UserCubit(UserListRepository()),
-        child: const HomeScreen(),
-      ),
+      home: HomePage(),
     );
   }
 }

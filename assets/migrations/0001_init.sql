@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS conhecimentos_ao_final(
   FOREIGN KEY(id_vaga) REFERENCES vaga(id)
 );
 
+
 INSERT INTO
   role(id, name)
 VALUES
