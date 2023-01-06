@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:path/path.dart';
 import 'dart:io' show Directory, File;
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -8,7 +7,7 @@ import "package:sqflite/sqflite.dart";
 class DBHelper {
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
-    String databasePath = join(path, "inovadb.db");
+    String databasePath = "${path}inovadb.db";
     //print(databasePath);
     Database db =
         await openDatabase(databasePath, version: 1, onCreate: onCreate);
