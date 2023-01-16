@@ -1,1 +1,0 @@
-enum BarItem { home, perfil }

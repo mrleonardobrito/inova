@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:inova/presentation/pages/home/home_page.dart';
-import 'package:inova/data/repository/database/auth_dao.dart';
+import 'package:inova/data/database/daos/auth_dao.dart';
 import 'package:inova/presentation/pages/login/login_page.dart';
 
 class Cadastro extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:inova/bussiness_logic/cubit/user/user_cubit.dart';
+import 'package:inova/presentation/bloc/cubit/user/user_cubit.dart';
 import 'package:inova/presentation/utils/variables/variables.dart';
 
 class Projetos extends StatefulWidget {

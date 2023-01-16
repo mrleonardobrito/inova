@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:inova/data/repository/database/vaga_dao.dart';
-import 'package:inova/presentation/utils/request_manager.dart';
-import 'package:inova/presentation/widgets/home/vaga_card.dart';
-import 'package:inova/data/models/vaga.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inova/presentation/bloc/cubit/vaga/vaga_cubit.dart';
+import 'package:inova/presentation/widgets/home/states/empty_vaga.dart';
+import 'package:inova/presentation/widgets/home/states/error_vaga.dart';
+import 'package:inova/presentation/widgets/home/states/loading_vagas_body.dart';
+import 'package:inova/presentation/widgets/home/states/vaga_body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,22 +14,19 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  String query = '';
-  late Future<List<Vaga>> vagas;
-  RequestManager stateManager = RequestManager();
-
   @override
   void initState() {
     super.initState();
 
-    stateManager.getVagas();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final cubit = context.read<VagaCubit>();
+      cubit.fetchVagas();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
-    Future<List<Vaga>> vagas = VagaDao().getVagas();
     return CustomScrollView(
       scrollBehavior: const ScrollBehavior(),
       slivers: [
@@ -67,22 +66,27 @@ class HomePageState extends State<HomePage> {
           ),
         ),
         SliverToBoxAdapter(
-          child: FutureBuilder<List<Vaga>>(
-            future: vagas,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<Vaga> vagas = snapshot.data ?? [];
-                return ListView.builder(
-                  itemCount: vagas.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => VagaCard(vaga: vagas[index]),
-                );
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
+            child: BlocBuilder<VagaCubit, VagaState>(
+          builder: (context, state) => Container(
+            color: const Color(0xFFEFEFEF),
+            width: double.infinity,
+            height: height * 0.7,
+            child: _getScreenFromState(state),
           ),
-        ),
+        ))
       ],
     );
+  }
+
+  Widget _getScreenFromState(VagaState state) {
+    if (state is VagaLoadedListState) {
+      return ListOfVagasBody(vagas: state.vagas);
+    } else if (state is VagaEmptyState) {
+      return const EmptyVagaBody();
+    } else if (state is VagaErrorState) {
+      return ErrorVagaBody(errorMessage: state.message);
+    } else {
+      return const LoadingVagasBody();
+    }
   }
 }
